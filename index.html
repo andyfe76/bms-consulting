@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMS Consulting - Master the Water / Control the Fire</title>
-    <meta name="description" content="BMS Consulting - Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. Autorizati IGSU.">
+    <title>BMS Consulting - master the water / control the fire</title>
+    <meta name="description" content="BMS Consulting - Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --primary: #0C3B6E;
             --primary-dark: #082a50;
@@ -23,375 +22,247 @@
             --bg-dark: #0a0a0a;
             --text: #2D2D2D;
             --text-light: #666;
-            --text-white: #FFFFFF;
             --shadow: 0 2px 20px rgba(0,0,0,0.1);
             --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
             --radius: 8px;
             --transition: 0.3s ease;
+            --sidebar-w: 230px;
         }
-
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
         img { max-width: 100%; height: auto; }
         a { text-decoration: none; color: inherit; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-        .section-title .underline {
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-        section { padding: 80px 0; }
-
-        /* ===== HEADER ===== */
-        .header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: var(--transition);
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .logo { display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 50px; width: auto; }
-        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary); font-size: 1.1rem; line-height: 1.2; }
-        .logo-text small { font-size: 0.65rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; display: block; }
-
-        .nav { display: flex; align-items: center; gap: 5px; }
-        .nav a {
-            padding: 8px 14px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text);
-            border-radius: var(--radius);
-            transition: var(--transition);
-        }
-        .nav a:hover { color: var(--primary); background: rgba(12,59,110,0.06); }
-
-        .header-right { display: flex; align-items: center; gap: 15px; }
-        .header-phone {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 22px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
-        }
-        .btn-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-        .btn-outline:hover { background: white; color: var(--primary); }
-
-        .lang-switcher {
-            display: flex;
-            gap: 2px;
-            background: var(--bg-light);
-            border-radius: var(--radius);
-            padding: 2px;
-        }
-        .lang-switcher button {
-            padding: 4px 8px;
-            border: none;
-            background: transparent;
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: var(--transition);
-            color: var(--text-light);
-        }
-        .lang-switcher button.active {
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed; top: 0; left: 0; bottom: 0;
+            width: var(--sidebar-w);
             background: var(--primary);
             color: white;
+            display: flex; flex-direction: column;
+            z-index: 1000;
+            transition: transform var(--transition);
+        }
+        .sidebar-top {
+            padding: 25px 20px 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-logo { height: 55px; width: auto; margin-bottom: 5px; }
+        .sidebar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            display: block;
+        }
+        .sidebar-tagline {
+            font-size: 0.6rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            font-style: italic;
         }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-            background: none;
-            border: none;
-        }
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--text);
+        .sidebar-nav { flex: 1; padding: 15px 0; overflow-y: auto; }
+        .sidebar-nav a {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 25px;
+            font-size: 0.88rem; font-weight: 600;
+            color: rgba(255,255,255,0.7);
             transition: var(--transition);
+            border-left: 3px solid transparent;
         }
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            color: white;
+            background: rgba(255,255,255,0.08);
+            border-left-color: var(--accent);
+        }
+        .sidebar-nav a i { width: 18px; text-align: center; font-size: 0.9rem; }
+
+        .sidebar-bottom {
+            padding: 15px 20px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-phone {
+            display: flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem; font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .sidebar-phone:hover { color: white; }
+        .lang-switcher {
+            display: flex; gap: 2px; margin-bottom: 12px;
+            background: rgba(255,255,255,0.1); border-radius: 6px; padding: 2px;
+        }
+        .lang-switcher button {
+            flex: 1; padding: 4px 6px; border: none; background: transparent;
+            font-size: 0.7rem; font-weight: 700; cursor: pointer;
+            border-radius: 4px; color: rgba(255,255,255,0.5); transition: var(--transition);
+        }
+        .lang-switcher button.active { background: var(--accent); color: white; }
+        .lang-switcher button:hover { color: white; }
+        .btn-cta {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 12px 20px;
+            background: var(--accent); color: white;
+            border: none; border-radius: var(--radius);
+            font-weight: 700; font-size: 0.9rem; cursor: pointer;
+            transition: var(--transition); font-family: 'Montserrat', sans-serif;
+        }
+        .btn-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+        /* ===== MOBILE HAMBURGER ===== */
+        .mobile-header {
+            display: none; position: fixed; top: 0; left: 0; right: 0;
+            height: 60px; background: var(--primary); z-index: 999;
+            align-items: center; justify-content: space-between; padding: 0 15px;
+        }
+        .mobile-header .logo-row { display: flex; align-items: center; gap: 10px; color: white; }
+        .mobile-header .logo-row img { height: 35px; }
+        .mobile-header .logo-row span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; }
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
+            padding: 5px; background: none; border: none;
+        }
+        .hamburger span { display: block; width: 24px; height: 2px; background: white; transition: var(--transition); }
+
+        /* ===== MAIN CONTENT ===== */
+        .main { margin-left: var(--sidebar-w); }
+        .page {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            position: relative;
+        }
+        .page-inner { width: 100%; padding: 60px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; font-weight: 800; }
+        .section-title .underline { width: 60px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px; }
 
         /* ===== HERO ===== */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #1a4a7e 100%);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8ecf1 100%);
             overflow: hidden;
-            padding-top: 70px;
         }
         .hero::before {
             content: '';
-            position: absolute;
-            inset: 0;
-            background: url('assets/img/gallery-hvac-1.jpeg') center/cover no-repeat;
-            opacity: 0.15;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0; right: 0;
-            height: 80px;
-            background: linear-gradient(transparent, var(--bg-white));
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55vh; height: 55vh;
+            background: url('assets/img/logo_simple.jpeg') center/contain no-repeat;
+            opacity: 0.07;
         }
         .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            color: white;
-            padding: 60px 0;
+            position: relative; z-index: 2;
+            text-align: center; max-width: 700px; margin: 0 auto;
         }
         .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-            line-height: 1.1;
+            font-size: 3.2rem; font-weight: 800; color: var(--primary);
+            margin-bottom: 8px; line-height: 1.1;
         }
         .hero-content .tagline {
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-weight: 600;
+            font-size: 1.2rem; font-style: italic; color: var(--accent);
+            margin-bottom: 25px; font-weight: 600;
         }
-        .hero-content p {
-            font-size: 1.15rem;
-            opacity: 0.9;
-            margin-bottom: 35px;
-            line-height: 1.7;
+        .hero-content p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 35px; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .hero-buttons .btn-cta { width: auto; padding: 14px 30px; }
+        .btn-outline {
+            background: transparent; border: 2px solid var(--primary); color: var(--primary);
         }
-        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-        .hero-pattern {
-            position: absolute;
-            right: -100px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 500px;
-            height: 500px;
-            border: 2px solid rgba(255,255,255,0.08);
-            border-radius: 50%;
-        }
-        .hero-pattern::before {
-            content: '';
-            position: absolute;
-            inset: 40px;
-            border: 2px solid rgba(255,255,255,0.05);
-            border-radius: 50%;
-        }
+        .btn-outline:hover { background: var(--primary); color: white; }
 
         /* ===== ABOUT ===== */
         .about { background: var(--bg-white); }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .about-text p { margin-bottom: 15px; color: var(--text-light); font-size: 1.02rem; }
-        .about-text strong { color: var(--primary); }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .stat-card {
-            text-align: center;
-            padding: 30px 15px;
-            background: var(--bg-light);
-            border-radius: var(--radius);
-            border-bottom: 3px solid var(--accent);
-            transition: var(--transition);
-        }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-        .stat-card .number {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1;
-        }
-        .stat-card .label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 8px;
-            font-weight: 500;
+        .about-content { max-width: 800px; margin: 0 auto; }
+        .about-content p { margin-bottom: 18px; color: var(--text-light); font-size: 1.02rem; }
+        .about-content strong { color: var(--primary); }
+        .about-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--bg-light); padding: 12px 20px; border-radius: var(--radius);
+            margin-top: 10px; font-weight: 600; color: var(--primary);
+            border-left: 4px solid var(--accent);
         }
 
         /* ===== SERVICES ===== */
         .services { background: var(--bg-light); }
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 40px; max-width: 900px; margin: 0 auto;
         }
-        .service-card {
-            background: white;
-            padding: 35px 25px;
-            border-radius: var(--radius);
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid #eee;
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-        }
-        .service-card .icon {
-            width: 70px;
-            height: 70px;
+        .service-item { text-align: center; }
+        .service-icon {
+            width: 100px; height: 100px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.6rem;
-            color: white;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 2.2rem; color: white;
+            transition: var(--transition);
+            cursor: default;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
         }
-        .service-card h3 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .service-icon::after {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 60%);
         }
-        .service-card p { font-size: 0.9rem; color: var(--text-light); }
+        .service-item:hover .service-icon { transform: scale(1.1); box-shadow: 0 6px 30px rgba(0,0,0,0.2); }
+        .service-icon.blue { background: linear-gradient(135deg, #1565C0, #0D47A1); }
+        .service-icon.red { background: linear-gradient(135deg, #E53935, #B71C1C); }
+        .service-icon.grey { background: linear-gradient(135deg, #607D8B, #455A64); }
+        .service-icon.cyan { background: linear-gradient(135deg, #00ACC1, #00838F); }
+        .service-icon.orange { background: linear-gradient(135deg, #FB8C00, #E65100); }
+        .service-icon.purple { background: linear-gradient(135deg, #8E24AA, #6A1B9A); }
+        .service-item h3 { font-size: 1rem; color: var(--primary); margin-bottom: 6px; }
+        .service-item p { font-size: 0.85rem; color: var(--text-light); max-width: 220px; margin: 0 auto; }
 
         /* ===== WORKFLOW ===== */
         .workflow { background: var(--primary); color: white; }
         .workflow .section-title h2 { color: white; }
-        .workflow .section-title .underline { background: var(--accent); }
         .workflow-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            position: relative;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 30px; position: relative;
         }
         .workflow-grid::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 12.5%;
-            right: 12.5%;
-            height: 2px;
-            background: rgba(255,255,255,0.2);
+            content: ''; position: absolute; top: 40px;
+            left: 12.5%; right: 12.5%; height: 2px;
+            background: rgba(255,255,255,0.15);
         }
-        .workflow-step {
-            text-align: center;
-            position: relative;
-        }
+        .workflow-step { text-align: center; position: relative; }
         .workflow-step .step-num {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            border: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(255,255,255,0.08); border: 3px solid var(--accent);
+            display: flex; align-items: center; justify-content: center;
             margin: 0 auto 20px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
+            font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800;
         }
-        .workflow-step h3 { font-size: 1.1rem; margin-bottom: 8px; }
-        .workflow-step p { font-size: 0.9rem; opacity: 0.8; }
+        .workflow-step h3 { font-size: 1.05rem; margin-bottom: 6px; }
+        .workflow-step p { font-size: 0.9rem; opacity: 0.75; }
 
         /* ===== AUTHORIZATIONS ===== */
         .authorizations { background: var(--bg-white); }
-        .auth-intro {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--text-light);
-        }
+        .auth-intro { text-align: center; max-width: 700px; margin: 0 auto 35px; color: var(--text-light); }
         .auth-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 12px; max-width: 800px; margin: 0 auto 40px;
         }
         .auth-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 20px;
-            background: var(--bg-light);
-            border-radius: var(--radius);
-            font-size: 0.95rem;
-            font-weight: 500;
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 18px; background: var(--bg-light); border-radius: var(--radius);
+            font-size: 0.92rem; font-weight: 500;
         }
-        .auth-item i { color: var(--accent); font-size: 1.2rem; min-width: 20px; }
+        .auth-item i { color: var(--accent); font-size: 1.1rem; min-width: 20px; }
         .auth-certs {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            margin-top: 40px;
+            display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 12px; margin-top: 35px;
         }
         .auth-cert {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: var(--transition);
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow); cursor: pointer; transition: var(--transition);
         }
         .auth-cert:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
         .auth-cert img { width: 100%; height: auto; display: block; }
@@ -399,542 +270,486 @@
         /* ===== PROJECTS ===== */
         .projects { background: var(--bg-light); }
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
         }
         .project-card {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            cursor: pointer;
-            aspect-ratio: 4/3;
+            position: relative; border-radius: var(--radius);
+            overflow: hidden; cursor: pointer; aspect-ratio: 4/3;
         }
         .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
             transition: transform 0.5s ease;
         }
         .project-card:hover img { transform: scale(1.1); }
         .project-card .overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(transparent 40%, rgba(12,59,110,0.8));
-            opacity: 0;
-            transition: var(--transition);
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
+            opacity: 0; transition: var(--transition);
+            display: flex; align-items: flex-end; padding: 15px;
         }
         .project-card:hover .overlay { opacity: 1; }
-        .project-card .overlay span {
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* ===== LIGHTBOX ===== */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            background: rgba(0,0,0,0.92);
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-        .lightbox.active { display: flex; }
-        .lightbox img {
-            max-width: 90vw;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: var(--radius);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px; right: 30px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 10px;
-            z-index: 2001;
-        }
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            padding: 15px;
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
-        .lightbox-prev { left: 20px; }
-        .lightbox-next { right: 20px; }
+        .project-card .overlay span { color: white; font-weight: 600; font-size: 0.85rem; }
 
         /* ===== CONTACT ===== */
         .contact { background: var(--bg-white); }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-        .contact-info h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-info h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 20px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
         .contact-item .icon-circle {
-            width: 45px;
-            height: 45px;
-            min-width: 45px;
-            border-radius: 50%;
-            background: var(--bg-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
+            width: 42px; height: 42px; min-width: 42px; border-radius: 50%;
+            background: var(--bg-light); display: flex; align-items: center;
+            justify-content: center; color: var(--primary);
         }
-        .contact-item strong { display: block; margin-bottom: 2px; }
-        .contact-item span { color: var(--text-light); font-size: 0.95rem; }
+        .contact-item strong { display: block; margin-bottom: 2px; font-size: 0.9rem; }
+        .contact-item span, .contact-item a { color: var(--text-light); font-size: 0.92rem; }
         .contact-item a { color: var(--primary); font-weight: 500; }
         .contact-map {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            height: 100%;
-            min-height: 350px;
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow); height: 100%; min-height: 300px;
         }
         .contact-map iframe { width: 100%; height: 100%; border: 0; }
 
+        /* ===== OFFER FORM ===== */
+        .offer { background: var(--bg-light); }
+        .offer-form {
+            max-width: 600px; margin: 0 auto;
+            background: white; padding: 40px; border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .offer-form .form-group { margin-bottom: 18px; }
+        .offer-form label {
+            display: block; margin-bottom: 5px;
+            font-weight: 600; font-size: 0.9rem; color: var(--text);
+        }
+        .offer-form input, .offer-form textarea, .offer-form select {
+            width: 100%; padding: 12px 14px;
+            border: 1px solid #ddd; border-radius: var(--radius);
+            font-family: 'Open Sans', sans-serif; font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        .offer-form input:focus, .offer-form textarea:focus {
+            outline: none; border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(12,59,110,0.1);
+        }
+        .offer-form textarea { resize: vertical; min-height: 100px; }
+        .offer-form input[type="file"] { padding: 10px; background: var(--bg-light); cursor: pointer; }
+        .offer-form .btn-cta { margin-top: 10px; font-size: 1rem; padding: 14px; }
+        .offer-note {
+            text-align: center; margin-top: 15px;
+            font-size: 0.8rem; color: var(--text-light);
+        }
+
         /* ===== FOOTER ===== */
         .footer {
-            background: var(--bg-dark);
-            color: rgba(255,255,255,0.7);
-            padding: 50px 0 20px;
+            background: var(--bg-dark); color: rgba(255,255,255,0.6);
+            padding: 30px 0; text-align: center;
         }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 30px;
+        .footer-inner {
+            display: flex; align-items: center; justify-content: center;
+            gap: 15px; flex-wrap: wrap; font-size: 0.85rem;
         }
-        .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .footer-logo img { height: 40px; filter: brightness(10); }
-        .footer-logo span { font-family: 'Montserrat', sans-serif; font-weight: 700; color: white; }
-        .footer-desc { font-size: 0.9rem; line-height: 1.7; }
-        .footer h4 { color: white; font-size: 1rem; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 8px; }
-        .footer-links a { font-size: 0.9rem; transition: var(--transition); }
-        .footer-links a:hover { color: var(--accent); }
-        .footer-contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
-        .footer-contact-item i { color: var(--accent); min-width: 16px; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            text-align: center;
-            font-size: 0.85rem;
+        .footer a { color: var(--accent); }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            display: none; position: fixed; inset: 0; z-index: 2000;
+            background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+            padding: 40px;
         }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius); }
+        .lightbox-close {
+            position: absolute; top: 15px; right: 25px; color: white;
+            font-size: 2rem; cursor: pointer; background: none; border: none; padding: 10px; z-index: 2001;
+        }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: white; font-size: 1.8rem; cursor: pointer;
+            background: rgba(255,255,255,0.1); border: none; padding: 12px;
+            border-radius: 50%; transition: var(--transition);
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-prev { left: 15px; }
+        .lightbox-next { right: 15px; }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .auth-certs { grid-template-columns: repeat(3, 1fr); }
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0; right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: var(--shadow);
-            }
-            .nav.open { display: flex; }
+        @media (max-width: 900px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .mobile-header { display: flex; }
             .hamburger { display: flex; }
-            .header-phone { display: none; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content .tagline { font-size: 1.1rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(3, 1fr); }
-            .services-grid { grid-template-columns: 1fr; }
+            .main { margin-left: 0; padding-top: 60px; }
+            .hero { min-height: calc(100vh - 60px); }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
             .workflow-grid { grid-template-columns: repeat(2, 1fr); }
             .workflow-grid::before { display: none; }
             .auth-list { grid-template-columns: 1fr; }
-            .auth-certs { grid-template-columns: repeat(2, 1fr); }
+            .auth-certs { grid-template-columns: repeat(3, 1fr); }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            section { padding: 60px 0; }
         }
-
         @media (max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .service-icon { width: 75px; height: 75px; font-size: 1.7rem; }
             .projects-grid { grid-template-columns: 1fr; }
-            .hero-buttons { flex-direction: column; }
-            .hero-content h1 { font-size: 2rem; }
-            .auth-certs { grid-template-columns: 1fr; }
+            .auth-certs { grid-template-columns: repeat(2, 1fr); }
+            .hero-content h1 { font-size: 2.2rem; }
         }
 
-        /* ===== ANIMATIONS ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Overlay for mobile sidebar */
+        .sidebar-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 999;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .sidebar-overlay.active { display: block; }
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="header-inner">
-        <a href="#acasa" class="logo">
-            <img src="assets/img/logo.jpeg" alt="BMS Consulting Logo">
-            <div class="logo-text">
-                BMS Consulting
-                <small>MASTER THE WATER / CONTROL THE FIRE</small>
-            </div>
-        </a>
-
-        <nav class="nav" id="mainNav">
-            <a href="#acasa" data-i18n="nav_home">Acasa</a>
-            <a href="#despre" data-i18n="nav_about">Despre Noi</a>
-            <a href="#servicii" data-i18n="nav_services">Servicii</a>
-            <a href="#autorizatii" data-i18n="nav_auth">Autorizatii</a>
-            <a href="#proiecte" data-i18n="nav_projects">Proiecte</a>
-            <a href="#contact" data-i18n="nav_contact">Contact</a>
-        </nav>
-
-        <div class="header-right">
-            <div class="lang-switcher">
-                <button onclick="setLang('ro')" class="active" title="Romana">RO</button>
-                <button onclick="setLang('en')" title="English">EN</button>
-                <button onclick="setLang('hu')" title="Magyar">HU</button>
-                <button onclick="setLang('zh')" title="中文">ZH</button>
-            </div>
-            <a href="tel:0742252439" class="header-phone">
-                <i class="fas fa-phone"></i> 0742.252.439
-            </a>
-            <a href="#contact" class="btn-cta" data-i18n="nav_cta">Cere Oferta</a>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+<!-- MOBILE HEADER -->
+<div class="mobile-header">
+    <div class="logo-row">
+        <img src="assets/img/logo.jpeg" alt="BMS Consulting">
+        <span>BMS Consulting</span>
     </div>
-</header>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</div>
 
-<!-- HERO -->
-<section class="hero" id="acasa">
-    <div class="hero-pattern"></div>
-    <div class="container">
-        <div class="hero-content">
-            <h1>BMS Consulting</h1>
-            <div class="tagline">master the water / control the fire</div>
-            <p data-i18n="hero_text">Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. De la proiectare la punere in functiune.</p>
-            <div class="hero-buttons">
-                <a href="#servicii" class="btn-cta" data-i18n="hero_btn1">Serviciile Noastre</a>
-                <a href="#contact" class="btn-cta btn-outline" data-i18n="hero_btn2">Contacteaza-ne</a>
-            </div>
-        </div>
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+        <a href="#acasa"><img src="assets/img/logo.jpeg" alt="BMS Consulting" class="sidebar-logo"></a>
+        <span class="sidebar-brand">BMS Consulting</span>
+        <span class="sidebar-tagline">master the water / control the fire</span>
     </div>
-</section>
 
-<!-- ABOUT -->
-<section class="about" id="despre">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2 data-i18n="about_title">Despre Noi</h2>
-            <div class="underline"></div>
+    <nav class="sidebar-nav" id="sidebarNav">
+        <a href="#acasa" class="active" data-i18n="nav_home"><i class="fas fa-home"></i> Acasa</a>
+        <a href="#despre" data-i18n="nav_about"><i class="fas fa-building"></i> Despre Noi</a>
+        <a href="#servicii" data-i18n="nav_services"><i class="fas fa-cogs"></i> Servicii</a>
+        <a href="#flux" data-i18n="nav_workflow"><i class="fas fa-arrows-spin"></i> Ce Facem</a>
+        <a href="#autorizatii" data-i18n="nav_auth"><i class="fas fa-certificate"></i> Autorizatii</a>
+        <a href="#proiecte" data-i18n="nav_projects"><i class="fas fa-images"></i> Proiecte</a>
+        <a href="#contact" data-i18n="nav_contact"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="#oferta" data-i18n="nav_cta"><i class="fas fa-file-signature"></i> Cere Oferta</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <div class="lang-switcher">
+            <button onclick="setLang('ro')" class="active">RO</button>
+            <button onclick="setLang('en')">EN</button>
+            <button onclick="setLang('hu')">HU</button>
+            <button onclick="setLang('zh')">ZH</button>
         </div>
-        <div class="about-grid">
-            <div class="about-text fade-in">
-                <p data-i18n="about_p1"><strong>SC BMS Consulting SRL</strong> este o societate cu capital privat, care activeaza cu succes pe piata constructiilor din Romania, incepand cu anul 2023, oferind solutii complete in domeniul instalatiilor termice, ventilatii, climatizare, instalatii desfumare si instalatii stingere incendiu, precum si sisteme de protectie la foc.</p>
-                <p data-i18n="about_p2">Compania detine un bogat patrimoniu uman, avand personal cu experienta de peste <strong>10 ani</strong> in domeniul instalatiilor. BMS Consulting este un <strong>Antreprenor General</strong> capabil sa realizeze si sa gestioneze instalatii integrate in domeniile civil si industrial — de la proiectare la furnizare, montaj si punere in functiune.</p>
-                <p data-i18n="about_p3">Personalul BMS Consulting SRL este autorizat <strong>AGFR</strong> pentru executarea lucrarilor de montaj, service si punere in functiune pentru pompele de caldura si alte agregate care folosesc in functionarea lor compusi organici alifatici fluorurati (freon).</p>
-            </div>
-            <div class="stats-grid fade-in">
-                <div class="stat-card">
-                    <div class="number">10+</div>
-                    <div class="label" data-i18n="stat_exp">Ani experienta echipa</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">6</div>
-                    <div class="label" data-i18n="stat_auth">Autorizatii IGSU</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number" style="font-size:1.4rem; padding-top: 10px;" data-i18n="stat_domains_num">Rezidential<br>&amp; Industrial</div>
-                    <div class="label" data-i18n="stat_domains">Domenii acoperite</div>
-                </div>
-            </div>
-        </div>
+        <a href="tel:0742252439" class="sidebar-phone"><i class="fas fa-phone"></i> 0742.252.439</a>
+        <a href="#oferta" class="btn-cta" data-i18n="nav_cta"><i class="fas fa-paper-plane"></i> Cere Oferta</a>
     </div>
-</section>
+</aside>
 
-<!-- SERVICES -->
-<section class="services" id="servicii">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2 data-i18n="services_title">Servicii</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card fade-in">
-                <div class="icon"><i class="fas fa-wind"></i></div>
-                <h3 data-i18n="svc1_title">Instalatii HVAC</h3>
-                <p data-i18n="svc1_desc">Incalzire, ventilatie, climatizare — solutii pentru spatii rezidentiale si industriale.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="icon"><i class="fas fa-fire-extinguisher"></i></div>
-                <h3 data-i18n="svc2_title">Stingere Incendiu</h3>
-                <p data-i18n="svc2_desc">Sprinklere, hidranti, inele incendiu interioare si exterioare.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="icon"><i class="fas fa-smog"></i></div>
-                <h3 data-i18n="svc3_title">Instalatii Desfumare</h3>
-                <p data-i18n="svc3_desc">Evacuare fum si gaze fierbinti, ventilatoare axiale.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="icon"><i class="fas fa-faucet-drip"></i></div>
-                <h3 data-i18n="svc4_title">Instalatii Sanitare</h3>
-                <p data-i18n="svc4_desc">Alimentare apa, canalizare, panouri solare, boilere.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="icon"><i class="fas fa-bell"></i></div>
-                <h3 data-i18n="svc5_title">Detectie Incendiu</h3>
-                <p data-i18n="svc5_desc">Sisteme de semnalizare, alarmare si alertare incendiu.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="icon"><i class="fas fa-shield-halved"></i></div>
-                <h3 data-i18n="svc6_title">Protectie la Foc</h3>
-                <p data-i18n="svc6_desc">Termoprotectie cu produse de torcretare si vopsele intumescente.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<!-- WORKFLOW -->
-<section class="workflow" id="flux">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2 data-i18n="workflow_title">Ce Facem</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="workflow-grid">
-            <div class="workflow-step fade-in">
-                <div class="step-num">1</div>
-                <h3 data-i18n="wf1_title">Proiectare</h3>
-                <p data-i18n="wf1_desc">Solutii tehnice personalizate</p>
-            </div>
-            <div class="workflow-step fade-in">
-                <div class="step-num">2</div>
-                <h3 data-i18n="wf2_title">Furnizare</h3>
-                <p data-i18n="wf2_desc">Echipamente de cea mai buna calitate</p>
-            </div>
-            <div class="workflow-step fade-in">
-                <div class="step-num">3</div>
-                <h3 data-i18n="wf3_title">Montaj</h3>
-                <p data-i18n="wf3_desc">Personal cu inalta calificare</p>
-            </div>
-            <div class="workflow-step fade-in">
-                <div class="step-num">4</div>
-                <h3 data-i18n="wf4_title">Service</h3>
-                <p data-i18n="wf4_desc">Garantie si post-garantie</p>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- MAIN CONTENT -->
+<main class="main">
 
-<!-- AUTHORIZATIONS -->
-<section class="authorizations" id="autorizatii">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2 data-i18n="auth_title">Autorizatii</h2>
-            <div class="underline"></div>
-        </div>
-        <p class="auth-intro fade-in" data-i18n="auth_intro">SC BMS Consulting SRL este autorizata de <strong>IGSU</strong> pe perioada nedeterminata pentru urmatoarele domenii:</p>
-        <div class="auth-list fade-in">
-            <div class="auth-item">
-                <i class="fas fa-check-circle"></i>
-                <span data-i18n="auth_item1">Limitare si stingere incendii cu sprinklere si hidranti</span>
-            </div>
-            <div class="auth-item">
-                <i class="fas fa-check-circle"></i>
-                <span data-i18n="auth_item2">Evacuare fum si gaze fierbinti</span>
-            </div>
-            <div class="auth-item">
-                <i class="fas fa-check-circle"></i>
-                <span data-i18n="auth_item3">Detectie si semnalizare incendiu</span>
-            </div>
-            <div class="auth-item">
-                <i class="fas fa-check-circle"></i>
-                <span data-i18n="auth_item4">Termoprotectie cu produse de torcretare</span>
-            </div>
-            <div class="auth-item">
-                <i class="fas fa-check-circle"></i>
-                <span data-i18n="auth_item5">Termoprotectie in vopsele termospumante</span>
-            </div>
-            <div class="auth-item">
-                <i class="fas fa-check-circle"></i>
-                <span data-i18n="auth_item6">Autorizare AGFR (pompe de caldura, freon)</span>
-            </div>
-        </div>
-        <div class="auth-certs fade-in">
-            <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-1.jpeg" alt="Autorizatie IGSU 1"></div>
-            <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-2.jpeg" alt="Autorizatie IGSU 2"></div>
-            <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-3.jpeg" alt="Autorizatie IGSU 3"></div>
-            <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-4.jpeg" alt="Autorizatie IGSU 4"></div>
-            <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-5.jpeg" alt="Autorizatie IGSU 5"></div>
-        </div>
-    </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="projects" id="proiecte">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2 data-i18n="projects_title">Proiecte</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="projects-grid fade-in">
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-hvac-1.jpeg" alt="HVAC industrial">
-                <div class="overlay"><span data-i18n="proj1">HVAC — Hala industriala</span></div>
-            </div>
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-sprinkler-1.jpeg" alt="Instalatii sprinklere">
-                <div class="overlay"><span data-i18n="proj2">Sprinklere si ventilatii</span></div>
-            </div>
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-sprinkler-2.jpeg" alt="Stingere incendiu">
-                <div class="overlay"><span data-i18n="proj3">Stingere incendiu</span></div>
-            </div>
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-industrial-1.jpeg" alt="Instalatii industriale">
-                <div class="overlay"><span data-i18n="proj4">Instalatii industriale</span></div>
-            </div>
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-industrial-2.jpeg" alt="Sisteme de siguranta">
-                <div class="overlay"><span data-i18n="proj5">Sisteme hidranti</span></div>
-            </div>
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-industrial-3.jpeg" alt="HVAC si sprinklere">
-                <div class="overlay"><span data-i18n="proj6">HVAC si sprinklere</span></div>
-            </div>
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-industrial-4.jpeg" alt="Instalatii complexe">
-                <div class="overlay"><span data-i18n="proj7">Instalatii complexe</span></div>
-            </div>
-            <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                <img src="assets/img/gallery-ventilation-1.jpeg" alt="Desfumare">
-                <div class="overlay"><span data-i18n="proj8">Sistem desfumare</span></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2 data-i18n="contact_title">Contact</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-info fade-in">
-                <h3 data-i18n="contact_subtitle">Contacteaza-ne</h3>
-                <div class="contact-item">
-                    <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>
-                        <strong data-i18n="contact_address_label">Adresa</strong>
-                        <span>Str. Dorului nr. 5, Corbeanca, Ilfov</span>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon-circle"><i class="fas fa-phone"></i></div>
-                    <div>
-                        <strong data-i18n="contact_phone_label">Telefon</strong>
-                        <a href="tel:0742252439">0742.252.439</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <strong>Email</strong>
-                        <a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon-circle"><i class="fas fa-clock"></i></div>
-                    <div>
-                        <strong data-i18n="contact_hours_label">Program</strong>
-                        <span data-i18n="contact_hours">Luni - Vineri: 08:00 - 17:00</span>
+    <!-- HERO / ACASA -->
+    <section class="page hero" id="acasa">
+        <div class="page-inner">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>BMS Consulting</h1>
+                    <div class="tagline">master the water / control the fire</div>
+                    <p data-i18n="hero_text">Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. De la proiectare la punere in functiune.</p>
+                    <div class="hero-buttons">
+                        <a href="#servicii" class="btn-cta" data-i18n="hero_btn1"><i class="fas fa-cogs"></i> Serviciile Noastre</a>
+                        <a href="#contact" class="btn-cta btn-outline" data-i18n="hero_btn2"><i class="fas fa-envelope"></i> Contacteaza-ne</a>
                     </div>
                 </div>
             </div>
-            <div class="contact-map fade-in">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2843.4!2d26.05!3d44.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCorbeanca%2C+Ilfov!5e0!3m2!1sro!2sro" loading="lazy" allowfullscreen></iframe>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <div class="footer-logo">
-                    <img src="assets/img/logo.jpeg" alt="BMS Consulting">
-                    <span>BMS Consulting</span>
+    <!-- DESPRE NOI -->
+    <section class="page about" id="despre">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="about_title">Despre Noi</h2>
+                    <div class="underline"></div>
                 </div>
-                <p class="footer-desc" data-i18n="footer_desc">Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. Autorizati IGSU pe perioada nedeterminata.</p>
-            </div>
-            <div>
-                <h4 data-i18n="footer_links_title">Link-uri Rapide</h4>
-                <ul class="footer-links">
-                    <li><a href="#acasa" data-i18n="nav_home">Acasa</a></li>
-                    <li><a href="#despre" data-i18n="nav_about">Despre Noi</a></li>
-                    <li><a href="#servicii" data-i18n="nav_services">Servicii</a></li>
-                    <li><a href="#autorizatii" data-i18n="nav_auth">Autorizatii</a></li>
-                    <li><a href="#proiecte" data-i18n="nav_projects">Proiecte</a></li>
-                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-i18n="nav_contact">Contact</h4>
-                <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> Str. Dorului nr. 5, Corbeanca, Ilfov</div>
-                <div class="footer-contact-item"><i class="fas fa-phone"></i> <a href="tel:0742252439">0742.252.439</a></div>
-                <div class="footer-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a></div>
+                <div class="about-content fade-in">
+                    <p data-i18n="about_p1"><strong>SC BMS Consulting SRL</strong> este o societate cu capital privat, care activeaza cu succes pe piata constructiilor din Romania, incepand cu anul 2023, oferind solutii complete in domeniul instalatiilor termice, ventilatii, climatizare, instalatii desfumare si instalatii stingere incendiu, precum si sisteme de protectie la foc.</p>
+                    <p data-i18n="about_p2">Compania detine un bogat patrimoniu uman, avand personal cu experienta in domeniul instalatiilor. BMS Consulting este un <strong>Antreprenor General</strong> capabil sa realizeze si sa gestioneze instalatii integrate in domeniile civil si industrial — de la proiectare la furnizare, montaj si punere in functiune.</p>
+                    <p data-i18n="about_p3">Personalul BMS Consulting SRL este autorizat <strong>AGFR</strong> pentru executarea lucrarilor de montaj, service si punere in functiune pentru pompele de caldura si alte agregate care folosesc in functionarea lor compusi organici alifatici fluorurati (freon).</p>
+                    <div class="about-badge"><i class="fas fa-shield-halved"></i> <span data-i18n="about_badge">Autorizati IGSU pe perioada nedeterminata &bull; 6 autorizatii active</span></div>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2024 SC BMS Consulting SRL. <span data-i18n="footer_rights">Toate drepturile rezervate.</span>
+    </section>
+
+    <!-- SERVICII -->
+    <section class="page services" id="servicii">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="services_title">Servicii</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="services-grid fade-in">
+                    <div class="service-item">
+                        <div class="service-icon blue"><i class="fas fa-fan"></i></div>
+                        <h3 data-i18n="svc1_title">Instalatii HVAC</h3>
+                        <p data-i18n="svc1_desc">Incalzire, ventilatie, climatizare pentru spatii rezidentiale si industriale</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon red"><i class="fas fa-fire-extinguisher"></i></div>
+                        <h3 data-i18n="svc2_title">Stingere Incendiu</h3>
+                        <p data-i18n="svc2_desc">Sprinklere, hidranti, inele incendiu interioare si exterioare</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon grey"><i class="fas fa-wind"></i></div>
+                        <h3 data-i18n="svc3_title">Instalatii Desfumare</h3>
+                        <p data-i18n="svc3_desc">Evacuare fum si gaze fierbinti, ventilatoare axiale</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon cyan"><i class="fas fa-droplet"></i></div>
+                        <h3 data-i18n="svc4_title">Instalatii Sanitare</h3>
+                        <p data-i18n="svc4_desc">Alimentare apa, canalizare, panouri solare, boilere</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon orange"><i class="fas fa-bell"></i></div>
+                        <h3 data-i18n="svc5_title">Detectie Incendiu</h3>
+                        <p data-i18n="svc5_desc">Sisteme de semnalizare, alarmare si alertare incendiu</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon purple"><i class="fas fa-shield-halved"></i></div>
+                        <h3 data-i18n="svc6_title">Protectie la Foc</h3>
+                        <p data-i18n="svc6_desc">Termoprotectie cu produse de torcretare si vopsele intumescente</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+    </section>
+
+    <!-- CE FACEM -->
+    <section class="page workflow" id="flux">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="workflow_title">Ce Facem</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="workflow-grid fade-in">
+                    <div class="workflow-step">
+                        <div class="step-num">1</div>
+                        <h3 data-i18n="wf1_title">Proiectare</h3>
+                        <p data-i18n="wf1_desc">Solutii tehnice personalizate</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-num">2</div>
+                        <h3 data-i18n="wf2_title">Furnizare</h3>
+                        <p data-i18n="wf2_desc">Echipamente de cea mai buna calitate</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-num">3</div>
+                        <h3 data-i18n="wf3_title">Montaj</h3>
+                        <p data-i18n="wf3_desc">Personal cu inalta calificare</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-num">4</div>
+                        <h3 data-i18n="wf4_title">Service</h3>
+                        <p data-i18n="wf4_desc">Garantie si post-garantie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTORIZATII -->
+    <section class="page authorizations" id="autorizatii">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="auth_title">Autorizatii</h2>
+                    <div class="underline"></div>
+                </div>
+                <p class="auth-intro fade-in" data-i18n="auth_intro">SC BMS Consulting SRL este autorizata de <strong>IGSU</strong> pe perioada nedeterminata pentru urmatoarele domenii:</p>
+                <div class="auth-list fade-in">
+                    <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item1">Limitare si stingere incendii cu sprinklere si hidranti</span></div>
+                    <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item2">Evacuare fum si gaze fierbinti</span></div>
+                    <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item3">Detectie si semnalizare incendiu</span></div>
+                    <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item4">Termoprotectie cu produse de torcretare</span></div>
+                    <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item5">Termoprotectie in vopsele termospumante</span></div>
+                    <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item6">Autorizare AGFR (pompe de caldura, freon)</span></div>
+                </div>
+                <div class="auth-certs fade-in">
+                    <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-1.jpeg" alt="Autorizatie IGSU 1"></div>
+                    <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-2.jpeg" alt="Autorizatie IGSU 2"></div>
+                    <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-3.jpeg" alt="Autorizatie IGSU 3"></div>
+                    <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-4.jpeg" alt="Autorizatie IGSU 4"></div>
+                    <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-5.jpeg" alt="Autorizatie IGSU 5"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROIECTE -->
+    <section class="page projects" id="proiecte">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="projects_title">Proiecte</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="projects-grid fade-in">
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-hvac-1.jpeg" alt="HVAC industrial">
+                        <div class="overlay"><span data-i18n="proj1">HVAC — Hala industriala</span></div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sprinkler-1.jpeg" alt="Sprinklere">
+                        <div class="overlay"><span data-i18n="proj2">Sprinklere si ventilatii</span></div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sprinkler-2.jpeg" alt="Stingere incendiu">
+                        <div class="overlay"><span data-i18n="proj3">Stingere incendiu</span></div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-1.jpeg" alt="Instalatii industriale">
+                        <div class="overlay"><span data-i18n="proj4">Instalatii industriale</span></div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-2.jpeg" alt="Sisteme hidranti">
+                        <div class="overlay"><span data-i18n="proj5">Sisteme hidranti</span></div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-3.jpeg" alt="HVAC si sprinklere">
+                        <div class="overlay"><span data-i18n="proj6">HVAC si sprinklere</span></div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-4.jpeg" alt="Instalatii complexe">
+                        <div class="overlay"><span data-i18n="proj7">Instalatii complexe</span></div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-ventilation-1.jpeg" alt="Desfumare">
+                        <div class="overlay"><span data-i18n="proj8">Sistem desfumare</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page contact" id="contact">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="contact_title">Contact</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info fade-in">
+                        <h3 data-i18n="contact_subtitle">Contacteaza-ne</h3>
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                            <div><strong data-i18n="contact_address_label">Adresa</strong><span>Str. Dorului nr. 5, Corbeanca, Ilfov</span></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
+                            <div><strong data-i18n="contact_phone_label">Telefon</strong><a href="tel:0742252439">0742.252.439</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                            <div><strong>Email</strong><a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-clock"></i></div>
+                            <div><strong data-i18n="contact_hours_label">Program</strong><span data-i18n="contact_hours">Luni - Vineri: 08:00 - 17:00</span></div>
+                        </div>
+                    </div>
+                    <div class="contact-map fade-in">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2843.4!2d26.05!3d44.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCorbeanca%2C+Ilfov!5e0!3m2!1sro!2sro" loading="lazy" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERE OFERTA -->
+    <section class="page offer" id="oferta">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="offer_title">Cere Oferta</h2>
+                    <div class="underline"></div>
+                </div>
+                <!--
+                    FORMSPREE SETUP:
+                    1. Creeaza cont gratuit la https://formspree.io
+                    2. Creeaza un form nou cu email: office@bmsconsulting.ro
+                    3. Copiaza Form ID (ex: xyzabcde)
+                    4. Inlocuieste YOUR_FORM_ID mai jos
+                -->
+                <form class="offer-form fade-in" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label data-i18n="form_name">Nume *</label>
+                        <input type="text" name="nume" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_company">Firma</label>
+                        <input type="text" name="firma">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_phone">Telefon *</label>
+                        <input type="tel" name="telefon" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_service">Serviciu dorit</label>
+                        <select name="serviciu">
+                            <option value="" data-i18n="form_select">Selecteaza...</option>
+                            <option value="HVAC" data-i18n="svc1_title">Instalatii HVAC</option>
+                            <option value="Stingere Incendiu" data-i18n="svc2_title">Stingere Incendiu</option>
+                            <option value="Desfumare" data-i18n="svc3_title">Instalatii Desfumare</option>
+                            <option value="Sanitare" data-i18n="svc4_title">Instalatii Sanitare</option>
+                            <option value="Detectie" data-i18n="svc5_title">Detectie Incendiu</option>
+                            <option value="Protectie Foc" data-i18n="svc6_title">Protectie la Foc</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_message">Mesaj *</label>
+                        <textarea name="mesaj" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_files">Atasamente (PDF, DWG, imagini)</label>
+                        <input type="file" name="atasament" multiple accept=".pdf,.dwg,.dxf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip,.rar">
+                    </div>
+                    <button type="submit" class="btn-cta" data-i18n="form_submit"><i class="fas fa-paper-plane"></i> Trimite Cererea</button>
+                    <p class="offer-note" data-i18n="form_note">Veti primi un raspuns in maxim 24 de ore lucratoare.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>&copy; 2024 SC BMS Consulting SRL.</span>
+            <span data-i18n="footer_rights">Toate drepturile rezervate.</span>
+            <a href="tel:0742252439">0742.252.439</a>
+            <a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a>
+        </div>
+    </footer>
+
+</main>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -945,32 +760,52 @@
 </div>
 
 <script>
-// === HAMBURGER MENU ===
-document.getElementById('hamburger').addEventListener('click', function() {
-    document.getElementById('mainNav').classList.toggle('open');
+// === SIDEBAR MOBILE ===
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+
+hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
 });
-document.querySelectorAll('.nav a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+});
+document.querySelectorAll('.sidebar-nav a, .sidebar-bottom .btn-cta').forEach(a => {
+    a.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+    });
+});
+
+// === ACTIVE NAV ON SCROLL ===
+const sections = document.querySelectorAll('.page[id]');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
 });
 
 // === SCROLL ANIMATIONS ===
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
+const obsrv = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in').forEach(el => obsrv.observe(el));
 
 // === LIGHTBOX ===
-let lightboxImages = [];
-let currentLightboxIndex = 0;
-
+let lbImages = [], lbIdx = 0;
 function openLightbox(img) {
-    const allImages = document.querySelectorAll('.project-card img, .auth-cert img');
-    lightboxImages = Array.from(allImages);
-    currentLightboxIndex = lightboxImages.indexOf(img);
+    lbImages = Array.from(document.querySelectorAll('.project-card img, .auth-cert img'));
+    lbIdx = lbImages.indexOf(img);
     document.getElementById('lightboxImg').src = img.src;
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -980,12 +815,10 @@ function closeLightbox() {
     document.body.style.overflow = '';
 }
 function navLightbox(dir) {
-    currentLightboxIndex = (currentLightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
-    document.getElementById('lightboxImg').src = lightboxImages[currentLightboxIndex].src;
+    lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
+    document.getElementById('lightboxImg').src = lbImages[lbIdx].src;
 }
-document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-});
+document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
 document.addEventListener('keydown', function(e) {
     if (!document.getElementById('lightbox').classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -994,206 +827,201 @@ document.addEventListener('keydown', function(e) {
 });
 
 // === TRANSLATIONS ===
-const translations = {
+const T = {
     ro: {
-        nav_home: "Acasa", nav_about: "Despre Noi", nav_services: "Servicii",
-        nav_auth: "Autorizatii", nav_projects: "Proiecte", nav_contact: "Contact",
-        nav_cta: "Cere Oferta",
-        hero_text: "Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. De la proiectare la punere in functiune.",
-        hero_btn1: "Serviciile Noastre", hero_btn2: "Contacteaza-ne",
-        about_title: "Despre Noi",
-        about_p1: '<strong>SC BMS Consulting SRL</strong> este o societate cu capital privat, care activeaza cu succes pe piata constructiilor din Romania, incepand cu anul 2023, oferind solutii complete in domeniul instalatiilor termice, ventilatii, climatizare, instalatii desfumare si instalatii stingere incendiu, precum si sisteme de protectie la foc.',
-        about_p2: 'Compania detine un bogat patrimoniu uman, avand personal cu experienta de peste <strong>10 ani</strong> in domeniul instalatiilor. BMS Consulting este un <strong>Antreprenor General</strong> capabil sa realizeze si sa gestioneze instalatii integrate in domeniile civil si industrial — de la proiectare la furnizare, montaj si punere in functiune.',
-        about_p3: 'Personalul BMS Consulting SRL este autorizat <strong>AGFR</strong> pentru executarea lucrarilor de montaj, service si punere in functiune pentru pompele de caldura si alte agregate care folosesc in functionarea lor compusi organici alifatici fluorurati (freon).',
-        stat_exp: "Ani experienta echipa", stat_auth: "Autorizatii IGSU",
-        stat_domains_num: "Rezidential<br>&amp; Industrial", stat_domains: "Domenii acoperite",
-        services_title: "Servicii",
-        svc1_title: "Instalatii HVAC", svc1_desc: "Incalzire, ventilatie, climatizare — solutii pentru spatii rezidentiale si industriale.",
-        svc2_title: "Stingere Incendiu", svc2_desc: "Sprinklere, hidranti, inele incendiu interioare si exterioare.",
-        svc3_title: "Instalatii Desfumare", svc3_desc: "Evacuare fum si gaze fierbinti, ventilatoare axiale.",
-        svc4_title: "Instalatii Sanitare", svc4_desc: "Alimentare apa, canalizare, panouri solare, boilere.",
-        svc5_title: "Detectie Incendiu", svc5_desc: "Sisteme de semnalizare, alarmare si alertare incendiu.",
-        svc6_title: "Protectie la Foc", svc6_desc: "Termoprotectie cu produse de torcretare si vopsele intumescente.",
-        workflow_title: "Ce Facem",
-        wf1_title: "Proiectare", wf1_desc: "Solutii tehnice personalizate",
-        wf2_title: "Furnizare", wf2_desc: "Echipamente de cea mai buna calitate",
-        wf3_title: "Montaj", wf3_desc: "Personal cu inalta calificare",
-        wf4_title: "Service", wf4_desc: "Garantie si post-garantie",
-        auth_title: "Autorizatii",
-        auth_intro: 'SC BMS Consulting SRL este autorizata de <strong>IGSU</strong> pe perioada nedeterminata pentru urmatoarele domenii:',
-        auth_item1: "Limitare si stingere incendii cu sprinklere si hidranti",
-        auth_item2: "Evacuare fum si gaze fierbinti",
-        auth_item3: "Detectie si semnalizare incendiu",
-        auth_item4: "Termoprotectie cu produse de torcretare",
-        auth_item5: "Termoprotectie in vopsele termospumante",
-        auth_item6: "Autorizare AGFR (pompe de caldura, freon)",
-        projects_title: "Proiecte",
-        proj1: "HVAC — Hala industriala", proj2: "Sprinklere si ventilatii",
-        proj3: "Stingere incendiu", proj4: "Instalatii industriale",
-        proj5: "Sisteme hidranti", proj6: "HVAC si sprinklere",
-        proj7: "Instalatii complexe", proj8: "Sistem desfumare",
-        contact_title: "Contact", contact_subtitle: "Contacteaza-ne",
-        contact_address_label: "Adresa", contact_phone_label: "Telefon",
-        contact_hours_label: "Program", contact_hours: "Luni - Vineri: 08:00 - 17:00",
-        footer_desc: "Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. Autorizati IGSU pe perioada nedeterminata.",
-        footer_links_title: "Link-uri Rapide",
-        footer_rights: "Toate drepturile rezervate."
+        nav_home:"Acasa", nav_about:"Despre Noi", nav_services:"Servicii", nav_workflow:"Ce Facem",
+        nav_auth:"Autorizatii", nav_projects:"Proiecte", nav_contact:"Contact", nav_cta:"Cere Oferta",
+        hero_text:"Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. De la proiectare la punere in functiune.",
+        hero_btn1:"Serviciile Noastre", hero_btn2:"Contacteaza-ne",
+        about_title:"Despre Noi",
+        about_p1:'<strong>SC BMS Consulting SRL</strong> este o societate cu capital privat, care activeaza cu succes pe piata constructiilor din Romania, incepand cu anul 2023, oferind solutii complete in domeniul instalatiilor termice, ventilatii, climatizare, instalatii desfumare si instalatii stingere incendiu, precum si sisteme de protectie la foc.',
+        about_p2:'Compania detine un bogat patrimoniu uman, avand personal cu experienta in domeniul instalatiilor. BMS Consulting este un <strong>Antreprenor General</strong> capabil sa realizeze si sa gestioneze instalatii integrate in domeniile civil si industrial — de la proiectare la furnizare, montaj si punere in functiune.',
+        about_p3:'Personalul BMS Consulting SRL este autorizat <strong>AGFR</strong> pentru executarea lucrarilor de montaj, service si punere in functiune pentru pompele de caldura si alte agregate care folosesc in functionarea lor compusi organici alifatici fluorurati (freon).',
+        about_badge:'Autorizati IGSU pe perioada nedeterminata &bull; 6 autorizatii active',
+        services_title:"Servicii",
+        svc1_title:"Instalatii HVAC", svc1_desc:"Incalzire, ventilatie, climatizare pentru spatii rezidentiale si industriale",
+        svc2_title:"Stingere Incendiu", svc2_desc:"Sprinklere, hidranti, inele incendiu interioare si exterioare",
+        svc3_title:"Instalatii Desfumare", svc3_desc:"Evacuare fum si gaze fierbinti, ventilatoare axiale",
+        svc4_title:"Instalatii Sanitare", svc4_desc:"Alimentare apa, canalizare, panouri solare, boilere",
+        svc5_title:"Detectie Incendiu", svc5_desc:"Sisteme de semnalizare, alarmare si alertare incendiu",
+        svc6_title:"Protectie la Foc", svc6_desc:"Termoprotectie cu produse de torcretare si vopsele intumescente",
+        workflow_title:"Ce Facem",
+        wf1_title:"Proiectare", wf1_desc:"Solutii tehnice personalizate",
+        wf2_title:"Furnizare", wf2_desc:"Echipamente de cea mai buna calitate",
+        wf3_title:"Montaj", wf3_desc:"Personal cu inalta calificare",
+        wf4_title:"Service", wf4_desc:"Garantie si post-garantie",
+        auth_title:"Autorizatii",
+        auth_intro:'SC BMS Consulting SRL este autorizata de <strong>IGSU</strong> pe perioada nedeterminata pentru urmatoarele domenii:',
+        auth_item1:"Limitare si stingere incendii cu sprinklere si hidranti",
+        auth_item2:"Evacuare fum si gaze fierbinti",
+        auth_item3:"Detectie si semnalizare incendiu",
+        auth_item4:"Termoprotectie cu produse de torcretare",
+        auth_item5:"Termoprotectie in vopsele termospumante",
+        auth_item6:"Autorizare AGFR (pompe de caldura, freon)",
+        projects_title:"Proiecte",
+        proj1:"HVAC — Hala industriala", proj2:"Sprinklere si ventilatii",
+        proj3:"Stingere incendiu", proj4:"Instalatii industriale",
+        proj5:"Sisteme hidranti", proj6:"HVAC si sprinklere",
+        proj7:"Instalatii complexe", proj8:"Sistem desfumare",
+        contact_title:"Contact", contact_subtitle:"Contacteaza-ne",
+        contact_address_label:"Adresa", contact_phone_label:"Telefon",
+        contact_hours_label:"Program", contact_hours:"Luni - Vineri: 08:00 - 17:00",
+        offer_title:"Cere Oferta",
+        form_name:"Nume *", form_company:"Firma", form_phone:"Telefon *",
+        form_service:"Serviciu dorit", form_select:"Selecteaza...",
+        form_message:"Mesaj *", form_files:"Atasamente (PDF, DWG, imagini)",
+        form_submit:"Trimite Cererea", form_note:"Veti primi un raspuns in maxim 24 de ore lucratoare.",
+        footer_rights:"Toate drepturile rezervate."
     },
     en: {
-        nav_home: "Home", nav_about: "About Us", nav_services: "Services",
-        nav_auth: "Certifications", nav_projects: "Projects", nav_contact: "Contact",
-        nav_cta: "Get a Quote",
-        hero_text: "Complete solutions for thermal installations, HVAC, fire suppression and fire protection. From design to commissioning.",
-        hero_btn1: "Our Services", hero_btn2: "Contact Us",
-        about_title: "About Us",
-        about_p1: '<strong>SC BMS Consulting SRL</strong> is a privately held company, successfully operating in Romania\'s construction market since 2023, providing complete solutions for thermal installations, ventilation, air conditioning, smoke evacuation, fire suppression systems, and fire protection.',
-        about_p2: 'The company has a rich human capital, with staff having over <strong>10 years</strong> of experience in the field of installations. BMS Consulting is a <strong>General Contractor</strong> capable of building and managing integrated installations in both civil and industrial sectors — from design to supply, installation and commissioning.',
-        about_p3: 'BMS Consulting SRL staff is <strong>AGFR certified</strong> for installation, service and commissioning of heat pumps and other systems using fluorinated organic compounds (freon).',
-        stat_exp: "Years team experience", stat_auth: "IGSU Certifications",
-        stat_domains_num: "Residential<br>&amp; Industrial", stat_domains: "Covered domains",
-        services_title: "Services",
-        svc1_title: "HVAC Systems", svc1_desc: "Heating, ventilation, air conditioning — solutions for residential and industrial spaces.",
-        svc2_title: "Fire Suppression", svc2_desc: "Sprinklers, hydrants, interior and exterior fire rings.",
-        svc3_title: "Smoke Evacuation", svc3_desc: "Smoke and hot gas evacuation, axial fans.",
-        svc4_title: "Plumbing", svc4_desc: "Water supply, sewage, solar panels, boilers.",
-        svc5_title: "Fire Detection", svc5_desc: "Fire signaling, alarm and alert systems.",
-        svc6_title: "Fire Protection", svc6_desc: "Thermal protection with shotcrete and intumescent paint products.",
-        workflow_title: "What We Do",
-        wf1_title: "Design", wf1_desc: "Custom technical solutions",
-        wf2_title: "Supply", wf2_desc: "Highest quality equipment",
-        wf3_title: "Installation", wf3_desc: "Highly qualified personnel",
-        wf4_title: "Service", wf4_desc: "Warranty and post-warranty",
-        auth_title: "Certifications",
-        auth_intro: 'SC BMS Consulting SRL is certified by <strong>IGSU</strong> for an indefinite period for the following domains:',
-        auth_item1: "Fire suppression with sprinklers and hydrants",
-        auth_item2: "Smoke and hot gas evacuation",
-        auth_item3: "Fire detection and signaling",
-        auth_item4: "Thermal protection with shotcrete products",
-        auth_item5: "Thermal protection with intumescent paints",
-        auth_item6: "AGFR certification (heat pumps, freon)",
-        projects_title: "Projects",
-        proj1: "HVAC — Industrial hall", proj2: "Sprinklers and ventilation",
-        proj3: "Fire suppression", proj4: "Industrial installations",
-        proj5: "Hydrant systems", proj6: "HVAC and sprinklers",
-        proj7: "Complex installations", proj8: "Smoke evacuation system",
-        contact_title: "Contact", contact_subtitle: "Get in Touch",
-        contact_address_label: "Address", contact_phone_label: "Phone",
-        contact_hours_label: "Working Hours", contact_hours: "Monday - Friday: 08:00 - 17:00",
-        footer_desc: "Complete solutions for thermal installations, HVAC, fire suppression and fire protection. IGSU certified for an indefinite period.",
-        footer_links_title: "Quick Links",
-        footer_rights: "All rights reserved."
+        nav_home:"Home", nav_about:"About Us", nav_services:"Services", nav_workflow:"What We Do",
+        nav_auth:"Certifications", nav_projects:"Projects", nav_contact:"Contact", nav_cta:"Get a Quote",
+        hero_text:"Complete solutions for thermal installations, HVAC, fire suppression and fire protection. From design to commissioning.",
+        hero_btn1:"Our Services", hero_btn2:"Contact Us",
+        about_title:"About Us",
+        about_p1:'<strong>SC BMS Consulting SRL</strong> is a privately held company, successfully operating in Romania\'s construction market since 2023, providing complete solutions for thermal installations, ventilation, air conditioning, smoke evacuation, fire suppression systems, and fire protection.',
+        about_p2:'The company has rich human capital, with experienced staff in the installations field. BMS Consulting is a <strong>General Contractor</strong> capable of building and managing integrated installations in civil and industrial sectors — from design to supply, installation and commissioning.',
+        about_p3:'BMS Consulting SRL staff is <strong>AGFR certified</strong> for installation, service and commissioning of heat pumps and other systems using fluorinated organic compounds (freon).',
+        about_badge:'IGSU certified for an indefinite period &bull; 6 active certifications',
+        services_title:"Services",
+        svc1_title:"HVAC Systems", svc1_desc:"Heating, ventilation, air conditioning for residential and industrial spaces",
+        svc2_title:"Fire Suppression", svc2_desc:"Sprinklers, hydrants, interior and exterior fire rings",
+        svc3_title:"Smoke Evacuation", svc3_desc:"Smoke and hot gas evacuation, axial fans",
+        svc4_title:"Plumbing", svc4_desc:"Water supply, sewage, solar panels, boilers",
+        svc5_title:"Fire Detection", svc5_desc:"Fire signaling, alarm and alert systems",
+        svc6_title:"Fire Protection", svc6_desc:"Thermal protection with shotcrete and intumescent paints",
+        workflow_title:"What We Do",
+        wf1_title:"Design", wf1_desc:"Custom technical solutions",
+        wf2_title:"Supply", wf2_desc:"Highest quality equipment",
+        wf3_title:"Installation", wf3_desc:"Highly qualified personnel",
+        wf4_title:"Service", wf4_desc:"Warranty and post-warranty",
+        auth_title:"Certifications",
+        auth_intro:'SC BMS Consulting SRL is certified by <strong>IGSU</strong> for an indefinite period for the following domains:',
+        auth_item1:"Fire suppression with sprinklers and hydrants",
+        auth_item2:"Smoke and hot gas evacuation",
+        auth_item3:"Fire detection and signaling",
+        auth_item4:"Thermal protection with shotcrete products",
+        auth_item5:"Thermal protection with intumescent paints",
+        auth_item6:"AGFR certification (heat pumps, freon)",
+        projects_title:"Projects",
+        proj1:"HVAC — Industrial hall", proj2:"Sprinklers and ventilation",
+        proj3:"Fire suppression", proj4:"Industrial installations",
+        proj5:"Hydrant systems", proj6:"HVAC and sprinklers",
+        proj7:"Complex installations", proj8:"Smoke evacuation system",
+        contact_title:"Contact", contact_subtitle:"Get in Touch",
+        contact_address_label:"Address", contact_phone_label:"Phone",
+        contact_hours_label:"Working Hours", contact_hours:"Monday - Friday: 08:00 - 17:00",
+        offer_title:"Request a Quote",
+        form_name:"Name *", form_company:"Company", form_phone:"Phone *",
+        form_service:"Service needed", form_select:"Select...",
+        form_message:"Message *", form_files:"Attachments (PDF, DWG, images)",
+        form_submit:"Send Request", form_note:"You will receive a response within 24 business hours.",
+        footer_rights:"All rights reserved."
     },
     hu: {
-        nav_home: "Kezdolap", nav_about: "Rolunk", nav_services: "Szolgaltatasok",
-        nav_auth: "Engedelyek", nav_projects: "Projektek", nav_contact: "Kapcsolat",
-        nav_cta: "Ajanlatkeres",
-        hero_text: "Teljes koru megoldasok termikus berendezesek, HVAC, tuzoltas es tuzvedelmi rendszerek teruleten. A tervezestol az uzembe helyezesig.",
-        hero_btn1: "Szolgaltatasaink", hero_btn2: "Kapcsolat",
-        about_title: "Rolunk",
-        about_p1: '<strong>SC BMS Consulting SRL</strong> egy magan tarsasag, amely 2023 ota sikeresen mukodik a roman epitoiparban, teljes koru megoldasokat kinalva a termikus berendezesek, szelloztetes, legkondicionalas, fustelvezetes, tuzolto rendszerek es tuzvedelmi rendszerek teruleten.',
-        about_p2: 'A ceg gazdag emberi eroforrassal rendelkezik, munkatarsai tobb mint <strong>10 ev</strong> tapasztalattal rendelkeznek a berendezesek teruleten. A BMS Consulting egy <strong>Fovallalkozo</strong>, amely kepes integralt berendezesek megvalositasara es kezelesere a polgar es ipari szektorban — a tervezestol a szallitason es szerelesig az uzembe helyezesig.',
-        about_p3: 'A BMS Consulting SRL munkatarsai <strong>AGFR</strong> minositessel rendelkeznek a hoszivattyuk es egyeb fluorozott szerves vegyuleteket (freon) hasznalo rendszerek szerelesehez, szervizelesehez es uzembe helyezesehez.',
-        stat_exp: "Ev csapat tapasztalat", stat_auth: "IGSU engedelyek",
-        stat_domains_num: "Lakoingatlan<br>&amp; Ipari", stat_domains: "Lefedett teruletek",
-        services_title: "Szolgaltatasok",
-        svc1_title: "HVAC rendszerek", svc1_desc: "Futes, szelloztetes, legkondicionalas — megoldasok lakoterek es ipari terek szamara.",
-        svc2_title: "Tuzoltas", svc2_desc: "Sprinklerek, hidransok, belso es kulso tuzgyuruk.",
-        svc3_title: "Fustelvezetes", svc3_desc: "Fust es forro gaz elvezetese, axialis ventilatorok.",
-        svc4_title: "Vizszerelesek", svc4_desc: "Vizellatas, csatornazas, napkollektorok, bojlerek.",
-        svc5_title: "Tuzerzekelese", svc5_desc: "Tuzjelzo, riaszto es figyelmezteto rendszerek.",
-        svc6_title: "Tuzvedelmi", svc6_desc: "Hovedelelem torcretalo es intumescens festektermekekkel.",
-        workflow_title: "Amit Csinlunk",
-        wf1_title: "Tervezes", wf1_desc: "Egyedi muszaki megoldasok",
-        wf2_title: "Szallitas", wf2_desc: "A legjobb minosegu berendezesek",
-        wf3_title: "Szereles", wf3_desc: "Magasan kepzett szemelyzet",
-        wf4_title: "Szerviz", wf4_desc: "Garancia es garancian tuli",
-        auth_title: "Engedelyek",
-        auth_intro: 'Az SC BMS Consulting SRL az <strong>IGSU</strong> altal határozatlan idore engedelyezett a kovetkezo teruleteken:',
-        auth_item1: "Tuzoltas sprinklerekkel es hidransokkal",
-        auth_item2: "Fust es forro gaz elvezetese",
-        auth_item3: "Tuzerzekelés es jelzes",
-        auth_item4: "Hovedelelem torcretalo termekekkel",
-        auth_item5: "Hovedelelem intumescens festekekkel",
-        auth_item6: "AGFR engedly (hoszivattyuk, freon)",
-        projects_title: "Projektek",
-        proj1: "HVAC — Ipari csarnok", proj2: "Sprinklerek es szelioztetes",
-        proj3: "Tuzoltas", proj4: "Ipari berendezesek",
-        proj5: "Hidrans rendszerek", proj6: "HVAC es sprinklerek",
-        proj7: "Osszetett berendezesek", proj8: "Fustelvezeto rendszer",
-        contact_title: "Kapcsolat", contact_subtitle: "Lepjen velunk kapcsolatba",
-        contact_address_label: "Cim", contact_phone_label: "Telefon",
-        contact_hours_label: "Munkaido", contact_hours: "Hetfo - Pentek: 08:00 - 17:00",
-        footer_desc: "Teljes koru megoldasok termikus berendezesek, HVAC, tuzoltas es tuzvedelmi rendszerek teruleten. IGSU engedelyezett határozatlan idore.",
-        footer_links_title: "Gyors linkek",
-        footer_rights: "Minden jog fenntartva."
+        nav_home:"Kezdolap", nav_about:"Rolunk", nav_services:"Szolgaltatasok", nav_workflow:"Amit Csinalunk",
+        nav_auth:"Engedelyek", nav_projects:"Projektek", nav_contact:"Kapcsolat", nav_cta:"Ajanlatkeres",
+        hero_text:"Teljes koru megoldasok termikus berendezesek, HVAC, tuzoltas es tuzvedelmi rendszerek teruleten. A tervezestol az uzembe helyezesig.",
+        hero_btn1:"Szolgaltatasaink", hero_btn2:"Kapcsolat",
+        about_title:"Rolunk",
+        about_p1:'Az <strong>SC BMS Consulting SRL</strong> egy magan tarsasag, amely 2023 ota sikeresen mukodik a roman epitoiparban, teljes koru megoldasokat kinalva a termikus berendezesek, szelloztetes, legkondicionalas, fustelvezetes, tuzolto es tuzvedelmi rendszerek teruleten.',
+        about_p2:'A ceg gazdag emberi eroforrassal rendelkezik, tapasztalt munkatarsakkal a berendezesek teruleten. A BMS Consulting egy <strong>Fovallalkozo</strong>, amely kepes integralt berendezesek megvalositasara polgar es ipari szektorban — tervezestol szallitason es szerelesig uzembe helyezesig.',
+        about_p3:'A BMS Consulting SRL munkatarsai <strong>AGFR</strong> minositessel rendelkeznek hoszivattyuk es freon rendszerek szerelesehez, szervizelesehez es uzembe helyezesehez.',
+        about_badge:'IGSU engedelyezett határozatlan idore &bull; 6 aktiv engedly',
+        services_title:"Szolgaltatasok",
+        svc1_title:"HVAC rendszerek", svc1_desc:"Futes, szelloztetes, legkondicionalas lakoterek es ipari terek szamara",
+        svc2_title:"Tuzoltas", svc2_desc:"Sprinklerek, hidransok, belso es kulso tuzgyuruk",
+        svc3_title:"Fustelvezetes", svc3_desc:"Fust es forro gaz elvezetese, axialis ventilatorok",
+        svc4_title:"Vizszerelesek", svc4_desc:"Vizellatas, csatornazas, napkollektorok, bojlerek",
+        svc5_title:"Tuzerzekelese", svc5_desc:"Tuzjelzo, riaszto es figyelmezteto rendszerek",
+        svc6_title:"Tuzvedelmi", svc6_desc:"Hovedelelem torcretalo es intumescens festektermekekkel",
+        workflow_title:"Amit Csinalunk",
+        wf1_title:"Tervezes", wf1_desc:"Egyedi muszaki megoldasok",
+        wf2_title:"Szallitas", wf2_desc:"A legjobb minosegu berendezesek",
+        wf3_title:"Szereles", wf3_desc:"Magasan kepzett szemelyzet",
+        wf4_title:"Szerviz", wf4_desc:"Garancia es garancian tuli",
+        auth_title:"Engedelyek",
+        auth_intro:'Az SC BMS Consulting SRL az <strong>IGSU</strong> altal határozatlan idore engedelyezett a kovetkezo teruleteken:',
+        auth_item1:"Tuzoltas sprinklerekkel es hidransokkal",
+        auth_item2:"Fust es forro gaz elvezetese",
+        auth_item3:"Tuzerzekelés es jelzes",
+        auth_item4:"Hovedelelem torcretalo termekekkel",
+        auth_item5:"Hovedelelem intumescens festekekkel",
+        auth_item6:"AGFR engedly (hoszivattyuk, freon)",
+        projects_title:"Projektek",
+        proj1:"HVAC — Ipari csarnok", proj2:"Sprinklerek es szelloztetes",
+        proj3:"Tuzoltas", proj4:"Ipari berendezesek",
+        proj5:"Hidrans rendszerek", proj6:"HVAC es sprinklerek",
+        proj7:"Osszetett berendezesek", proj8:"Fustelvezeto rendszer",
+        contact_title:"Kapcsolat", contact_subtitle:"Lepjen velunk kapcsolatba",
+        contact_address_label:"Cim", contact_phone_label:"Telefon",
+        contact_hours_label:"Munkaido", contact_hours:"Hetfo - Pentek: 08:00 - 17:00",
+        offer_title:"Ajanlatkeres",
+        form_name:"Nev *", form_company:"Ceg", form_phone:"Telefon *",
+        form_service:"Kert szolgaltatas", form_select:"Valasszon...",
+        form_message:"Uzenet *", form_files:"Csatolmanyok (PDF, DWG, kepek)",
+        form_submit:"Keres kuldese", form_note:"24 munkaoran belul valaszolunk.",
+        footer_rights:"Minden jog fenntartva."
     },
     zh: {
-        nav_home: "首页", nav_about: "关于我们", nav_services: "服务",
-        nav_auth: "资质认证", nav_projects: "项目", nav_contact: "联系方式",
-        nav_cta: "获取报价",
-        hero_text: "热力安装、暖通空调、消防灭火及防火保护的完整解决方案。从设计到调试投运。",
-        hero_btn1: "我们的服务", hero_btn2: "联系我们",
-        about_title: "关于我们",
-        about_p1: '<strong>SC BMS Consulting SRL</strong> 是一家私营企业，自2023年起成功运营于罗马尼亚建筑市场，提供热力安装、通风、空调、排烟、消防灭火系统及防火保护的完整解决方案。',
-        about_p2: '公司拥有丰富的人力资源，员工在安装领域拥有超过<strong>10年</strong>的经验。BMS Consulting是一家<strong>总承包商</strong>，能够在民用和工业领域实现和管理综合安装——从设计到供应、安装和调试。',
-        about_p3: 'BMS Consulting SRL的员工持有<strong>AGFR认证</strong>，可进行热泵及其他使用氟化有机化合物（氟利昂）的设备的安装、维修和调试。',
-        stat_exp: "年团队经验", stat_auth: "IGSU认证",
-        stat_domains_num: "住宅<br>&amp; 工业", stat_domains: "覆盖领域",
-        services_title: "服务",
-        svc1_title: "暖通空调系统", svc1_desc: "供暖、通风、空调——住宅和工业空间解决方案。",
-        svc2_title: "消防灭火", svc2_desc: "喷淋系统、消防栓、内外消防环管。",
-        svc3_title: "排烟系统", svc3_desc: "烟气和热气排放、轴流风机。",
-        svc4_title: "给排水工程", svc4_desc: "供水、排水、太阳能板、锅炉。",
-        svc5_title: "火灾探测", svc5_desc: "火灾信号、报警和预警系统。",
-        svc6_title: "防火保护", svc6_desc: "喷射混凝土和膨胀涂料防火保护。",
-        workflow_title: "我们的工作",
-        wf1_title: "设计", wf1_desc: "定制技术方案",
-        wf2_title: "供应", wf2_desc: "最优质的设备",
-        wf3_title: "安装", wf3_desc: "高素质专业人员",
-        wf4_title: "维保", wf4_desc: "保修期及保修后服务",
-        auth_title: "资质认证",
-        auth_intro: 'SC BMS Consulting SRL获得<strong>IGSU</strong>无限期授权，涵盖以下领域：',
-        auth_item1: "喷淋和消防栓灭火系统",
-        auth_item2: "烟气和热气排放",
-        auth_item3: "火灾探测和信号",
-        auth_item4: "喷射混凝土防火保护",
-        auth_item5: "膨胀涂料防火保护",
-        auth_item6: "AGFR认证（热泵、氟利昂）",
-        projects_title: "项目",
-        proj1: "暖通空调——工业厂房", proj2: "喷淋和通风系统",
-        proj3: "消防灭火", proj4: "工业安装",
-        proj5: "消防栓系统", proj6: "暖通和喷淋",
-        proj7: "综合安装", proj8: "排烟系统",
-        contact_title: "联系方式", contact_subtitle: "联系我们",
-        contact_address_label: "地址", contact_phone_label: "电话",
-        contact_hours_label: "工作时间", contact_hours: "周一至周五：08:00 - 17:00",
-        footer_desc: "热力安装、暖通空调、消防灭火及防火保护的完整解决方案。IGSU无限期认证。",
-        footer_links_title: "快速链接",
-        footer_rights: "版权所有。"
+        nav_home:"首页", nav_about:"关于我们", nav_services:"服务", nav_workflow:"工作流程",
+        nav_auth:"资质认证", nav_projects:"项目", nav_contact:"联系方式", nav_cta:"获取报价",
+        hero_text:"热力安装、暖通空调、消防灭火及防火保护的完整解决方案。从设计到调试投运。",
+        hero_btn1:"我们的服务", hero_btn2:"联系我们",
+        about_title:"关于我们",
+        about_p1:'<strong>SC BMS Consulting SRL</strong> 是一家私营企业，自2023年起成功运营于罗马尼亚建筑市场，提供热力安装、通风、空调、排烟、消防灭火系统及防火保护的完整解决方案。',
+        about_p2:'公司拥有丰富的人力资源，拥有安装领域经验丰富的员工。BMS Consulting是一家<strong>总承包商</strong>，能够在民用和工业领域实现和管理综合安装——从设计到供应、安装和调试。',
+        about_p3:'BMS Consulting SRL的员工持有<strong>AGFR认证</strong>，可进行热泵及其他使用氟化有机化合物（氟利昂）设备的安装、维修和调试。',
+        about_badge:'IGSU无限期认证 &bull; 6项有效认证',
+        services_title:"服务",
+        svc1_title:"暖通空调系统", svc1_desc:"住宅和工业空间供暖、通风、空调",
+        svc2_title:"消防灭火", svc2_desc:"喷淋系统、消防栓、内外消防环管",
+        svc3_title:"排烟系统", svc3_desc:"烟气和热气排放、轴流风机",
+        svc4_title:"给排水工程", svc4_desc:"供水、排水、太阳能板、锅炉",
+        svc5_title:"火灾探测", svc5_desc:"火灾信号、报警和预警系统",
+        svc6_title:"防火保护", svc6_desc:"喷射混凝土和膨胀涂料防火保护",
+        workflow_title:"工作流程",
+        wf1_title:"设计", wf1_desc:"定制技术方案",
+        wf2_title:"供应", wf2_desc:"最优质的设备",
+        wf3_title:"安装", wf3_desc:"高素质专业人员",
+        wf4_title:"维保", wf4_desc:"保修期及保修后服务",
+        auth_title:"资质认证",
+        auth_intro:'SC BMS Consulting SRL获得<strong>IGSU</strong>无限期授权，涵盖以下领域：',
+        auth_item1:"喷淋和消防栓灭火系统",
+        auth_item2:"烟气和热气排放",
+        auth_item3:"火灾探测和信号",
+        auth_item4:"喷射混凝土防火保护",
+        auth_item5:"膨胀涂料防火保护",
+        auth_item6:"AGFR认证（热泵、氟利昂）",
+        projects_title:"项目",
+        proj1:"暖通——工业厂房", proj2:"喷淋和通风",
+        proj3:"消防灭火", proj4:"工业安装",
+        proj5:"消防栓系统", proj6:"暖通和喷淋",
+        proj7:"综合安装", proj8:"排烟系统",
+        contact_title:"联系方式", contact_subtitle:"联系我们",
+        contact_address_label:"地址", contact_phone_label:"电话",
+        contact_hours_label:"工作时间", contact_hours:"周一至周五：08:00 - 17:00",
+        offer_title:"获取报价",
+        form_name:"姓名 *", form_company:"公司", form_phone:"电话 *",
+        form_service:"所需服务", form_select:"请选择...",
+        form_message:"留言 *", form_files:"附件（PDF、DWG、图片）",
+        form_submit:"发送请求", form_note:"我们将在24个工作小时内回复。",
+        footer_rights:"版权所有。"
     }
 };
-
 let currentLang = 'ro';
-
 function setLang(lang) {
     currentLang = lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
-
-    document.querySelectorAll('.lang-switcher button').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
-    });
-
-    const t = translations[lang];
-    if (!t) return;
-
+    document.querySelectorAll('.lang-switcher button').forEach(b =>
+        b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase())
+    );
+    const t = T[lang]; if (!t) return;
     document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) {
-            el.innerHTML = t[key];
-        }
+        const k = el.getAttribute('data-i18n');
+        if (t[k] !== undefined) el.innerHTML = t[k];
     });
 }
 </script>
-
 </body>
 </html>
