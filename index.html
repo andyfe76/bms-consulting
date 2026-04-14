@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -211,12 +214,12 @@
             background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 60%);
         }
         .service-item:hover .service-icon { transform: scale(1.1); box-shadow: 0 6px 30px rgba(0,0,0,0.2); }
-        .service-icon.blue { background: linear-gradient(135deg, #1565C0, #0D47A1); }
-        .service-icon.red { background: linear-gradient(135deg, #E53935, #B71C1C); }
-        .service-icon.grey { background: linear-gradient(135deg, #607D8B, #455A64); }
-        .service-icon.cyan { background: linear-gradient(135deg, #00ACC1, #00838F); }
-        .service-icon.orange { background: linear-gradient(135deg, #FB8C00, #E65100); }
-        .service-icon.purple { background: linear-gradient(135deg, #8E24AA, #6A1B9A); }
+        .service-icon.blue { background: linear-gradient(135deg, #1976D2, #0D47A1); }
+        .service-icon.red { background: linear-gradient(135deg, #D32F2F, #B71C1C); }
+        .service-icon.yellow { background: linear-gradient(135deg, #F9A825, #F57F17); }
+        .service-icon.cyan { background: linear-gradient(135deg, #0097A7, #00695C); }
+        .service-icon.green { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
+        .service-icon.darkred { background: linear-gradient(135deg, #C62828, #7F0000); }
         .service-item h3 { font-size: 1rem; color: var(--primary); margin-bottom: 6px; }
         .service-item p { font-size: 0.85rem; color: var(--text-light); max-width: 220px; margin: 0 auto; }
 
@@ -512,7 +515,7 @@
                         <p data-i18n="svc2_desc">Sprinklere, hidranti, inele incendiu interioare si exterioare</p>
                     </div>
                     <div class="service-item">
-                        <div class="service-icon grey"><i class="fas fa-wind"></i></div>
+                        <div class="service-icon yellow"><i class="fas fa-wind"></i></div>
                         <h3 data-i18n="svc3_title">Instalatii Desfumare</h3>
                         <p data-i18n="svc3_desc">Evacuare fum si gaze fierbinti, ventilatoare axiale</p>
                     </div>
@@ -522,12 +525,12 @@
                         <p data-i18n="svc4_desc">Alimentare apa, canalizare, panouri solare, boilere</p>
                     </div>
                     <div class="service-item">
-                        <div class="service-icon orange"><i class="fas fa-bell"></i></div>
+                        <div class="service-icon green"><i class="fas fa-bell"></i></div>
                         <h3 data-i18n="svc5_title">Detectie Incendiu</h3>
                         <p data-i18n="svc5_desc">Sisteme de semnalizare, alarmare si alertare incendiu</p>
                     </div>
                     <div class="service-item">
-                        <div class="service-icon purple"><i class="fas fa-shield-halved"></i></div>
+                        <div class="service-icon darkred"><i class="fas fa-shield-halved"></i></div>
                         <h3 data-i18n="svc6_title">Protectie la Foc</h3>
                         <p data-i18n="svc6_desc">Termoprotectie cu produse de torcretare si vopsele intumescente</p>
                     </div>
@@ -695,7 +698,7 @@
                     3. Copiaza Form ID (ex: xyzabcde)
                     4. Inlocuieste YOUR_FORM_ID mai jos
                 -->
-                <form class="offer-form fade-in" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
+                <form class="offer-form fade-in" action="https://formspree.io/f/mgorvoyv" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label data-i18n="form_name">Nume *</label>
                         <input type="text" name="nume" required>
