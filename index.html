@@ -445,12 +445,12 @@
 
     <div class="sidebar-bottom">
         <div class="lang-switcher">
-            <button onclick="setLang('ro')" class="active">RO</button>
             <button onclick="setLang('en')">EN</button>
-            <button onclick="setLang('hu')">HU</button>
+            <button onclick="setLang('de')">DE</button>
+            <button onclick="setLang('fr')">FR</button>
             <button onclick="setLang('zh')">ZH</button>
         </div>
-        <a href="tel:0742252439" class="sidebar-phone"><i class="fas fa-phone"></i> 0742.252.439</a>
+        <a href="tel:0742251439" class="sidebar-phone"><i class="fas fa-phone"></i> 0742.251.439</a>
         <a href="#oferta" class="btn-cta" data-i18n="nav_cta"><i class="fas fa-paper-plane"></i> Cere Oferta</a>
     </div>
 </aside>
@@ -664,7 +664,7 @@
                         </div>
                         <div class="contact-item">
                             <div class="icon-circle"><i class="fas fa-phone"></i></div>
-                            <div><strong data-i18n="contact_phone_label">Telefon</strong><a href="tel:0742252439">0742.252.439</a></div>
+                            <div><strong data-i18n="contact_phone_label">Telefon</strong><a href="tel:0742251439">0742.251.439</a></div>
                         </div>
                         <div class="contact-item">
                             <div class="icon-circle"><i class="fas fa-envelope"></i></div>
@@ -747,7 +747,7 @@
         <div class="footer-inner">
             <span>&copy; 2024 SC BMS Consulting SRL.</span>
             <span data-i18n="footer_rights">Toate drepturile rezervate.</span>
-            <a href="tel:0742252439">0742.252.439</a>
+            <a href="tel:0742251439">0742.251.439</a>
             <a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a>
         </div>
     </footer>
@@ -830,52 +830,11 @@ document.addEventListener('keydown', function(e) {
 });
 
 // === TRANSLATIONS ===
+// Default language is Romanian (from HTML). Switcher: EN, DE, FR, ZH.
+const roDefaults = {};
+document.querySelectorAll('[data-i18n]').forEach(el => { roDefaults[el.getAttribute('data-i18n')] = el.innerHTML; });
+
 const T = {
-    ro: {
-        nav_home:"Acasa", nav_about:"Despre Noi", nav_services:"Servicii", nav_workflow:"Ce Facem",
-        nav_auth:"Autorizatii", nav_projects:"Proiecte", nav_contact:"Contact", nav_cta:"Cere Oferta",
-        hero_text:"Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. De la proiectare la punere in functiune.",
-        hero_btn1:"Serviciile Noastre", hero_btn2:"Contacteaza-ne",
-        about_title:"Despre Noi",
-        about_p1:'<strong>SC BMS Consulting SRL</strong> este o societate cu capital privat, care activeaza cu succes pe piata constructiilor din Romania, incepand cu anul 2023, oferind solutii complete in domeniul instalatiilor termice, ventilatii, climatizare, instalatii desfumare si instalatii stingere incendiu, precum si sisteme de protectie la foc.',
-        about_p2:'Compania detine un bogat patrimoniu uman, avand personal cu experienta in domeniul instalatiilor. BMS Consulting este un <strong>Antreprenor General</strong> capabil sa realizeze si sa gestioneze instalatii integrate in domeniile civil si industrial — de la proiectare la furnizare, montaj si punere in functiune.',
-        about_p3:'Personalul BMS Consulting SRL este autorizat <strong>AGFR</strong> pentru executarea lucrarilor de montaj, service si punere in functiune pentru pompele de caldura si alte agregate care folosesc in functionarea lor compusi organici alifatici fluorurati (freon).',
-        about_badge:'Autorizati IGSU pe perioada nedeterminata &bull; 6 autorizatii active',
-        services_title:"Servicii",
-        svc1_title:"Instalatii HVAC", svc1_desc:"Incalzire, ventilatie, climatizare pentru spatii rezidentiale si industriale",
-        svc2_title:"Stingere Incendiu", svc2_desc:"Sprinklere, hidranti, inele incendiu interioare si exterioare",
-        svc3_title:"Instalatii Desfumare", svc3_desc:"Evacuare fum si gaze fierbinti, ventilatoare axiale",
-        svc4_title:"Instalatii Sanitare", svc4_desc:"Alimentare apa, canalizare, panouri solare, boilere",
-        svc5_title:"Detectie Incendiu", svc5_desc:"Sisteme de semnalizare, alarmare si alertare incendiu",
-        svc6_title:"Protectie la Foc", svc6_desc:"Termoprotectie cu produse de torcretare si vopsele intumescente",
-        workflow_title:"Ce Facem",
-        wf1_title:"Proiectare", wf1_desc:"Solutii tehnice personalizate",
-        wf2_title:"Furnizare", wf2_desc:"Echipamente de cea mai buna calitate",
-        wf3_title:"Montaj", wf3_desc:"Personal cu inalta calificare",
-        wf4_title:"Service", wf4_desc:"Garantie si post-garantie",
-        auth_title:"Autorizatii",
-        auth_intro:'SC BMS Consulting SRL este autorizata de <strong>IGSU</strong> pe perioada nedeterminata pentru urmatoarele domenii:',
-        auth_item1:"Limitare si stingere incendii cu sprinklere si hidranti",
-        auth_item2:"Evacuare fum si gaze fierbinti",
-        auth_item3:"Detectie si semnalizare incendiu",
-        auth_item4:"Termoprotectie cu produse de torcretare",
-        auth_item5:"Termoprotectie in vopsele termospumante",
-        auth_item6:"Autorizare AGFR (pompe de caldura, freon)",
-        projects_title:"Proiecte",
-        proj1:"HVAC — Hala industriala", proj2:"Sprinklere si ventilatii",
-        proj3:"Stingere incendiu", proj4:"Instalatii industriale",
-        proj5:"Sisteme hidranti", proj6:"HVAC si sprinklere",
-        proj7:"Instalatii complexe", proj8:"Sistem desfumare",
-        contact_title:"Contact", contact_subtitle:"Contacteaza-ne",
-        contact_address_label:"Adresa", contact_phone_label:"Telefon",
-        contact_hours_label:"Program", contact_hours:"Luni - Vineri: 08:00 - 17:00",
-        offer_title:"Cere Oferta",
-        form_name:"Nume *", form_company:"Firma", form_phone:"Telefon *",
-        form_service:"Serviciu dorit", form_select:"Selecteaza...",
-        form_message:"Mesaj *", form_files:"Atasamente (PDF, DWG, imagini)",
-        form_submit:"Trimite Cererea", form_note:"Veti primi un raspuns in maxim 24 de ore lucratoare.",
-        footer_rights:"Toate drepturile rezervate."
-    },
     en: {
         nav_home:"Home", nav_about:"About Us", nav_services:"Services", nav_workflow:"What We Do",
         nav_auth:"Certifications", nav_projects:"Projects", nav_contact:"Contact", nav_cta:"Get a Quote",
@@ -921,105 +880,153 @@ const T = {
         form_submit:"Send Request", form_note:"You will receive a response within 24 business hours.",
         footer_rights:"All rights reserved."
     },
-    hu: {
-        nav_home:"Kezdolap", nav_about:"Rolunk", nav_services:"Szolgaltatasok", nav_workflow:"Amit Csinalunk",
-        nav_auth:"Engedelyek", nav_projects:"Projektek", nav_contact:"Kapcsolat", nav_cta:"Ajanlatkeres",
-        hero_text:"Teljes koru megoldasok termikus berendezesek, HVAC, tuzoltas es tuzvedelmi rendszerek teruleten. A tervezestol az uzembe helyezesig.",
-        hero_btn1:"Szolgaltatasaink", hero_btn2:"Kapcsolat",
-        about_title:"Rolunk",
-        about_p1:'Az <strong>SC BMS Consulting SRL</strong> egy magan tarsasag, amely 2023 ota sikeresen mukodik a roman epitoiparban, teljes koru megoldasokat kinalva a termikus berendezesek, szelloztetes, legkondicionalas, fustelvezetes, tuzolto es tuzvedelmi rendszerek teruleten.',
-        about_p2:'A ceg gazdag emberi eroforrassal rendelkezik, tapasztalt munkatarsakkal a berendezesek teruleten. A BMS Consulting egy <strong>Fovallalkozo</strong>, amely kepes integralt berendezesek megvalositasara polgar es ipari szektorban — tervezestol szallitason es szerelesig uzembe helyezesig.',
-        about_p3:'A BMS Consulting SRL munkatarsai <strong>AGFR</strong> minositessel rendelkeznek hoszivattyuk es freon rendszerek szerelesehez, szervizelesehez es uzembe helyezesehez.',
-        about_badge:'IGSU engedelyezett határozatlan idore &bull; 6 aktiv engedly',
-        services_title:"Szolgaltatasok",
-        svc1_title:"HVAC rendszerek", svc1_desc:"Futes, szelloztetes, legkondicionalas lakoterek es ipari terek szamara",
-        svc2_title:"Tuzoltas", svc2_desc:"Sprinklerek, hidransok, belso es kulso tuzgyuruk",
-        svc3_title:"Fustelvezetes", svc3_desc:"Fust es forro gaz elvezetese, axialis ventilatorok",
-        svc4_title:"Vizszerelesek", svc4_desc:"Vizellatas, csatornazas, napkollektorok, bojlerek",
-        svc5_title:"Tuzerzekelese", svc5_desc:"Tuzjelzo, riaszto es figyelmezteto rendszerek",
-        svc6_title:"Tuzvedelmi", svc6_desc:"Hovedelelem torcretalo es intumescens festektermekekkel",
-        workflow_title:"Amit Csinalunk",
-        wf1_title:"Tervezes", wf1_desc:"Egyedi muszaki megoldasok",
-        wf2_title:"Szallitas", wf2_desc:"A legjobb minosegu berendezesek",
-        wf3_title:"Szereles", wf3_desc:"Magasan kepzett szemelyzet",
-        wf4_title:"Szerviz", wf4_desc:"Garancia es garancian tuli",
-        auth_title:"Engedelyek",
-        auth_intro:'Az SC BMS Consulting SRL az <strong>IGSU</strong> altal határozatlan idore engedelyezett a kovetkezo teruleteken:',
-        auth_item1:"Tuzoltas sprinklerekkel es hidransokkal",
-        auth_item2:"Fust es forro gaz elvezetese",
-        auth_item3:"Tuzerzekelés es jelzes",
-        auth_item4:"Hovedelelem torcretalo termekekkel",
-        auth_item5:"Hovedelelem intumescens festekekkel",
-        auth_item6:"AGFR engedly (hoszivattyuk, freon)",
-        projects_title:"Projektek",
-        proj1:"HVAC — Ipari csarnok", proj2:"Sprinklerek es szelloztetes",
-        proj3:"Tuzoltas", proj4:"Ipari berendezesek",
-        proj5:"Hidrans rendszerek", proj6:"HVAC es sprinklerek",
-        proj7:"Osszetett berendezesek", proj8:"Fustelvezeto rendszer",
-        contact_title:"Kapcsolat", contact_subtitle:"Lepjen velunk kapcsolatba",
-        contact_address_label:"Cim", contact_phone_label:"Telefon",
-        contact_hours_label:"Munkaido", contact_hours:"Hetfo - Pentek: 08:00 - 17:00",
-        offer_title:"Ajanlatkeres",
-        form_name:"Nev *", form_company:"Ceg", form_phone:"Telefon *",
-        form_service:"Kert szolgaltatas", form_select:"Valasszon...",
-        form_message:"Uzenet *", form_files:"Csatolmanyok (PDF, DWG, kepek)",
-        form_submit:"Keres kuldese", form_note:"24 munkaoran belul valaszolunk.",
-        footer_rights:"Minden jog fenntartva."
+    de: {
+        nav_home:"Startseite", nav_about:"\u00dcber uns", nav_services:"Leistungen", nav_workflow:"Arbeitsablauf",
+        nav_auth:"Zertifizierungen", nav_projects:"Projekte", nav_contact:"Kontakt", nav_cta:"Angebot anfordern",
+        hero_text:"Komplettl\u00f6sungen f\u00fcr thermische Anlagen, HLK, Brandl\u00f6schung und Brandschutz. Von der Planung bis zur Inbetriebnahme.",
+        hero_btn1:"Unsere Leistungen", hero_btn2:"Kontakt",
+        about_title:"\u00dcber uns",
+        about_p1:'<strong>SC BMS Consulting SRL</strong> ist ein Privatunternehmen, das seit 2023 erfolgreich auf dem rum\u00e4nischen Baumarkt t\u00e4tig ist und Komplettl\u00f6sungen im Bereich thermische Anlagen, L\u00fcftung, Klimatisierung, Rauchableitung, Brandl\u00f6schanlagen und Brandschutz bietet.',
+        about_p2:'Das Unternehmen verf\u00fcgt \u00fcber erfahrenes Fachpersonal im Bereich der Installationen. BMS Consulting ist ein <strong>Generalunternehmer</strong>, der integrierte Installationen im zivilen und industriellen Bereich realisieren und verwalten kann \u2014 von der Planung \u00fcber die Lieferung und Montage bis zur Inbetriebnahme.',
+        about_p3:'Das Personal von BMS Consulting SRL ist <strong>AGFR-zertifiziert</strong> f\u00fcr die Installation, Wartung und Inbetriebnahme von W\u00e4rmepumpen und anderen Anlagen mit fluorierten organischen Verbindungen (FCKW).',
+        about_badge:'IGSU-zertifiziert auf unbestimmte Zeit &bull; 6 aktive Zertifizierungen',
+        services_title:"Leistungen",
+        svc1_title:"HLK-Anlagen", svc1_desc:"Heizung, L\u00fcftung, Klimaanlage f\u00fcr Wohn- und Industriegebäude",
+        svc2_title:"Brandl\u00f6schung", svc2_desc:"Sprinkler, Hydranten, Innen- und Au\u00dfenl\u00f6schringe",
+        svc3_title:"Rauchableitung", svc3_desc:"Rauch- und Hei\u00dfgasabf\u00fchrung, Axialventilatoren",
+        svc4_title:"Sanit\u00e4rinstallationen", svc4_desc:"Wasserversorgung, Kanalisation, Solarpaneele, Boiler",
+        svc5_title:"Branddetektion", svc5_desc:"Brandmelde-, Alarm- und Warnsysteme",
+        svc6_title:"Brandschutz", svc6_desc:"W\u00e4rmeschutz mit Spritzbeton und Intumeszenzfarben",
+        workflow_title:"Arbeitsablauf",
+        wf1_title:"Planung", wf1_desc:"Ma\u00dfgeschneiderte technische L\u00f6sungen",
+        wf2_title:"Lieferung", wf2_desc:"Ger\u00e4te h\u00f6chster Qualit\u00e4t",
+        wf3_title:"Montage", wf3_desc:"Hochqualifiziertes Fachpersonal",
+        wf4_title:"Wartung", wf4_desc:"Garantie und Nachgarantie",
+        auth_title:"Zertifizierungen",
+        auth_intro:'SC BMS Consulting SRL ist von <strong>IGSU</strong> auf unbestimmte Zeit f\u00fcr folgende Bereiche zertifiziert:',
+        auth_item1:"Brandl\u00f6schung mit Sprinklern und Hydranten",
+        auth_item2:"Rauch- und Hei\u00dfgasabf\u00fchrung",
+        auth_item3:"Branddetektion und -meldung",
+        auth_item4:"W\u00e4rmeschutz mit Spritzbetonprodukten",
+        auth_item5:"W\u00e4rmeschutz mit Intumeszenzfarben",
+        auth_item6:"AGFR-Zertifizierung (W\u00e4rmepumpen, FCKW)",
+        projects_title:"Projekte",
+        proj1:"HLK \u2014 Industriehalle", proj2:"Sprinkler und L\u00fcftung",
+        proj3:"Brandl\u00f6schung", proj4:"Industrieinstallationen",
+        proj5:"Hydrantensysteme", proj6:"HLK und Sprinkler",
+        proj7:"Komplexe Installationen", proj8:"Rauchableitungssystem",
+        contact_title:"Kontakt", contact_subtitle:"Kontaktieren Sie uns",
+        contact_address_label:"Adresse", contact_phone_label:"Telefon",
+        contact_hours_label:"\u00d6ffnungszeiten", contact_hours:"Montag - Freitag: 08:00 - 17:00",
+        offer_title:"Angebot anfordern",
+        form_name:"Name *", form_company:"Firma", form_phone:"Telefon *",
+        form_service:"Gew\u00fcnschte Leistung", form_select:"Ausw\u00e4hlen...",
+        form_message:"Nachricht *", form_files:"Anh\u00e4nge (PDF, DWG, Bilder)",
+        form_submit:"Anfrage senden", form_note:"Sie erhalten innerhalb von 24 Gesch\u00e4ftsstunden eine Antwort.",
+        footer_rights:"Alle Rechte vorbehalten."
+    },
+    fr: {
+        nav_home:"Accueil", nav_about:"\u00c0 propos", nav_services:"Services", nav_workflow:"Notre processus",
+        nav_auth:"Certifications", nav_projects:"Projets", nav_contact:"Contact", nav_cta:"Demander un devis",
+        hero_text:"Solutions compl\u00e8tes pour les installations thermiques, CVC, extinction d'incendie et protection contre le feu. De la conception \u00e0 la mise en service.",
+        hero_btn1:"Nos services", hero_btn2:"Contactez-nous",
+        about_title:"\u00c0 propos de nous",
+        about_p1:'<strong>SC BMS Consulting SRL</strong> est une soci\u00e9t\u00e9 priv\u00e9e, op\u00e9rant avec succ\u00e8s sur le march\u00e9 roumain de la construction depuis 2023, offrant des solutions compl\u00e8tes dans le domaine des installations thermiques, ventilation, climatisation, d\u00e9senfumage, syst\u00e8mes d\'extinction d\'incendie et de protection contre le feu.',
+        about_p2:'L\'entreprise dispose de personnel exp\u00e9riment\u00e9 dans le domaine des installations. BMS Consulting est un <strong>Entrepreneur G\u00e9n\u00e9ral</strong> capable de r\u00e9aliser et g\u00e9rer des installations int\u00e9gr\u00e9es dans les secteurs civil et industriel \u2014 de la conception \u00e0 la fourniture, au montage et \u00e0 la mise en service.',
+        about_p3:'Le personnel de BMS Consulting SRL est <strong>certifi\u00e9 AGFR</strong> pour l\'installation, la maintenance et la mise en service des pompes \u00e0 chaleur et autres syst\u00e8mes utilisant des compos\u00e9s organiques fluor\u00e9s (fr\u00e9on).',
+        about_badge:'Certifi\u00e9 IGSU pour une dur\u00e9e ind\u00e9termin\u00e9e &bull; 6 certifications actives',
+        services_title:"Services",
+        svc1_title:"Installations CVC", svc1_desc:"Chauffage, ventilation, climatisation pour espaces r\u00e9sidentiels et industriels",
+        svc2_title:"Extinction d'incendie", svc2_desc:"Sprinklers, bouches d'incendie, anneaux d'incendie int\u00e9rieurs et ext\u00e9rieurs",
+        svc3_title:"D\u00e9senfumage", svc3_desc:"\u00c9vacuation des fum\u00e9es et gaz chauds, ventilateurs axiaux",
+        svc4_title:"Installations sanitaires", svc4_desc:"Alimentation en eau, assainissement, panneaux solaires, chaudières",
+        svc5_title:"D\u00e9tection incendie", svc5_desc:"Syst\u00e8mes de signalisation, d'alarme et d'alerte incendie",
+        svc6_title:"Protection incendie", svc6_desc:"Protection thermique avec produits de projection et peintures intumescentes",
+        workflow_title:"Notre processus",
+        wf1_title:"Conception", wf1_desc:"Solutions techniques personnalis\u00e9es",
+        wf2_title:"Fourniture", wf2_desc:"\u00c9quipements de la meilleure qualit\u00e9",
+        wf3_title:"Montage", wf3_desc:"Personnel hautement qualifi\u00e9",
+        wf4_title:"Maintenance", wf4_desc:"Garantie et post-garantie",
+        auth_title:"Certifications",
+        auth_intro:'SC BMS Consulting SRL est certifi\u00e9e par l\'<strong>IGSU</strong> pour une dur\u00e9e ind\u00e9termin\u00e9e dans les domaines suivants :',
+        auth_item1:"Extinction d'incendie avec sprinklers et bouches d'incendie",
+        auth_item2:"\u00c9vacuation des fum\u00e9es et gaz chauds",
+        auth_item3:"D\u00e9tection et signalisation d'incendie",
+        auth_item4:"Protection thermique avec produits de projection",
+        auth_item5:"Protection thermique avec peintures intumescentes",
+        auth_item6:"Certification AGFR (pompes \u00e0 chaleur, fr\u00e9on)",
+        projects_title:"Projets",
+        proj1:"CVC \u2014 Hall industriel", proj2:"Sprinklers et ventilation",
+        proj3:"Extinction d'incendie", proj4:"Installations industrielles",
+        proj5:"Syst\u00e8mes de bouches d'incendie", proj6:"CVC et sprinklers",
+        proj7:"Installations complexes", proj8:"Syst\u00e8me de d\u00e9senfumage",
+        contact_title:"Contact", contact_subtitle:"Contactez-nous",
+        contact_address_label:"Adresse", contact_phone_label:"T\u00e9l\u00e9phone",
+        contact_hours_label:"Horaires", contact_hours:"Lundi - Vendredi : 08h00 - 17h00",
+        offer_title:"Demander un devis",
+        form_name:"Nom *", form_company:"Soci\u00e9t\u00e9", form_phone:"T\u00e9l\u00e9phone *",
+        form_service:"Service souhait\u00e9", form_select:"S\u00e9lectionner...",
+        form_message:"Message *", form_files:"Pi\u00e8ces jointes (PDF, DWG, images)",
+        form_submit:"Envoyer la demande", form_note:"Vous recevrez une r\u00e9ponse dans les 24 heures ouvr\u00e9es.",
+        footer_rights:"Tous droits r\u00e9serv\u00e9s."
     },
     zh: {
-        nav_home:"首页", nav_about:"关于我们", nav_services:"服务", nav_workflow:"工作流程",
-        nav_auth:"资质认证", nav_projects:"项目", nav_contact:"联系方式", nav_cta:"获取报价",
-        hero_text:"热力安装、暖通空调、消防灭火及防火保护的完整解决方案。从设计到调试投运。",
-        hero_btn1:"我们的服务", hero_btn2:"联系我们",
-        about_title:"关于我们",
-        about_p1:'<strong>SC BMS Consulting SRL</strong> 是一家私营企业，自2023年起成功运营于罗马尼亚建筑市场，提供热力安装、通风、空调、排烟、消防灭火系统及防火保护的完整解决方案。',
-        about_p2:'公司拥有丰富的人力资源，拥有安装领域经验丰富的员工。BMS Consulting是一家<strong>总承包商</strong>，能够在民用和工业领域实现和管理综合安装——从设计到供应、安装和调试。',
-        about_p3:'BMS Consulting SRL的员工持有<strong>AGFR认证</strong>，可进行热泵及其他使用氟化有机化合物（氟利昂）设备的安装、维修和调试。',
-        about_badge:'IGSU无限期认证 &bull; 6项有效认证',
-        services_title:"服务",
-        svc1_title:"暖通空调系统", svc1_desc:"住宅和工业空间供暖、通风、空调",
-        svc2_title:"消防灭火", svc2_desc:"喷淋系统、消防栓、内外消防环管",
-        svc3_title:"排烟系统", svc3_desc:"烟气和热气排放、轴流风机",
-        svc4_title:"给排水工程", svc4_desc:"供水、排水、太阳能板、锅炉",
-        svc5_title:"火灾探测", svc5_desc:"火灾信号、报警和预警系统",
-        svc6_title:"防火保护", svc6_desc:"喷射混凝土和膨胀涂料防火保护",
-        workflow_title:"工作流程",
-        wf1_title:"设计", wf1_desc:"定制技术方案",
-        wf2_title:"供应", wf2_desc:"最优质的设备",
-        wf3_title:"安装", wf3_desc:"高素质专业人员",
-        wf4_title:"维保", wf4_desc:"保修期及保修后服务",
-        auth_title:"资质认证",
-        auth_intro:'SC BMS Consulting SRL获得<strong>IGSU</strong>无限期授权，涵盖以下领域：',
-        auth_item1:"喷淋和消防栓灭火系统",
-        auth_item2:"烟气和热气排放",
-        auth_item3:"火灾探测和信号",
-        auth_item4:"喷射混凝土防火保护",
-        auth_item5:"膨胀涂料防火保护",
-        auth_item6:"AGFR认证（热泵、氟利昂）",
-        projects_title:"项目",
-        proj1:"暖通——工业厂房", proj2:"喷淋和通风",
-        proj3:"消防灭火", proj4:"工业安装",
-        proj5:"消防栓系统", proj6:"暖通和喷淋",
-        proj7:"综合安装", proj8:"排烟系统",
-        contact_title:"联系方式", contact_subtitle:"联系我们",
-        contact_address_label:"地址", contact_phone_label:"电话",
-        contact_hours_label:"工作时间", contact_hours:"周一至周五：08:00 - 17:00",
-        offer_title:"获取报价",
-        form_name:"姓名 *", form_company:"公司", form_phone:"电话 *",
-        form_service:"所需服务", form_select:"请选择...",
-        form_message:"留言 *", form_files:"附件（PDF、DWG、图片）",
-        form_submit:"发送请求", form_note:"我们将在24个工作小时内回复。",
-        footer_rights:"版权所有。"
+        nav_home:"\u9996\u9875", nav_about:"\u5173\u4e8e\u6211\u4eec", nav_services:"\u670d\u52a1", nav_workflow:"\u5de5\u4f5c\u6d41\u7a0b",
+        nav_auth:"\u8d44\u8d28\u8ba4\u8bc1", nav_projects:"\u9879\u76ee", nav_contact:"\u8054\u7cfb\u65b9\u5f0f", nav_cta:"\u83b7\u53d6\u62a5\u4ef7",
+        hero_text:"\u70ed\u529b\u5b89\u88c5\u3001\u6696\u901a\u7a7a\u8c03\u3001\u6d88\u9632\u706d\u706b\u53ca\u9632\u706b\u4fdd\u62a4\u7684\u5b8c\u6574\u89e3\u51b3\u65b9\u6848\u3002\u4ece\u8bbe\u8ba1\u5230\u8c03\u8bd5\u6295\u8fd0\u3002",
+        hero_btn1:"\u6211\u4eec\u7684\u670d\u52a1", hero_btn2:"\u8054\u7cfb\u6211\u4eec",
+        about_title:"\u5173\u4e8e\u6211\u4eec",
+        about_p1:'<strong>SC BMS Consulting SRL</strong> \u662f\u4e00\u5bb6\u79c1\u8425\u4f01\u4e1a\uff0c\u81ea2023\u5e74\u8d77\u6210\u529f\u8fd0\u8425\u4e8e\u7f57\u9a6c\u5c3c\u4e9a\u5efa\u7b51\u5e02\u573a\uff0c\u63d0\u4f9b\u70ed\u529b\u5b89\u88c5\u3001\u901a\u98ce\u3001\u7a7a\u8c03\u3001\u6392\u70df\u3001\u6d88\u9632\u706d\u706b\u7cfb\u7edf\u53ca\u9632\u706b\u4fdd\u62a4\u7684\u5b8c\u6574\u89e3\u51b3\u65b9\u6848\u3002',
+        about_p2:'\u516c\u53f8\u62e5\u6709\u4e30\u5bcc\u7684\u4eba\u529b\u8d44\u6e90\uff0c\u62e5\u6709\u5b89\u88c5\u9886\u57df\u7ecf\u9a8c\u4e30\u5bcc\u7684\u5458\u5de5\u3002BMS Consulting\u662f\u4e00\u5bb6<strong>\u603b\u627f\u5305\u5546</strong>\uff0c\u80fd\u591f\u5728\u6c11\u7528\u548c\u5de5\u4e1a\u9886\u57df\u5b9e\u73b0\u548c\u7ba1\u7406\u7efc\u5408\u5b89\u88c5\u2014\u2014\u4ece\u8bbe\u8ba1\u5230\u4f9b\u5e94\u3001\u5b89\u88c5\u548c\u8c03\u8bd5\u3002',
+        about_p3:'BMS Consulting SRL\u7684\u5458\u5de5\u6301\u6709<strong>AGFR\u8ba4\u8bc1</strong>\uff0c\u53ef\u8fdb\u884c\u70ed\u6cf5\u53ca\u5176\u4ed6\u4f7f\u7528\u6c1f\u5316\u6709\u673a\u5316\u5408\u7269\uff08\u6c1f\u5229\u6602\uff09\u8bbe\u5907\u7684\u5b89\u88c5\u3001\u7ef4\u4fee\u548c\u8c03\u8bd5\u3002',
+        about_badge:'IGSU\u65e0\u9650\u671f\u8ba4\u8bc1 &bull; 6\u9879\u6709\u6548\u8ba4\u8bc1',
+        services_title:"\u670d\u52a1",
+        svc1_title:"\u6696\u901a\u7a7a\u8c03\u7cfb\u7edf", svc1_desc:"\u4f4f\u5b85\u548c\u5de5\u4e1a\u7a7a\u95f4\u4f9b\u6696\u3001\u901a\u98ce\u3001\u7a7a\u8c03",
+        svc2_title:"\u6d88\u9632\u706d\u706b", svc2_desc:"\u55b7\u6dcb\u7cfb\u7edf\u3001\u6d88\u9632\u6813\u3001\u5185\u5916\u6d88\u9632\u73af\u7ba1",
+        svc3_title:"\u6392\u70df\u7cfb\u7edf", svc3_desc:"\u70df\u6c14\u548c\u70ed\u6c14\u6392\u653e\u3001\u8f74\u6d41\u98ce\u673a",
+        svc4_title:"\u7ed9\u6392\u6c34\u5de5\u7a0b", svc4_desc:"\u4f9b\u6c34\u3001\u6392\u6c34\u3001\u592a\u9633\u80fd\u677f\u3001\u9505\u7089",
+        svc5_title:"\u706b\u707e\u63a2\u6d4b", svc5_desc:"\u706b\u707e\u4fe1\u53f7\u3001\u62a5\u8b66\u548c\u9884\u8b66\u7cfb\u7edf",
+        svc6_title:"\u9632\u706b\u4fdd\u62a4", svc6_desc:"\u55b7\u5c04\u6df7\u51dd\u571f\u548c\u81a8\u80c0\u6d82\u6599\u9632\u706b\u4fdd\u62a4",
+        workflow_title:"\u5de5\u4f5c\u6d41\u7a0b",
+        wf1_title:"\u8bbe\u8ba1", wf1_desc:"\u5b9a\u5236\u6280\u672f\u65b9\u6848",
+        wf2_title:"\u4f9b\u5e94", wf2_desc:"\u6700\u4f18\u8d28\u7684\u8bbe\u5907",
+        wf3_title:"\u5b89\u88c5", wf3_desc:"\u9ad8\u7d20\u8d28\u4e13\u4e1a\u4eba\u5458",
+        wf4_title:"\u7ef4\u4fdd", wf4_desc:"\u4fdd\u4fee\u671f\u53ca\u4fdd\u4fee\u540e\u670d\u52a1",
+        auth_title:"\u8d44\u8d28\u8ba4\u8bc1",
+        auth_intro:'SC BMS Consulting SRL\u83b7\u5f97<strong>IGSU</strong>\u65e0\u9650\u671f\u6388\u6743\uff0c\u6db5\u76d6\u4ee5\u4e0b\u9886\u57df\uff1a',
+        auth_item1:"\u55b7\u6dcb\u548c\u6d88\u9632\u6813\u706d\u706b\u7cfb\u7edf",
+        auth_item2:"\u70df\u6c14\u548c\u70ed\u6c14\u6392\u653e",
+        auth_item3:"\u706b\u707e\u63a2\u6d4b\u548c\u4fe1\u53f7",
+        auth_item4:"\u55b7\u5c04\u6df7\u51dd\u571f\u9632\u706b\u4fdd\u62a4",
+        auth_item5:"\u81a8\u80c0\u6d82\u6599\u9632\u706b\u4fdd\u62a4",
+        auth_item6:"AGFR\u8ba4\u8bc1\uff08\u70ed\u6cf5\u3001\u6c1f\u5229\u6602\uff09",
+        projects_title:"\u9879\u76ee",
+        proj1:"\u6696\u901a\u2014\u2014\u5de5\u4e1a\u5382\u623f", proj2:"\u55b7\u6dcb\u548c\u901a\u98ce",
+        proj3:"\u6d88\u9632\u706d\u706b", proj4:"\u5de5\u4e1a\u5b89\u88c5",
+        proj5:"\u6d88\u9632\u6813\u7cfb\u7edf", proj6:"\u6696\u901a\u548c\u55b7\u6dcb",
+        proj7:"\u7efc\u5408\u5b89\u88c5", proj8:"\u6392\u70df\u7cfb\u7edf",
+        contact_title:"\u8054\u7cfb\u65b9\u5f0f", contact_subtitle:"\u8054\u7cfb\u6211\u4eec",
+        contact_address_label:"\u5730\u5740", contact_phone_label:"\u7535\u8bdd",
+        contact_hours_label:"\u5de5\u4f5c\u65f6\u95f4", contact_hours:"\u5468\u4e00\u81f3\u5468\u4e94\uff1a08:00 - 17:00",
+        offer_title:"\u83b7\u53d6\u62a5\u4ef7",
+        form_name:"\u59d3\u540d *", form_company:"\u516c\u53f8", form_phone:"\u7535\u8bdd *",
+        form_service:"\u6240\u9700\u670d\u52a1", form_select:"\u8bf7\u9009\u62e9...",
+        form_message:"\u7559\u8a00 *", form_files:"\u9644\u4ef6\uff08PDF\u3001DWG\u3001\u56fe\u7247\uff09",
+        form_submit:"\u53d1\u9001\u8bf7\u6c42", form_note:"\u6211\u4eec\u5c06\u572824\u4e2a\u5de5\u4f5c\u5c0f\u65f6\u5185\u56de\u590d\u3002",
+        footer_rights:"\u7248\u6743\u6240\u6709\u3002"
     }
 };
 let currentLang = 'ro';
 function setLang(lang) {
+    // If clicking the already active language, revert to Romanian
+    if (currentLang === lang) lang = 'ro';
     currentLang = lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
     document.querySelectorAll('.lang-switcher button').forEach(b =>
         b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase())
     );
-    const t = T[lang]; if (!t) return;
+    const t = lang === 'ro' ? roDefaults : T[lang];
+    if (!t) return;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const k = el.getAttribute('data-i18n');
         if (t[k] !== undefined) el.innerHTML = t[k];
