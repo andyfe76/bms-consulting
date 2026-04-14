@@ -371,7 +371,19 @@
             padding: 40px;
         }
         .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius); }
+        .lightbox-img-wrap {
+            position: relative; display: inline-block;
+        }
+        .lightbox-img-wrap img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius); display: block; }
+        .lightbox-watermark {
+            display: none; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem; font-weight: 800;
+            color: rgba(12, 59, 110, 0.2);
+            white-space: nowrap; pointer-events: none;
+            letter-spacing: 4px; text-transform: uppercase;
+        }
         .lightbox-close {
             position: absolute; top: 15px; right: 25px; color: white;
             font-size: 2rem; cursor: pointer; background: none; border: none; padding: 10px; z-index: 2001;
@@ -460,7 +472,7 @@
             <button onclick="setLang('en')">EN</button>
             <button onclick="setLang('de')">DE</button>
             <button onclick="setLang('fr')">FR</button>
-            <button onclick="setLang('zh')">ZH</button>
+            <button onclick="setLang('zh')">中文</button>
         </div>
         <a href="tel:0742251439" class="sidebar-phone"><i class="fas fa-phone"></i> 0742.251.439</a>
         <a href="#oferta" class="btn-cta" data-i18n="nav_cta"><i class="fas fa-paper-plane"></i> Cere Oferta</a>
@@ -770,7 +782,10 @@
 <div class="lightbox" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
     <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
-    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-watermark" id="lightboxWatermark">BMS Consulting</div>
+    </div>
     <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)"><i class="fas fa-chevron-right"></i></button>
 </div>
 
@@ -818,10 +833,15 @@ document.querySelectorAll('.fade-in').forEach(el => obsrv.observe(el));
 
 // === LIGHTBOX ===
 let lbImages = [], lbIdx = 0;
+function isAuthImage(img) { return img.closest('.auth-cert') !== null; }
+function updateWatermark(img) {
+    document.getElementById('lightboxWatermark').style.display = isAuthImage(img) ? 'block' : 'none';
+}
 function openLightbox(img) {
     lbImages = Array.from(document.querySelectorAll('.project-card img, .auth-cert img'));
     lbIdx = lbImages.indexOf(img);
     document.getElementById('lightboxImg').src = img.src;
+    updateWatermark(img);
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -832,6 +852,7 @@ function closeLightbox() {
 function navLightbox(dir) {
     lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
     document.getElementById('lightboxImg').src = lbImages[lbIdx].src;
+    updateWatermark(lbImages[lbIdx]);
 }
 document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
 document.addEventListener('keydown', function(e) {
@@ -1034,9 +1055,10 @@ function setLang(lang) {
     if (currentLang === lang) lang = 'ro';
     currentLang = lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
-    document.querySelectorAll('.lang-switcher button').forEach(b =>
-        b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase())
-    );
+    document.querySelectorAll('.lang-switcher button').forEach(b => {
+        const btnLang = b.getAttribute('onclick').match(/setLang\('(\w+)'\)/)[1];
+        b.classList.toggle('active', btnLang === lang);
+    });
     const t = lang === 'ro' ? roDefaults : T[lang];
     if (!t) return;
     document.querySelectorAll('[data-i18n]').forEach(el => {
