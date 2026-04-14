@@ -353,6 +353,32 @@
             font-size: 0.8rem; color: var(--text-light);
         }
 
+        /* ===== COLABORATORI ===== */
+        .colaboratori { background: var(--bg-white); }
+        .collab-grid {
+            display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;
+        }
+        .collab-card {
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; padding: 35px 30px;
+            background: var(--bg-light); border-radius: var(--radius);
+            border: 1px solid #eee; transition: var(--transition);
+            min-width: 240px; max-width: 300px;
+        }
+        .collab-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+        .collab-icon {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: var(--primary); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 15px;
+        }
+        .collab-card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 5px; }
+        .collab-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; }
+        .collab-link {
+            font-size: 0.8rem; color: var(--accent); font-weight: 600;
+        }
+        .collab-link i { font-size: 0.7rem; }
+
         /* ===== FOOTER ===== */
         .footer {
             background: var(--bg-dark); color: rgba(255,255,255,0.6);
@@ -464,6 +490,7 @@
         <a href="#proiecte" data-i18n="nav_projects"><i class="fas fa-images"></i> Proiecte</a>
         <a href="#contact" data-i18n="nav_contact"><i class="fas fa-envelope"></i> Contact</a>
         <a href="#oferta" data-i18n="nav_cta"><i class="fas fa-file-signature"></i> Cere Oferta</a>
+        <a href="#colaboratori" data-i18n="nav_collab"><i class="fas fa-handshake"></i> Colaboratori</a>
     </nav>
 
     <div class="sidebar-bottom">
@@ -766,6 +793,32 @@
         </div>
     </section>
 
+    <!-- COLABORATORI -->
+    <section class="page colaboratori" id="colaboratori">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="collab_title">Colaboratori</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="collab-grid fade-in">
+                    <a href="https://lansapp.net/" target="_blank" rel="noopener" class="collab-card">
+                        <div class="collab-icon"><i class="fas fa-code"></i></div>
+                        <h3>LansApp Coding</h3>
+                        <p data-i18n="collab_lansapp">Dezvoltare software &amp; solutii digitale</p>
+                        <span class="collab-link">lansapp.net <i class="fas fa-external-link-alt"></i></span>
+                    </a>
+                    <a href="https://github.com/andyfe76" target="_blank" rel="noopener" class="collab-card">
+                        <div class="collab-icon"><i class="fab fa-github"></i></div>
+                        <h3>Andos</h3>
+                        <p data-i18n="collab_andos">Dezvoltare &amp; consultanta IT</p>
+                        <span class="collab-link">github.com/andyfe76 <i class="fas fa-external-link-alt"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-inner">
@@ -911,7 +964,10 @@ const T = {
         form_service:"Service needed", form_select:"Select...",
         form_message:"Message *", form_files:"Attachments (PDF, DWG, images)",
         form_submit:"Send Request", form_note:"You will receive a response within 24 business hours.",
-        footer_rights:"All rights reserved."
+        footer_rights:"All rights reserved.",
+        nav_collab:"Partners", collab_title:"Partners",
+        collab_lansapp:"Software development & digital solutions",
+        collab_andos:"Development & IT consulting"
     },
     de: {
         nav_home:"Startseite", nav_about:"\u00dcber uns", nav_services:"Leistungen", nav_workflow:"Arbeitsablauf",
@@ -956,7 +1012,10 @@ const T = {
         form_service:"Gew\u00fcnschte Leistung", form_select:"Ausw\u00e4hlen...",
         form_message:"Nachricht *", form_files:"Anh\u00e4nge (PDF, DWG, Bilder)",
         form_submit:"Anfrage senden", form_note:"Sie erhalten innerhalb von 24 Gesch\u00e4ftsstunden eine Antwort.",
-        footer_rights:"Alle Rechte vorbehalten."
+        footer_rights:"Alle Rechte vorbehalten.",
+        nav_collab:"Partner", collab_title:"Partner",
+        collab_lansapp:"Softwareentwicklung & digitale L\u00f6sungen",
+        collab_andos:"Entwicklung & IT-Beratung"
     },
     fr: {
         nav_home:"Accueil", nav_about:"\u00c0 propos", nav_services:"Services", nav_workflow:"Notre processus",
@@ -1001,7 +1060,10 @@ const T = {
         form_service:"Service souhait\u00e9", form_select:"S\u00e9lectionner...",
         form_message:"Message *", form_files:"Pi\u00e8ces jointes (PDF, DWG, images)",
         form_submit:"Envoyer la demande", form_note:"Vous recevrez une r\u00e9ponse dans les 24 heures ouvr\u00e9es.",
-        footer_rights:"Tous droits r\u00e9serv\u00e9s."
+        footer_rights:"Tous droits r\u00e9serv\u00e9s.",
+        nav_collab:"Partenaires", collab_title:"Partenaires",
+        collab_lansapp:"D\u00e9veloppement logiciel & solutions num\u00e9riques",
+        collab_andos:"D\u00e9veloppement & conseil IT"
     },
     zh: {
         nav_home:"\u9996\u9875", nav_about:"\u5173\u4e8e\u6211\u4eec", nav_services:"\u670d\u52a1", nav_workflow:"\u5de5\u4f5c\u6d41\u7a0b",
@@ -1046,7 +1108,10 @@ const T = {
         form_service:"\u6240\u9700\u670d\u52a1", form_select:"\u8bf7\u9009\u62e9...",
         form_message:"\u7559\u8a00 *", form_files:"\u9644\u4ef6\uff08PDF\u3001DWG\u3001\u56fe\u7247\uff09",
         form_submit:"\u53d1\u9001\u8bf7\u6c42", form_note:"\u6211\u4eec\u5c06\u572824\u4e2a\u5de5\u4f5c\u5c0f\u65f6\u5185\u56de\u590d\u3002",
-        footer_rights:"\u7248\u6743\u6240\u6709\u3002"
+        footer_rights:"\u7248\u6743\u6240\u6709\u3002",
+        nav_collab:"\u5408\u4f5c\u4f19\u4f34", collab_title:"\u5408\u4f5c\u4f19\u4f34",
+        collab_lansapp:"\u8f6f\u4ef6\u5f00\u53d1\u4e0e\u6570\u5b57\u89e3\u51b3\u65b9\u6848",
+        collab_andos:"\u5f00\u53d1\u4e0eIT\u54a8\u8be2"
     }
 };
 let currentLang = 'ro';
