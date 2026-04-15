@@ -31,8 +31,8 @@
             --transition: 0.3s ease;
             --sidebar-w: 230px;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Open Sans', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        html { scroll-behavior: auto; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; overflow-y: hidden; height: 100vh; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
         img { max-width: 100%; height: auto; }
         a { text-decoration: none; color: inherit; }
@@ -41,384 +41,316 @@
         /* ===== SIDEBAR ===== */
         .sidebar {
             position: fixed; top: 0; left: 0; bottom: 0;
-            width: var(--sidebar-w);
-            background: var(--primary);
-            color: white;
-            display: flex; flex-direction: column;
-            z-index: 1000;
+            width: var(--sidebar-w); background: var(--primary); color: white;
+            display: flex; flex-direction: column; z-index: 1000;
             transition: transform var(--transition);
         }
-        .sidebar-top {
-            padding: 25px 20px 15px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .sidebar-logo { height: 55px; width: auto; margin-bottom: 5px; }
-        .sidebar-brand {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            display: block;
-        }
-        .sidebar-tagline {
-            font-size: 0.6rem;
-            color: var(--accent);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            font-style: italic;
-        }
+        .sidebar-top { padding: 20px 15px 12px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { height: 45px; width: auto; margin-bottom: 3px; }
+        .sidebar-brand { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; display: block; }
+        .sidebar-tagline { font-size: 0.55rem; color: var(--accent); font-weight: 600; letter-spacing: 0.5px; font-style: italic; }
 
-        .sidebar-nav { flex: 1; padding: 15px 0; overflow-y: auto; }
+        .sidebar-nav { flex: 1; padding: 8px 0; overflow-y: auto; }
         .sidebar-nav a {
-            display: flex; align-items: center; gap: 12px;
-            padding: 12px 25px;
-            font-size: 0.88rem; font-weight: 600;
-            color: rgba(255,255,255,0.7);
-            transition: var(--transition);
-            border-left: 3px solid transparent;
+            display: flex; align-items: center; gap: 10px;
+            padding: 9px 20px; font-size: 0.8rem; font-weight: 600;
+            color: rgba(255,255,255,0.65); transition: var(--transition);
+            border-left: 3px solid transparent; cursor: pointer;
         }
         .sidebar-nav a:hover, .sidebar-nav a.active {
-            color: white;
-            background: rgba(255,255,255,0.08);
-            border-left-color: var(--accent);
+            color: white; background: rgba(255,255,255,0.08); border-left-color: var(--accent);
         }
-        .sidebar-nav a i { width: 18px; text-align: center; font-size: 0.9rem; }
+        .sidebar-nav a i { width: 16px; text-align: center; font-size: 0.8rem; }
 
-        .sidebar-bottom {
-            padding: 15px 20px 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
+        .sidebar-bottom { padding: 10px 15px 15px; border-top: 1px solid rgba(255,255,255,0.1); }
         .sidebar-phone {
             display: flex; align-items: center; gap: 8px;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem; font-weight: 600;
-            margin-bottom: 12px;
+            color: rgba(255,255,255,0.8); font-size: 0.8rem; font-weight: 600; margin-bottom: 8px;
         }
         .sidebar-phone:hover { color: white; }
         .lang-switcher {
-            display: flex; gap: 2px; margin-bottom: 12px;
+            display: flex; gap: 2px; margin-bottom: 8px;
             background: rgba(255,255,255,0.1); border-radius: 6px; padding: 2px;
         }
         .lang-switcher button {
-            flex: 1; padding: 4px 6px; border: none; background: transparent;
-            font-size: 0.7rem; font-weight: 700; cursor: pointer;
+            flex: 1; padding: 3px 4px; border: none; background: transparent;
+            font-size: 0.65rem; font-weight: 700; cursor: pointer;
             border-radius: 4px; color: rgba(255,255,255,0.5); transition: var(--transition);
         }
         .lang-switcher button.active { background: var(--accent); color: white; }
         .lang-switcher button:hover { color: white; }
         .btn-cta {
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            width: 100%; padding: 12px 20px;
+            width: 100%; padding: 10px 16px;
             background: var(--accent); color: white;
             border: none; border-radius: var(--radius);
-            font-weight: 700; font-size: 0.9rem; cursor: pointer;
+            font-weight: 700; font-size: 0.85rem; cursor: pointer;
             transition: var(--transition); font-family: 'Montserrat', sans-serif;
         }
         .btn-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
-        /* ===== MOBILE HAMBURGER ===== */
+        /* ===== MOBILE ===== */
         .mobile-header {
             display: none; position: fixed; top: 0; left: 0; right: 0;
-            height: 60px; background: var(--primary); z-index: 999;
+            height: 55px; background: var(--primary); z-index: 999;
             align-items: center; justify-content: space-between; padding: 0 15px;
         }
-        .mobile-header .logo-row { display: flex; align-items: center; gap: 10px; color: white; }
-        .mobile-header .logo-row img { height: 35px; }
-        .mobile-header .logo-row span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; }
-        .hamburger {
-            display: none; flex-direction: column; gap: 5px; cursor: pointer;
-            padding: 5px; background: none; border: none;
-        }
-        .hamburger span { display: block; width: 24px; height: 2px; background: white; transition: var(--transition); }
+        .mobile-header .logo-row { display: flex; align-items: center; gap: 8px; color: white; }
+        .mobile-header .logo-row img { height: 30px; }
+        .mobile-header .logo-row span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; }
+        .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 5px; background: none; border: none; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: white; transition: var(--transition); }
 
-        /* ===== MAIN CONTENT ===== */
-        .main { margin-left: var(--sidebar-w); }
+        /* ===== MAIN / PAGES ===== */
+        .main { margin-left: var(--sidebar-w); height: 100vh; position: relative; }
         .page {
-            min-height: 100vh;
-            display: flex; align-items: center;
-            position: relative;
+            position: absolute; inset: 0;
+            display: none; overflow-y: auto;
+            opacity: 0; transition: opacity 0.35s ease;
         }
-        .page-inner { width: 100%; padding: 60px 0; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; font-weight: 800; }
-        .section-title .underline { width: 60px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px; }
+        .page.active { display: block; opacity: 1; }
+        .page-inner { min-height: 100%; padding: 50px 0; display: flex; flex-direction: column; justify-content: center; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 2rem; color: var(--primary); margin-bottom: 8px; font-weight: 800; }
+        .section-title .underline { width: 50px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px; }
+
+        /* Background sketch watermark for all pages except hero */
+        .page.has-bg::before {
+            content: ''; position: fixed; top: 50%; left: calc(var(--sidebar-w) + 50%);
+            transform: translate(-50%, -50%); pointer-events: none;
+            width: 70%; max-width: 800px; aspect-ratio: 16/9;
+            background: url('assets/img/bg-technical.jpeg') center/contain no-repeat;
+            opacity: 0.04; z-index: 0;
+        }
+        .page.has-bg .page-inner { position: relative; z-index: 1; }
 
         /* ===== HERO ===== */
-        .hero {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8ecf1 100%);
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; top: 50%; left: 50%;
+        .hero { background: linear-gradient(135deg, #f8f9fa 0%, #e8ecf1 100%); }
+        .hero::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 65vh; height: 65vh;
+            width: 60vh; height: 60vh;
             background: url('assets/img/logo_simple.jpeg') center/contain no-repeat;
-            opacity: 0.15;
+            opacity: 0.15; pointer-events: none;
         }
-        .hero-content {
-            position: relative; z-index: 2;
-            text-align: center; max-width: 700px; margin: 0 auto;
-        }
-        .hero-content h1 {
-            font-size: 3.2rem; font-weight: 800; color: var(--primary);
-            margin-bottom: 8px; line-height: 1.1;
-        }
-        .hero-content .tagline {
-            font-size: 1.2rem; font-style: italic; color: var(--accent);
-            margin-bottom: 25px; font-weight: 600;
-        }
-        .hero-content p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 35px; line-height: 1.7; }
-        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .hero-buttons .btn-cta { width: auto; padding: 14px 30px; }
-        .btn-outline {
-            background: transparent; border: 2px solid var(--primary); color: var(--primary);
-        }
-        .btn-outline:hover { background: var(--primary); color: white; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 650px; margin: 0 auto; }
+        .hero-content h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin-bottom: 8px; line-height: 1.1; }
+        .hero-content .tagline { font-size: 1.15rem; font-style: italic; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+        .hero-content p { font-size: 1.05rem; color: var(--text-light); line-height: 1.7; }
 
         /* ===== ABOUT ===== */
-        .about { background: var(--bg-white); }
         .about-content { max-width: 800px; margin: 0 auto; }
-        .about-content p { margin-bottom: 18px; color: var(--text-light); font-size: 1.02rem; }
+        .about-content p { margin-bottom: 15px; color: var(--text-light); font-size: 0.98rem; }
         .about-content strong { color: var(--primary); }
         .about-badge {
             display: inline-flex; align-items: center; gap: 10px;
-            background: var(--bg-light); padding: 12px 20px; border-radius: var(--radius);
-            margin-top: 10px; font-weight: 600; color: var(--primary);
+            background: var(--bg-light); padding: 10px 18px; border-radius: var(--radius);
+            margin-top: 8px; font-weight: 600; color: var(--primary); font-size: 0.9rem;
             border-left: 4px solid var(--accent);
         }
 
         /* ===== SERVICES ===== */
-        .services { background: var(--bg-light); }
         .services-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 40px; max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 25px; max-width: 1000px; margin: 0 auto;
         }
         .service-item { text-align: center; }
         .service-icon {
-            width: 100px; height: 100px;
-            border-radius: 50%;
+            width: 80px; height: 80px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 18px;
-            font-size: 2.2rem; color: white;
-            transition: var(--transition);
-            cursor: default;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            position: relative;
-            overflow: hidden;
+            margin: 0 auto 12px; font-size: 1.8rem; color: white;
+            transition: var(--transition); cursor: default;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); position: relative; overflow: hidden;
         }
         .service-icon::after {
-            content: '';
-            position: absolute; inset: 0;
-            border-radius: 50%;
+            content: ''; position: absolute; inset: 0; border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 60%);
         }
-        .service-item:hover .service-icon { transform: scale(1.1); box-shadow: 0 6px 30px rgba(0,0,0,0.2); }
+        .service-item:hover .service-icon { transform: scale(1.1); box-shadow: 0 6px 25px rgba(0,0,0,0.2); }
         .service-icon.blue { background: linear-gradient(135deg, #1976D2, #0D47A1); }
         .service-icon.red { background: linear-gradient(135deg, #D32F2F, #B71C1C); }
         .service-icon.yellow { background: linear-gradient(135deg, #F9A825, #F57F17); }
         .service-icon.cyan { background: linear-gradient(135deg, #0097A7, #00695C); }
         .service-icon.green { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
         .service-icon.darkred { background: linear-gradient(135deg, #C62828, #7F0000); }
-        .service-item h3 { font-size: 1rem; color: var(--primary); margin-bottom: 6px; }
-        .service-item p { font-size: 0.85rem; color: var(--text-light); max-width: 220px; margin: 0 auto; }
+        .service-icon.navy { background: linear-gradient(135deg, #283593, #1A237E); }
+        .service-icon.teal { background: linear-gradient(135deg, #00796B, #004D40); }
+        .service-icon.steel { background: linear-gradient(135deg, #546E7A, #37474F); }
+        .service-icon.amber { background: linear-gradient(135deg, #FF8F00, #E65100); }
+        .service-icon.brown { background: linear-gradient(135deg, #6D4C41, #4E342E); }
+        .service-icon.indigo { background: linear-gradient(135deg, #3949AB, #1A237E); }
+        .service-item h3 { font-size: 0.85rem; color: var(--primary); margin-bottom: 4px; }
+        .service-item p { font-size: 0.75rem; color: var(--text-light); max-width: 180px; margin: 0 auto; }
 
         /* ===== WORKFLOW ===== */
-        .workflow { background: var(--primary); color: white; }
+        .workflow .page-inner { background: var(--primary); color: white; border-radius: 0; padding: 50px 0; }
         .workflow .section-title h2 { color: white; }
-        .workflow-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 30px; position: relative;
-        }
+        .workflow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; position: relative; }
         .workflow-grid::before {
-            content: ''; position: absolute; top: 40px;
-            left: 12.5%; right: 12.5%; height: 2px;
+            content: ''; position: absolute; top: 35px; left: 12.5%; right: 12.5%; height: 2px;
             background: rgba(255,255,255,0.15);
         }
         .workflow-step { text-align: center; position: relative; }
         .workflow-step .step-num {
-            width: 80px; height: 80px; border-radius: 50%;
+            width: 70px; height: 70px; border-radius: 50%;
             background: rgba(255,255,255,0.08); border: 3px solid var(--accent);
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 20px;
-            font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;
+            font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800;
         }
-        .workflow-step h3 { font-size: 1.05rem; margin-bottom: 6px; }
-        .workflow-step p { font-size: 0.9rem; opacity: 0.75; }
+        .workflow-step h3 { font-size: 1rem; margin-bottom: 4px; }
+        .workflow-step p { font-size: 0.85rem; opacity: 0.75; }
 
         /* ===== AUTHORIZATIONS ===== */
-        .authorizations { background: var(--bg-white); }
-        .auth-intro { text-align: center; max-width: 700px; margin: 0 auto 35px; color: var(--text-light); }
-        .auth-list {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 12px; max-width: 800px; margin: 0 auto 40px;
-        }
+        .auth-intro { text-align: center; max-width: 700px; margin: 0 auto 30px; color: var(--text-light); font-size: 0.95rem; }
+        .auth-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 800px; margin: 0 auto 30px; }
         .auth-item {
-            display: flex; align-items: center; gap: 12px;
-            padding: 14px 18px; background: var(--bg-light); border-radius: var(--radius);
-            font-size: 0.92rem; font-weight: 500;
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 15px; background: var(--bg-light); border-radius: var(--radius);
+            font-size: 0.88rem; font-weight: 500;
         }
-        .auth-item i { color: var(--accent); font-size: 1.1rem; min-width: 20px; }
-        .auth-certs {
-            display: grid; grid-template-columns: repeat(5, 1fr);
-            gap: 12px; margin-top: 35px;
-        }
+        .auth-item i { color: var(--accent); font-size: 1rem; min-width: 18px; }
+        .auth-certs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 25px; }
         .auth-cert {
-            position: relative;
-            border-radius: var(--radius); overflow: hidden;
+            position: relative; border-radius: var(--radius); overflow: hidden;
             box-shadow: var(--shadow); cursor: pointer; transition: var(--transition);
         }
         .auth-cert:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
         .auth-cert img { width: 100%; height: auto; display: block; }
         .auth-cert::after {
-            content: 'BMS Consulting';
-            position: absolute; top: 50%; left: 50%;
+            content: 'BMS Consulting'; position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-30deg);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem; font-weight: 800;
-            color: rgba(12, 59, 110, 0.18);
-            white-space: nowrap; pointer-events: none;
+            font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800;
+            color: rgba(12,59,110,0.18); white-space: nowrap; pointer-events: none;
             letter-spacing: 2px; text-transform: uppercase;
         }
 
         /* ===== PROJECTS ===== */
-        .projects { background: var(--bg-light); }
-        .projects-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+        .proj-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 30px; }
+        .proj-tab {
+            padding: 8px 18px; border: 2px solid var(--primary); border-radius: 25px;
+            font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+            background: transparent; color: var(--primary); font-family: 'Montserrat', sans-serif;
         }
-        .project-card {
-            position: relative; border-radius: var(--radius);
-            overflow: hidden; cursor: pointer; aspect-ratio: 4/3;
+        .proj-tab:hover, .proj-tab.active { background: var(--primary); color: white; }
+        .proj-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .proj-gallery .project-card {
+            position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; aspect-ratio: 4/3;
+            display: none;
         }
-        .project-card img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .proj-gallery .project-card.show { display: block; }
+        .project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .project-card:hover img { transform: scale(1.1); }
         .project-card .overlay {
             position: absolute; inset: 0;
             background: linear-gradient(transparent 40%, rgba(12,59,110,0.8));
-            opacity: 0; transition: var(--transition);
-            display: flex; align-items: flex-end; padding: 15px;
+            opacity: 0; transition: var(--transition); display: flex; align-items: flex-end; padding: 12px;
         }
         .project-card:hover .overlay { opacity: 1; }
-        .project-card .overlay span { color: white; font-weight: 600; font-size: 0.85rem; }
+        .project-card .overlay span { color: white; font-weight: 600; font-size: 0.8rem; }
+
+        /* ===== PARTNERS ===== */
+        .partners-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 20px; max-width: 900px; margin: 0 auto;
+        }
+        .partner-card {
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 20px 15px; background: var(--bg-light); border-radius: var(--radius);
+            border: 1px solid #eee; transition: var(--transition);
+        }
+        .partner-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+        .partner-logo {
+            width: 80px; height: 80px; border-radius: 50%; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .partner-logo img { width: 70%; height: 70%; object-fit: contain; }
+        .partner-logo .initials {
+            font-family: 'Montserrat', sans-serif; font-weight: 800;
+            font-size: 1.4rem; color: var(--primary);
+        }
+        .partner-card h3 { font-size: 0.8rem; color: var(--primary); margin-bottom: 3px; line-height: 1.3; }
+        .partner-card p { font-size: 0.7rem; color: var(--text-light); }
+
+        /* ===== CAREERS ===== */
+        .careers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .careers-left h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 15px; }
+        .job-card {
+            padding: 15px 18px; background: var(--bg-light); border-radius: var(--radius);
+            margin-bottom: 10px; border-left: 4px solid var(--accent);
+        }
+        .job-card h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 4px; }
+        .job-card p { font-size: 0.82rem; color: var(--text-light); }
+        .offer-box {
+            background: var(--bg-light); border-radius: var(--radius); padding: 20px;
+            margin-top: 15px;
+        }
+        .offer-box h4 { font-size: 1rem; color: var(--primary); margin-bottom: 10px; }
+        .offer-box ul { list-style: none; }
+        .offer-box li { padding: 4px 0; font-size: 0.88rem; color: var(--text-light); }
+        .offer-box li i { color: var(--accent); margin-right: 8px; width: 16px; }
+        .careers-form { background: white; padding: 25px; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .careers-form h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 15px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 0.85rem; color: var(--text); }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: var(--radius);
+            font-family: 'Open Sans', sans-serif; font-size: 0.9rem; transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(12,59,110,0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 70px; }
+        .form-group input[type="file"] { padding: 8px; background: var(--bg-light); cursor: pointer; }
 
         /* ===== CONTACT ===== */
-        .contact { background: var(--bg-white); }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .contact-info h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 20px; }
-        .contact-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+        .contact-info h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 18px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
         .contact-item .icon-circle {
-            width: 42px; height: 42px; min-width: 42px; border-radius: 50%;
-            background: var(--bg-light); display: flex; align-items: center;
-            justify-content: center; color: var(--primary);
+            width: 38px; height: 38px; min-width: 38px; border-radius: 50%;
+            background: var(--bg-light); display: flex; align-items: center; justify-content: center; color: var(--primary);
         }
-        .contact-item strong { display: block; margin-bottom: 2px; font-size: 0.9rem; }
-        .contact-item span, .contact-item a { color: var(--text-light); font-size: 0.92rem; }
+        .contact-item strong { display: block; margin-bottom: 1px; font-size: 0.85rem; }
+        .contact-item span, .contact-item a { color: var(--text-light); font-size: 0.88rem; }
         .contact-item a { color: var(--primary); font-weight: 500; }
-        .contact-map {
-            border-radius: var(--radius); overflow: hidden;
-            box-shadow: var(--shadow); height: 100%; min-height: 300px;
-        }
+        .contact-map { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); height: 100%; min-height: 280px; }
         .contact-map iframe { width: 100%; height: 100%; border: 0; }
 
         /* ===== OFFER FORM ===== */
-        .offer { background: var(--bg-light); }
-        .offer-form {
-            max-width: 600px; margin: 0 auto;
-            background: white; padding: 40px; border-radius: var(--radius);
-            box-shadow: var(--shadow);
+        .offer-form-wrap {
+            max-width: 550px; margin: 0 auto; background: white; padding: 30px;
+            border-radius: var(--radius); box-shadow: var(--shadow);
         }
-        .offer-form .form-group { margin-bottom: 18px; }
-        .offer-form label {
-            display: block; margin-bottom: 5px;
-            font-weight: 600; font-size: 0.9rem; color: var(--text);
-        }
-        .offer-form input, .offer-form textarea, .offer-form select {
-            width: 100%; padding: 12px 14px;
-            border: 1px solid #ddd; border-radius: var(--radius);
-            font-family: 'Open Sans', sans-serif; font-size: 0.95rem;
-            transition: var(--transition);
-        }
-        .offer-form input:focus, .offer-form textarea:focus {
-            outline: none; border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(12,59,110,0.1);
-        }
-        .offer-form textarea { resize: vertical; min-height: 100px; }
-        .offer-form input[type="file"] { padding: 10px; background: var(--bg-light); cursor: pointer; }
-        .offer-form .btn-cta { margin-top: 10px; font-size: 1rem; padding: 14px; }
-        .offer-note {
-            text-align: center; margin-top: 15px;
-            font-size: 0.8rem; color: var(--text-light);
-        }
-
-        /* ===== COLABORATORI ===== */
-        .colaboratori { background: var(--bg-white); }
-        .collab-grid {
-            display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;
-        }
-        .collab-card {
-            display: flex; flex-direction: column; align-items: center;
-            text-align: center; padding: 35px 30px;
-            background: var(--bg-light); border-radius: var(--radius);
-            border: 1px solid #eee; transition: var(--transition);
-            min-width: 240px; max-width: 300px;
-        }
-        .collab-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
-        .collab-icon {
-            width: 60px; height: 60px; border-radius: 50%;
-            background: var(--primary); color: white;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; margin-bottom: 15px;
-        }
-        .collab-card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 5px; }
-        .collab-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; }
-        .collab-link {
-            font-size: 0.8rem; color: var(--accent); font-weight: 600;
-        }
-        .collab-link i { font-size: 0.7rem; }
+        .offer-note { text-align: center; margin-top: 12px; font-size: 0.78rem; color: var(--text-light); }
 
         /* ===== FOOTER ===== */
         .footer {
             background: var(--bg-dark); color: rgba(255,255,255,0.6);
-            padding: 30px 0; text-align: center;
+            padding: 15px 0; text-align: center; position: relative; z-index: 5;
         }
-        .footer-inner {
-            display: flex; align-items: center; justify-content: center;
-            gap: 15px; flex-wrap: wrap; font-size: 0.85rem;
-        }
+        .footer-inner { display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 0.8rem; }
         .footer a { color: var(--accent); }
 
         /* ===== LIGHTBOX ===== */
         .lightbox {
             display: none; position: fixed; inset: 0; z-index: 2000;
-            background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
-            padding: 40px;
+            background: rgba(0,0,0,0.92); align-items: center; justify-content: center; padding: 40px;
         }
         .lightbox.active { display: flex; }
-        .lightbox-img-wrap {
-            position: relative; display: inline-block;
-        }
+        .lightbox-img-wrap { position: relative; display: inline-block; }
         .lightbox-img-wrap img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius); display: block; }
         .lightbox-watermark {
             display: none; position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-30deg);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem; font-weight: 800;
-            color: rgba(12, 59, 110, 0.2);
-            white-space: nowrap; pointer-events: none;
+            font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800;
+            color: rgba(12,59,110,0.2); white-space: nowrap; pointer-events: none;
             letter-spacing: 4px; text-transform: uppercase;
         }
-        .lightbox-close {
-            position: absolute; top: 15px; right: 25px; color: white;
-            font-size: 2rem; cursor: pointer; background: none; border: none; padding: 10px; z-index: 2001;
-        }
+        .lightbox-close { position: absolute; top: 15px; right: 25px; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; padding: 10px; z-index: 2001; }
         .lightbox-nav {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            color: white; font-size: 1.8rem; cursor: pointer;
-            background: rgba(255,255,255,0.1); border: none; padding: 12px;
-            border-radius: 50%; transition: var(--transition);
+            position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 1.8rem; cursor: pointer;
+            background: rgba(255,255,255,0.1); border: none; padding: 12px; border-radius: 50%; transition: var(--transition);
         }
         .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
         .lightbox-prev { left: 15px; }
@@ -430,33 +362,27 @@
             .sidebar.open { transform: translateX(0); }
             .mobile-header { display: flex; }
             .hamburger { display: flex; }
-            .main { margin-left: 0; padding-top: 60px; }
-            .hero { min-height: calc(100vh - 60px); }
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .main { margin-left: 0; height: calc(100vh - 55px); margin-top: 55px; }
+            .page.has-bg::before { left: 50%; }
+            .services-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .workflow-grid { grid-template-columns: repeat(2, 1fr); }
             .workflow-grid::before { display: none; }
             .auth-list { grid-template-columns: 1fr; }
             .auth-certs { grid-template-columns: repeat(3, 1fr); }
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .proj-gallery { grid-template-columns: repeat(2, 1fr); }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-grid { grid-template-columns: 1fr; }
+            .careers-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .service-icon { width: 75px; height: 75px; font-size: 1.7rem; }
-            .projects-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .service-icon { width: 60px; height: 60px; font-size: 1.4rem; }
+            .proj-gallery { grid-template-columns: 1fr; }
             .auth-certs { grid-template-columns: repeat(2, 1fr); }
-            .hero-content h1 { font-size: 2.2rem; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
         }
-
-        /* ===== SCROLL ANIMATIONS ===== */
-        .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* Overlay for mobile sidebar */
-        .sidebar-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.5); z-index: 999;
-        }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; }
         .sidebar-overlay.active { display: block; }
     </style>
 </head>
@@ -468,31 +394,28 @@
         <img src="assets/img/logo.jpeg" alt="BMS Consulting">
         <span>BMS Consulting</span>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-top">
-        <a href="#acasa"><img src="assets/img/logo.jpeg" alt="BMS Consulting" class="sidebar-logo"></a>
+        <a href="#" onclick="showPage('acasa')"><img src="assets/img/logo.jpeg" alt="BMS Consulting" class="sidebar-logo"></a>
         <span class="sidebar-brand">BMS Consulting</span>
         <span class="sidebar-tagline">master the water / control the fire</span>
     </div>
-
     <nav class="sidebar-nav" id="sidebarNav">
-        <a href="#acasa" class="active" data-i18n="nav_home"><i class="fas fa-home"></i> Acasa</a>
-        <a href="#despre" data-i18n="nav_about"><i class="fas fa-building"></i> Despre Noi</a>
-        <a href="#servicii" data-i18n="nav_services"><i class="fas fa-cogs"></i> Servicii</a>
-        <a href="#flux" data-i18n="nav_workflow"><i class="fas fa-arrows-spin"></i> Ce Facem</a>
-        <a href="#autorizatii" data-i18n="nav_auth"><i class="fas fa-certificate"></i> Autorizatii</a>
-        <a href="#proiecte" data-i18n="nav_projects"><i class="fas fa-images"></i> Proiecte</a>
-        <a href="#contact" data-i18n="nav_contact"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="#oferta" data-i18n="nav_cta"><i class="fas fa-file-signature"></i> Cere Oferta</a>
-        <a href="#colaboratori" data-i18n="nav_collab"><i class="fas fa-handshake"></i> Colaboratori</a>
+        <a onclick="showPage('acasa')" class="active" data-page="acasa" data-i18n="nav_home"><i class="fas fa-home"></i> Acasa</a>
+        <a onclick="showPage('despre')" data-page="despre" data-i18n="nav_about"><i class="fas fa-building"></i> Despre Noi</a>
+        <a onclick="showPage('servicii')" data-page="servicii" data-i18n="nav_services"><i class="fas fa-cogs"></i> Servicii</a>
+        <a onclick="showPage('flux')" data-page="flux" data-i18n="nav_workflow"><i class="fas fa-arrows-spin"></i> Ce Facem</a>
+        <a onclick="showPage('autorizatii')" data-page="autorizatii" data-i18n="nav_auth"><i class="fas fa-certificate"></i> Autorizatii</a>
+        <a onclick="showPage('proiecte')" data-page="proiecte" data-i18n="nav_projects"><i class="fas fa-images"></i> Proiecte</a>
+        <a onclick="showPage('parteneri')" data-page="parteneri" data-i18n="nav_partners"><i class="fas fa-handshake"></i> Parteneri</a>
+        <a onclick="showPage('cariere')" data-page="cariere" data-i18n="nav_careers"><i class="fas fa-user-tie"></i> Cariere</a>
+        <a onclick="showPage('contact')" data-page="contact" data-i18n="nav_contact"><i class="fas fa-envelope"></i> Contact</a>
+        <a onclick="showPage('oferta')" data-page="oferta" data-i18n="nav_cta"><i class="fas fa-file-signature"></i> Cere Oferta</a>
     </nav>
-
     <div class="sidebar-bottom">
         <div class="lang-switcher">
             <button onclick="setLang('ro')" class="active">RO</button>
@@ -502,41 +425,33 @@
             <button onclick="setLang('zh')">中文</button>
         </div>
         <a href="tel:0742251439" class="sidebar-phone"><i class="fas fa-phone"></i> 0742.251.439</a>
-        <a href="#oferta" class="btn-cta" data-i18n="nav_cta"><i class="fas fa-paper-plane"></i> Cere Oferta</a>
+        <a onclick="showPage('oferta')" class="btn-cta" data-i18n="nav_cta"><i class="fas fa-paper-plane"></i> Cere Oferta</a>
     </div>
 </aside>
-
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <!-- MAIN CONTENT -->
 <main class="main">
 
-    <!-- HERO / ACASA -->
-    <section class="page hero" id="acasa">
+    <!-- ACASA -->
+    <section class="page hero active" id="acasa">
         <div class="page-inner">
             <div class="container">
                 <div class="hero-content">
                     <h1>BMS Consulting</h1>
                     <div class="tagline">master the water / control the fire</div>
                     <p data-i18n="hero_text">Solutii complete pentru instalatii termice, HVAC, stingere incendiu si protectie la foc. De la proiectare la punere in functiune.</p>
-                    <div class="hero-buttons">
-                        <a href="#servicii" class="btn-cta" data-i18n="hero_btn1"><i class="fas fa-cogs"></i> Serviciile Noastre</a>
-                        <a href="#contact" class="btn-cta btn-outline" data-i18n="hero_btn2"><i class="fas fa-envelope"></i> Contacteaza-ne</a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- DESPRE NOI -->
-    <section class="page about" id="despre">
+    <section class="page has-bg" id="despre">
         <div class="page-inner">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="about_title">Despre Noi</h2>
-                    <div class="underline"></div>
-                </div>
-                <div class="about-content fade-in">
+                <div class="section-title"><h2 data-i18n="about_title">Despre Noi</h2><div class="underline"></div></div>
+                <div class="about-content">
                     <p data-i18n="about_p1"><strong>SC BMS Consulting SRL</strong> este o societate cu capital privat, care activeaza cu succes pe piata constructiilor din Romania, incepand cu anul 2023, oferind solutii complete in domeniul instalatiilor termice, ventilatii, climatizare, instalatii desfumare si instalatii stingere incendiu, precum si sisteme de protectie la foc.</p>
                     <p data-i18n="about_p2">Compania detine un bogat patrimoniu uman, avand personal cu experienta in domeniul instalatiilor. BMS Consulting este un <strong>Antreprenor General</strong> capabil sa realizeze si sa gestioneze instalatii integrate in domeniile civil si industrial — de la proiectare la furnizare, montaj si punere in functiune.</p>
                     <p data-i18n="about_p3">Personalul BMS Consulting SRL este autorizat <strong>AGFR</strong> pentru executarea lucrarilor de montaj, service si punere in functiune pentru pompele de caldura si alte agregate care folosesc in functionarea lor compusi organici alifatici fluorurati (freon).</p>
@@ -547,43 +462,70 @@
     </section>
 
     <!-- SERVICII -->
-    <section class="page services" id="servicii">
+    <section class="page has-bg" id="servicii">
         <div class="page-inner">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="services_title">Servicii</h2>
-                    <div class="underline"></div>
-                </div>
-                <div class="services-grid fade-in">
+                <div class="section-title"><h2 data-i18n="services_title">Servicii</h2><div class="underline"></div></div>
+                <div class="services-grid">
                     <div class="service-item">
                         <div class="service-icon blue"><i class="fas fa-fan"></i></div>
                         <h3 data-i18n="svc1_title">Instalatii HVAC</h3>
-                        <p data-i18n="svc1_desc">Incalzire, ventilatie, climatizare pentru spatii rezidentiale si industriale</p>
+                        <p data-i18n="svc1_desc">Incalzire, ventilatie, climatizare</p>
                     </div>
                     <div class="service-item">
                         <div class="service-icon red"><i class="fas fa-fire-extinguisher"></i></div>
                         <h3 data-i18n="svc2_title">Stingere Incendiu</h3>
-                        <p data-i18n="svc2_desc">Sprinklere, hidranti, inele incendiu interioare si exterioare</p>
+                        <p data-i18n="svc2_desc">Sprinklere, hidranti, inele incendiu</p>
                     </div>
                     <div class="service-item">
                         <div class="service-icon yellow"><i class="fas fa-wind"></i></div>
                         <h3 data-i18n="svc3_title">Instalatii Desfumare</h3>
-                        <p data-i18n="svc3_desc">Evacuare fum si gaze fierbinti, ventilatoare axiale</p>
+                        <p data-i18n="svc3_desc">Evacuare fum si gaze fierbinti</p>
                     </div>
                     <div class="service-item">
                         <div class="service-icon cyan"><i class="fas fa-droplet"></i></div>
                         <h3 data-i18n="svc4_title">Instalatii Sanitare</h3>
-                        <p data-i18n="svc4_desc">Alimentare apa, canalizare, panouri solare, boilere</p>
+                        <p data-i18n="svc4_desc">Apa, canalizare, panouri solare</p>
                     </div>
                     <div class="service-item">
                         <div class="service-icon green"><i class="fas fa-bell"></i></div>
                         <h3 data-i18n="svc5_title">Detectie Incendiu</h3>
-                        <p data-i18n="svc5_desc">Sisteme de semnalizare, alarmare si alertare incendiu</p>
+                        <p data-i18n="svc5_desc">Semnalizare, alarmare, alertare</p>
                     </div>
                     <div class="service-item">
                         <div class="service-icon darkred"><i class="fas fa-shield-halved"></i></div>
                         <h3 data-i18n="svc6_title">Protectie la Foc</h3>
-                        <p data-i18n="svc6_desc">Termoprotectie cu produse de torcretare si vopsele intumescente</p>
+                        <p data-i18n="svc6_desc">Torcretare si vopsele intumescente</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon teal"><i class="fas fa-wrench"></i></div>
+                        <h3 data-i18n="svc7_title">Mentenanta Preventiva & Corectiva</h3>
+                        <p data-i18n="svc7_desc">Stingere, desfumare, detectie</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon navy"><i class="fas fa-drafting-compass"></i></div>
+                        <h3 data-i18n="svc8_title">Proiectare Specialitate</h3>
+                        <p data-i18n="svc8_desc">HVAC, stingere, desfumare, detectie</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon steel"><i class="fas fa-helmet-safety"></i></div>
+                        <h3 data-i18n="svc9_title">Executie & Montaj</h3>
+                        <p data-i18n="svc9_desc">Realizare RLV proiecte</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon amber"><i class="fas fa-boxes-stacked"></i></div>
+                        <h3 data-i18n="svc10_title">Vanzare Echipamente</h3>
+                        <p data-i18n="svc10_desc">Echipamente de cea mai buna calitate</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon brown"><i class="fas fa-cut"></i></div>
+                        <h3 data-i18n="svc11_title">Debitare Materiale</h3>
+                        <p data-i18n="svc11_desc">Conform proiect</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon indigo"><i class="fas fa-truck"></i></div>
+                        <h3 data-i18n="svc12_title">Livrare</h3>
+                        <p data-i18n="svc12_desc">Transport la nivel national</p>
                     </div>
                 </div>
             </div>
@@ -594,46 +536,24 @@
     <section class="page workflow" id="flux">
         <div class="page-inner">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="workflow_title">Ce Facem</h2>
-                    <div class="underline"></div>
-                </div>
-                <div class="workflow-grid fade-in">
-                    <div class="workflow-step">
-                        <div class="step-num">1</div>
-                        <h3 data-i18n="wf1_title">Proiectare</h3>
-                        <p data-i18n="wf1_desc">Solutii tehnice personalizate</p>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-num">2</div>
-                        <h3 data-i18n="wf2_title">Furnizare</h3>
-                        <p data-i18n="wf2_desc">Echipamente de cea mai buna calitate</p>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-num">3</div>
-                        <h3 data-i18n="wf3_title">Montaj</h3>
-                        <p data-i18n="wf3_desc">Personal cu inalta calificare</p>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-num">4</div>
-                        <h3 data-i18n="wf4_title">Service</h3>
-                        <p data-i18n="wf4_desc">Garantie si post-garantie</p>
-                    </div>
+                <div class="section-title"><h2 data-i18n="workflow_title">Ce Facem</h2><div class="underline"></div></div>
+                <div class="workflow-grid">
+                    <div class="workflow-step"><div class="step-num">1</div><h3 data-i18n="wf1_title">Proiectare</h3><p data-i18n="wf1_desc">Solutii tehnice personalizate</p></div>
+                    <div class="workflow-step"><div class="step-num">2</div><h3 data-i18n="wf2_title">Furnizare</h3><p data-i18n="wf2_desc">Echipamente de cea mai buna calitate</p></div>
+                    <div class="workflow-step"><div class="step-num">3</div><h3 data-i18n="wf3_title">Montaj</h3><p data-i18n="wf3_desc">Personal cu inalta calificare</p></div>
+                    <div class="workflow-step"><div class="step-num">4</div><h3 data-i18n="wf4_title">Service</h3><p data-i18n="wf4_desc">Garantie si post-garantie</p></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- AUTORIZATII -->
-    <section class="page authorizations" id="autorizatii">
+    <section class="page has-bg" id="autorizatii">
         <div class="page-inner">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="auth_title">Autorizatii</h2>
-                    <div class="underline"></div>
-                </div>
-                <p class="auth-intro fade-in" data-i18n="auth_intro">SC BMS Consulting SRL este autorizata de <strong>IGSU</strong> pe perioada nedeterminata pentru urmatoarele domenii:</p>
-                <div class="auth-list fade-in">
+                <div class="section-title"><h2 data-i18n="auth_title">Autorizatii</h2><div class="underline"></div></div>
+                <p class="auth-intro" data-i18n="auth_intro">SC BMS Consulting SRL este autorizata de <strong>IGSU</strong> pe perioada nedeterminata pentru urmatoarele domenii:</p>
+                <div class="auth-list">
                     <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item1">Limitare si stingere incendii cu sprinklere si hidranti</span></div>
                     <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item2">Evacuare fum si gaze fierbinti</span></div>
                     <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item3">Detectie si semnalizare incendiu</span></div>
@@ -641,7 +561,7 @@
                     <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item5">Termoprotectie in vopsele termospumante</span></div>
                     <div class="auth-item"><i class="fas fa-check-circle"></i><span data-i18n="auth_item6">Autorizare AGFR (pompe de caldura, freon)</span></div>
                 </div>
-                <div class="auth-certs fade-in">
+                <div class="auth-certs">
                     <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-1.jpeg" alt="Autorizatie IGSU 1"></div>
                     <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-2.jpeg" alt="Autorizatie IGSU 2"></div>
                     <div class="auth-cert" onclick="openLightbox(this.querySelector('img'))"><img src="assets/img/auth-3.jpeg" alt="Autorizatie IGSU 3"></div>
@@ -653,45 +573,185 @@
     </section>
 
     <!-- PROIECTE -->
-    <section class="page projects" id="proiecte">
+    <section class="page has-bg" id="proiecte">
         <div class="page-inner">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="projects_title">Proiecte</h2>
-                    <div class="underline"></div>
+                <div class="section-title"><h2 data-i18n="projects_title">Proiecte</h2><div class="underline"></div></div>
+                <div class="proj-tabs">
+                    <button class="proj-tab active" onclick="filterProjects('all')" data-i18n="proj_all">Toate</button>
+                    <button class="proj-tab" onclick="filterProjects('hvac')">HVAC</button>
+                    <button class="proj-tab" onclick="filterProjects('sprinklere')" data-i18n="proj_sprinklere">Sprinklere</button>
+                    <button class="proj-tab" onclick="filterProjects('hidranti')" data-i18n="proj_hidranti">Hidranti</button>
+                    <button class="proj-tab" onclick="filterProjects('desfumare')" data-i18n="proj_desfumare">Desfumare</button>
+                    <button class="proj-tab" onclick="filterProjects('clapeti')" data-i18n="proj_clapeti">Clapeti Antifoc</button>
+                    <button class="proj-tab" onclick="filterProjects('sanitare')" data-i18n="proj_sanitare">Sanitare</button>
                 </div>
-                <div class="projects-grid fade-in">
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-hvac-1.jpeg" alt="HVAC industrial">
-                        <div class="overlay"><span data-i18n="proj1">HVAC — Hala industriala</span></div>
+                <div class="proj-gallery">
+                    <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-hvac-1.jpeg" alt="HVAC"><div class="overlay"><span>HVAC — Hala industriala</span></div>
                     </div>
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sprinkler-1.jpeg" alt="Sprinklere">
-                        <div class="overlay"><span data-i18n="proj2">Sprinklere si ventilatii</span></div>
+                    <div class="project-card show" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sprinkler-1.jpeg" alt="Sprinklere"><div class="overlay"><span>Sistem sprinklere</span></div>
                     </div>
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sprinkler-2.jpeg" alt="Stingere incendiu">
-                        <div class="overlay"><span data-i18n="proj3">Stingere incendiu</span></div>
+                    <div class="project-card show" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sprinkler-2.jpeg" alt="Sprinklere"><div class="overlay"><span>Retea sprinklere</span></div>
                     </div>
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-1.jpeg" alt="Instalatii industriale">
-                        <div class="overlay"><span data-i18n="proj4">Instalatii industriale</span></div>
+                    <div class="project-card show" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-1.jpeg" alt="Hidranti"><div class="overlay"><span>Retea hidranti</span></div>
                     </div>
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-2.jpeg" alt="Sisteme hidranti">
-                        <div class="overlay"><span data-i18n="proj5">Sisteme hidranti</span></div>
+                    <div class="project-card show" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-2.jpeg" alt="Hidranti"><div class="overlay"><span>Sistem hidranti interiori</span></div>
                     </div>
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-3.jpeg" alt="HVAC si sprinklere">
-                        <div class="overlay"><span data-i18n="proj6">HVAC si sprinklere</span></div>
+                    <div class="project-card show" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-3.jpeg" alt="Desfumare"><div class="overlay"><span>Instalatie desfumare</span></div>
                     </div>
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-4.jpeg" alt="Instalatii complexe">
-                        <div class="overlay"><span data-i18n="proj7">Instalatii complexe</span></div>
+                    <div class="project-card show" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-ventilation-1.jpeg" alt="Desfumare"><div class="overlay"><span>Ventilator desfumare</span></div>
                     </div>
-                    <div class="project-card" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-ventilation-1.jpeg" alt="Desfumare">
-                        <div class="overlay"><span data-i18n="proj8">Sistem desfumare</span></div>
+                    <div class="project-card show" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-industrial-4.jpeg" alt="Desfumare"><div class="overlay"><span>Tubulaturi desfumare</span></div>
+                    </div>
+                    <div class="project-card show" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/stock-clapeti.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Clapeti antifoc</span></div>
+                    </div>
+                    <div class="project-card show" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/stock-sanitare.jpg" alt="Sanitare"><div class="overlay"><span>Instalatii sanitare</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTENERI -->
+    <section class="page has-bg" id="parteneri">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title"><h2 data-i18n="partners_title">Parteneri</h2><div class="underline"></div></div>
+                <div class="partners-grid">
+                    <a href="https://www.awgconsulting.ro" target="_blank" rel="noopener" class="partner-card">
+                        <div class="partner-logo"><img src="assets/img/partners/partner-awg.jpeg" alt="AWG"></div>
+                        <h3>AWG Active Consulting</h3>
+                        <p data-i18n="p_awg">Servicii contabilitate</p>
+                    </a>
+                    <a href="#" class="partner-card" target="_blank" rel="noopener">
+                        <div class="partner-logo"><img src="assets/img/partners/partner-foshan.png" alt="FOSHAN" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="display:block"><span class="initials" style="display:none">FD</span></div>
+                        <h3>FOSHAN NANHAI FODI</h3>
+                        <p data-i18n="p_foshan">Echipamente industriale</p>
+                    </a>
+                    <a href="http://www.roll-forming-factory.com" target="_blank" rel="noopener" class="partner-card">
+                        <div class="partner-logo"><img src="assets/img/partners/partner-rollforming.png" alt="Roll Forming" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="display:block"><span class="initials" style="display:none">RF</span></div>
+                        <h3>Roll Forming Factory</h3>
+                        <p data-i18n="p_rollform">Masini profilare tabla</p>
+                    </a>
+                    <a href="https://www.lock-former.com" target="_blank" rel="noopener" class="partner-card">
+                        <div class="partner-logo"><img src="assets/img/partners/partner-lockformer.png" alt="Lock Former" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="display:block"><span class="initials" style="display:none">LF</span></div>
+                        <h3>Lock Former</h3>
+                        <p data-i18n="p_lockform">Masini prelucrare tabla</p>
+                    </a>
+                    <a href="#" class="partner-card">
+                        <div class="partner-logo"><span class="initials">AG</span></div>
+                        <h3 data-i18n="p_ag_name">AG - Antreprenor General</h3>
+                        <p data-i18n="p_ag">Constructii civile & industriale</p>
+                    </a>
+                    <a href="http://www.selirom-construct.ro/index.html" target="_blank" rel="noopener" class="partner-card">
+                        <div class="partner-logo"><img src="assets/img/partners/partner-selirom.jpg" alt="Seli Rom Construct"></div>
+                        <h3>Seli Rom Construct</h3>
+                        <p data-i18n="p_selirom">Constructii & amenajari</p>
+                    </a>
+                    <a href="http://www.retail-concept.ro" target="_blank" rel="noopener" class="partner-card">
+                        <div class="partner-logo"><img src="assets/img/partners/partner-retailconcept.png" alt="Retail Concept" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="display:block"><span class="initials" style="display:none">RC</span></div>
+                        <h3>Retail Concept</h3>
+                        <p data-i18n="p_retail">Solutii retail & design</p>
+                    </a>
+                    <a href="https://lansapp.net/" target="_blank" rel="noopener" class="partner-card">
+                        <div class="partner-logo"><img src="assets/img/partners/partner-lansapp.png" alt="LansApp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="display:block"><span class="initials" style="display:none">LA</span></div>
+                        <h3>LansApp Coding</h3>
+                        <p data-i18n="p_lansapp">Dezvoltare software</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARIERE -->
+    <section class="page has-bg" id="cariere">
+        <div class="page-inner">
+            <div class="container">
+                <div class="section-title"><h2 data-i18n="careers_title">Cariere</h2><div class="underline"></div></div>
+                <div class="careers-grid">
+                    <div class="careers-left">
+                        <h3 data-i18n="careers_positions">Pozitii deschise</h3>
+                        <div class="job-card">
+                            <h4 data-i18n="job1_title"><i class="fas fa-hard-hat"></i> Inginer Instalatii</h4>
+                            <p data-i18n="job1_desc">Proiectare si coordonare lucrari HVAC, stingere incendiu, desfumare</p>
+                        </div>
+                        <div class="job-card">
+                            <h4 data-i18n="job2_title"><i class="fas fa-wrench"></i> Instalator</h4>
+                            <p data-i18n="job2_desc">Montaj instalatii termice, sanitare, stingere incendiu</p>
+                        </div>
+                        <div class="job-card">
+                            <h4 data-i18n="job3_title"><i class="fas fa-tools"></i> Ajutor Instalator</h4>
+                            <p data-i18n="job3_desc">Asistenta montaj, pregatire materiale, transport echipamente</p>
+                        </div>
+                        <div class="job-card">
+                            <h4 data-i18n="job4_title"><i class="fas fa-user-plus"></i> Necalificat</h4>
+                            <p data-i18n="job4_desc">Activitati auxiliare pe santier, posibilitate de calificare</p>
+                        </div>
+                        <div class="offer-box">
+                            <h4 data-i18n="careers_offer">Ce oferim</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <span data-i18n="offer1">Salariu motivant in functie de experienta</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="offer2">Mediu de lucru profesional si sigur</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="offer3">Posibilitate de avansare si calificare</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="offer4">Proiecte diverse si provocatoare</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="offer5">Echipamente si scule de ultima generatie</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="careers-form">
+                        <h3 data-i18n="careers_apply">Aplica acum</h3>
+                        <form action="https://formspree.io/f/mgorvoyv" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_subject" value="Aplicare Cariere - BMS Consulting">
+                            <div class="form-group">
+                                <label data-i18n="form_position">Aplica pentru *</label>
+                                <select name="pozitie" required>
+                                    <option value="" data-i18n="form_select">Selecteaza...</option>
+                                    <option value="Inginer Instalatii" data-i18n="job1_title">Inginer Instalatii</option>
+                                    <option value="Instalator" data-i18n="job2_title">Instalator</option>
+                                    <option value="Ajutor Instalator" data-i18n="job3_title">Ajutor Instalator</option>
+                                    <option value="Necalificat" data-i18n="job4_title">Necalificat</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_name">Nume *</label>
+                                <input type="text" name="nume" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_phone">Telefon *</label>
+                                <input type="tel" name="telefon" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_exp">Experienta profesionala</label>
+                                <textarea name="experienta" rows="3" placeholder="Descrieti pe scurt experienta dvs."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_edu">Studii</label>
+                                <input type="text" name="studii">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_lang">Limbi straine</label>
+                                <input type="text" name="limbi">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_cv">Ataseaza CV</label>
+                                <input type="file" name="cv" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                            </div>
+                            <button type="submit" class="btn-cta" data-i18n="form_apply_submit"><i class="fas fa-paper-plane"></i> Trimite Aplicatia</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -699,34 +759,19 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="page contact" id="contact">
+    <section class="page has-bg" id="contact">
         <div class="page-inner">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="contact_title">Contact</h2>
-                    <div class="underline"></div>
-                </div>
+                <div class="section-title"><h2 data-i18n="contact_title">Contact</h2><div class="underline"></div></div>
                 <div class="contact-grid">
-                    <div class="contact-info fade-in">
+                    <div class="contact-info">
                         <h3 data-i18n="contact_subtitle">Contacteaza-ne</h3>
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-                            <div><strong data-i18n="contact_address_label">Adresa</strong><span>Str. Dorului nr. 5, Corbeanca, Ilfov</span></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
-                            <div><strong data-i18n="contact_phone_label">Telefon</strong><a href="tel:0742251439">0742.251.439</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-                            <div><strong>Email</strong><a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-clock"></i></div>
-                            <div><strong data-i18n="contact_hours_label">Program</strong><span data-i18n="contact_hours">Luni - Vineri: 08:00 - 17:00</span></div>
-                        </div>
+                        <div class="contact-item"><div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div><div><strong data-i18n="contact_address_label">Adresa</strong><span>Str. Dorului nr. 5, Corbeanca, Ilfov</span></div></div>
+                        <div class="contact-item"><div class="icon-circle"><i class="fas fa-phone"></i></div><div><strong data-i18n="contact_phone_label">Telefon</strong><a href="tel:0742251439">0742.251.439</a></div></div>
+                        <div class="contact-item"><div class="icon-circle"><i class="fas fa-envelope"></i></div><div><strong>Email</strong><a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a></div></div>
+                        <div class="contact-item"><div class="icon-circle"><i class="fas fa-clock"></i></div><div><strong data-i18n="contact_hours_label">Program</strong><span data-i18n="contact_hours">Luni - Vineri: 08:00 - 17:00</span></div></div>
                     </div>
-                    <div class="contact-map fade-in">
+                    <div class="contact-map">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2843.4!2d26.05!3d44.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCorbeanca%2C+Ilfov!5e0!3m2!1sro!2sro" loading="lazy" allowfullscreen></iframe>
                     </div>
                 </div>
@@ -735,57 +780,31 @@
     </section>
 
     <!-- CERE OFERTA -->
-    <section class="page offer" id="oferta">
+    <section class="page has-bg" id="oferta">
         <div class="page-inner">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="offer_title">Cere Oferta</h2>
-                    <div class="underline"></div>
-                </div>
-                <!--
-                    FORMSPREE SETUP:
-                    1. Creeaza cont gratuit la https://formspree.io
-                    2. Creeaza un form nou cu email: office@bmsconsulting.ro
-                    3. Copiaza Form ID (ex: xyzabcde)
-                    4. Inlocuieste YOUR_FORM_ID mai jos
-                -->
-                <form class="offer-form fade-in" action="https://formspree.io/f/mgorvoyv" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label data-i18n="form_name">Nume *</label>
-                        <input type="text" name="nume" required>
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form_company">Firma</label>
-                        <input type="text" name="firma">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form_phone">Telefon *</label>
-                        <input type="tel" name="telefon" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" name="email" required>
-                    </div>
+                <div class="section-title"><h2 data-i18n="offer_title">Cere Oferta</h2><div class="underline"></div></div>
+                <form class="offer-form-wrap" action="https://formspree.io/f/mgorvoyv" method="POST" enctype="multipart/form-data">
+                    <div class="form-group"><label data-i18n="form_name">Nume *</label><input type="text" name="nume" required></div>
+                    <div class="form-group"><label data-i18n="form_company">Firma</label><input type="text" name="firma"></div>
+                    <div class="form-group"><label data-i18n="form_phone">Telefon *</label><input type="tel" name="telefon" required></div>
+                    <div class="form-group"><label>Email *</label><input type="email" name="email" required></div>
                     <div class="form-group">
                         <label data-i18n="form_service">Serviciu dorit</label>
                         <select name="serviciu">
                             <option value="" data-i18n="form_select">Selecteaza...</option>
-                            <option value="HVAC" data-i18n="svc1_title">Instalatii HVAC</option>
-                            <option value="Stingere Incendiu" data-i18n="svc2_title">Stingere Incendiu</option>
-                            <option value="Desfumare" data-i18n="svc3_title">Instalatii Desfumare</option>
-                            <option value="Sanitare" data-i18n="svc4_title">Instalatii Sanitare</option>
-                            <option value="Detectie" data-i18n="svc5_title">Detectie Incendiu</option>
-                            <option value="Protectie Foc" data-i18n="svc6_title">Protectie la Foc</option>
+                            <option value="HVAC">HVAC</option>
+                            <option value="Stingere Incendiu">Stingere Incendiu</option>
+                            <option value="Desfumare">Desfumare</option>
+                            <option value="Sanitare">Sanitare</option>
+                            <option value="Detectie">Detectie Incendiu</option>
+                            <option value="Protectie Foc">Protectie la Foc</option>
+                            <option value="Mentenanta">Mentenanta</option>
+                            <option value="Proiectare">Proiectare</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label data-i18n="form_message">Mesaj *</label>
-                        <textarea name="mesaj" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form_files">Atasamente (PDF, DWG, imagini)</label>
-                        <input type="file" name="atasament" multiple accept=".pdf,.dwg,.dxf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip,.rar">
-                    </div>
+                    <div class="form-group"><label data-i18n="form_message">Mesaj *</label><textarea name="mesaj" rows="4" required></textarea></div>
+                    <div class="form-group"><label data-i18n="form_files">Atasamente (PDF, DWG, imagini)</label><input type="file" name="atasament" multiple accept=".pdf,.dwg,.dxf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip,.rar"></div>
                     <button type="submit" class="btn-cta" data-i18n="form_submit"><i class="fas fa-paper-plane"></i> Trimite Cererea</button>
                     <p class="offer-note" data-i18n="form_note">Veti primi un raspuns in maxim 24 de ore lucratoare.</p>
                 </form>
@@ -793,43 +812,17 @@
         </div>
     </section>
 
-    <!-- COLABORATORI -->
-    <section class="page colaboratori" id="colaboratori">
-        <div class="page-inner">
-            <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="collab_title">Colaboratori</h2>
-                    <div class="underline"></div>
-                </div>
-                <div class="collab-grid fade-in">
-                    <a href="https://lansapp.net/" target="_blank" rel="noopener" class="collab-card">
-                        <div class="collab-icon"><i class="fas fa-code"></i></div>
-                        <h3>LansApp Coding</h3>
-                        <p data-i18n="collab_lansapp">Dezvoltare software &amp; solutii digitale</p>
-                        <span class="collab-link">lansapp.net <i class="fas fa-external-link-alt"></i></span>
-                    </a>
-                    <a href="https://github.com/andyfe76" target="_blank" rel="noopener" class="collab-card">
-                        <div class="collab-icon"><i class="fab fa-github"></i></div>
-                        <h3>Andos</h3>
-                        <p data-i18n="collab_andos">Dezvoltare &amp; consultanta IT</p>
-                        <span class="collab-link">github.com/andyfe76 <i class="fas fa-external-link-alt"></i></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <span>&copy; 2024 SC BMS Consulting SRL.</span>
-            <span data-i18n="footer_rights">Toate drepturile rezervate.</span>
-            <a href="tel:0742251439">0742.251.439</a>
-            <a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a>
-        </div>
-    </footer>
-
 </main>
+
+<!-- FOOTER (shown at bottom of each page) -->
+<footer class="footer">
+    <div class="footer-inner">
+        <span>&copy; 2024 SC BMS Consulting SRL.</span>
+        <span data-i18n="footer_rights">Toate drepturile rezervate.</span>
+        <a href="tel:0742251439">0742.251.439</a>
+        <a href="mailto:office@bmsconsulting.ro">office@bmsconsulting.ro</a>
+    </div>
+</footer>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -843,46 +836,37 @@
 </div>
 
 <script>
-// === SIDEBAR MOBILE ===
-const hamburger = document.getElementById('hamburger');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('sidebarOverlay');
+// === SPA PAGE NAVIGATION ===
+function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); });
+    const page = document.getElementById(id);
+    if (page) { page.classList.add('active'); page.scrollTop = 0; }
+    document.querySelectorAll('.sidebar-nav a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('data-page') === id);
+    });
+    // Close mobile sidebar
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('active');
+}
 
-hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('active');
+// === MOBILE SIDEBAR ===
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('active');
 });
-overlay.addEventListener('click', () => {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('active');
-});
-document.querySelectorAll('.sidebar-nav a, .sidebar-bottom .btn-cta').forEach(a => {
-    a.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
-    });
-});
-
-// === ACTIVE NAV ON SCROLL ===
-const sections = document.querySelectorAll('.page[id]');
-const navLinks = document.querySelectorAll('.sidebar-nav a');
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const top = section.offsetTop - 100;
-        if (window.scrollY >= top) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-    });
+document.getElementById('sidebarOverlay').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('active');
 });
 
-// === SCROLL ANIMATIONS ===
-const obsrv = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => obsrv.observe(el));
+// === PROJECT FILTER ===
+function filterProjects(cat) {
+    document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.proj-gallery .project-card').forEach(c => {
+        c.classList.toggle('show', cat === 'all' || c.dataset.cat === cat);
+    });
+}
 
 // === LIGHTBOX ===
 let lbImages = [], lbIdx = 0;
@@ -891,17 +875,14 @@ function updateWatermark(img) {
     document.getElementById('lightboxWatermark').style.display = isAuthImage(img) ? 'block' : 'none';
 }
 function openLightbox(img) {
-    lbImages = Array.from(document.querySelectorAll('.project-card img, .auth-cert img'));
-    lbIdx = lbImages.indexOf(img);
+    lbImages = Array.from(document.querySelectorAll('.page.active .project-card img, .page.active .auth-cert img'));
+    if (!lbImages.length) lbImages = Array.from(document.querySelectorAll('.project-card img, .auth-cert img'));
+    lbIdx = lbImages.indexOf(img); if (lbIdx < 0) lbIdx = 0;
     document.getElementById('lightboxImg').src = img.src;
     updateWatermark(img);
     document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
 }
-function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
-}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
 function navLightbox(dir) {
     lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
     document.getElementById('lightboxImg').src = lbImages[lbIdx].src;
@@ -916,208 +897,260 @@ document.addEventListener('keydown', function(e) {
 });
 
 // === TRANSLATIONS ===
-// Default language is Romanian (from HTML). Switcher: EN, DE, FR, ZH.
 const roDefaults = {};
 document.querySelectorAll('[data-i18n]').forEach(el => { roDefaults[el.getAttribute('data-i18n')] = el.innerHTML; });
-
 const T = {
     en: {
         nav_home:"Home", nav_about:"About Us", nav_services:"Services", nav_workflow:"What We Do",
         nav_auth:"Certifications", nav_projects:"Projects", nav_contact:"Contact", nav_cta:"Get a Quote",
+        nav_partners:"Partners", nav_careers:"Careers",
         hero_text:"Complete solutions for thermal installations, HVAC, fire suppression and fire protection. From design to commissioning.",
-        hero_btn1:"Our Services", hero_btn2:"Contact Us",
         about_title:"About Us",
         about_p1:'<strong>SC BMS Consulting SRL</strong> is a privately held company, successfully operating in Romania\'s construction market since 2023, providing complete solutions for thermal installations, ventilation, air conditioning, smoke evacuation, fire suppression systems, and fire protection.',
-        about_p2:'The company has rich human capital, with experienced staff in the installations field. BMS Consulting is a <strong>General Contractor</strong> capable of building and managing integrated installations in civil and industrial sectors — from design to supply, installation and commissioning.',
+        about_p2:'The company has experienced staff in the installations field. BMS Consulting is a <strong>General Contractor</strong> capable of building and managing integrated installations in civil and industrial sectors — from design to supply, installation and commissioning.',
         about_p3:'BMS Consulting SRL staff is <strong>AGFR certified</strong> for installation, service and commissioning of heat pumps and other systems using fluorinated organic compounds (freon).',
-        about_badge:'IGSU certified for an indefinite period &bull; 6 active certifications',
+        about_badge:'IGSU certified indefinitely &bull; 6 active certifications',
         services_title:"Services",
-        svc1_title:"HVAC Systems", svc1_desc:"Heating, ventilation, air conditioning for residential and industrial spaces",
-        svc2_title:"Fire Suppression", svc2_desc:"Sprinklers, hydrants, interior and exterior fire rings",
-        svc3_title:"Smoke Evacuation", svc3_desc:"Smoke and hot gas evacuation, axial fans",
-        svc4_title:"Plumbing", svc4_desc:"Water supply, sewage, solar panels, boilers",
-        svc5_title:"Fire Detection", svc5_desc:"Fire signaling, alarm and alert systems",
-        svc6_title:"Fire Protection", svc6_desc:"Thermal protection with shotcrete and intumescent paints",
+        svc1_title:"HVAC Systems", svc1_desc:"Heating, ventilation, air conditioning",
+        svc2_title:"Fire Suppression", svc2_desc:"Sprinklers, hydrants, fire rings",
+        svc3_title:"Smoke Evacuation", svc3_desc:"Smoke and hot gas evacuation",
+        svc4_title:"Plumbing", svc4_desc:"Water, sewage, solar panels",
+        svc5_title:"Fire Detection", svc5_desc:"Signaling, alarm, alert systems",
+        svc6_title:"Fire Protection", svc6_desc:"Shotcrete and intumescent paints",
+        svc7_title:"Preventive & Corrective Maintenance", svc7_desc:"Fire, smoke, detection systems",
+        svc8_title:"Specialty Design", svc8_desc:"HVAC, fire, smoke, detection",
+        svc9_title:"Execution & Assembly", svc9_desc:"RLV project implementation",
+        svc10_title:"Equipment Sales", svc10_desc:"Highest quality equipment",
+        svc11_title:"Material Cutting", svc11_desc:"According to project specs",
+        svc12_title:"Delivery", svc12_desc:"Nationwide transport",
         workflow_title:"What We Do",
         wf1_title:"Design", wf1_desc:"Custom technical solutions",
         wf2_title:"Supply", wf2_desc:"Highest quality equipment",
         wf3_title:"Installation", wf3_desc:"Highly qualified personnel",
         wf4_title:"Service", wf4_desc:"Warranty and post-warranty",
         auth_title:"Certifications",
-        auth_intro:'SC BMS Consulting SRL is certified by <strong>IGSU</strong> for an indefinite period for the following domains:',
+        auth_intro:'SC BMS Consulting SRL is certified by <strong>IGSU</strong> for an indefinite period:',
         auth_item1:"Fire suppression with sprinklers and hydrants",
         auth_item2:"Smoke and hot gas evacuation",
         auth_item3:"Fire detection and signaling",
-        auth_item4:"Thermal protection with shotcrete products",
+        auth_item4:"Thermal protection with shotcrete",
         auth_item5:"Thermal protection with intumescent paints",
         auth_item6:"AGFR certification (heat pumps, freon)",
-        projects_title:"Projects",
-        proj1:"HVAC — Industrial hall", proj2:"Sprinklers and ventilation",
-        proj3:"Fire suppression", proj4:"Industrial installations",
-        proj5:"Hydrant systems", proj6:"HVAC and sprinklers",
-        proj7:"Complex installations", proj8:"Smoke evacuation system",
+        projects_title:"Projects", proj_all:"All", proj_sprinklere:"Sprinklers",
+        proj_hidranti:"Hydrants", proj_desfumare:"Smoke Evacuation",
+        proj_clapeti:"Fire Dampers", proj_sanitare:"Plumbing",
+        partners_title:"Partners",
+        p_awg:"Accounting services", p_foshan:"Industrial equipment", p_rollform:"Sheet metal machines",
+        p_lockform:"Sheet metal processing", p_ag_name:"AG - General Contractor", p_ag:"Civil & industrial construction",
+        p_selirom:"Construction & design", p_retail:"Retail solutions & design", p_lansapp:"Software development",
+        careers_title:"Careers", careers_positions:"Open Positions",
+        job1_title:"Installation Engineer", job1_desc:"Design and coordination of HVAC, fire suppression, smoke evacuation works",
+        job2_title:"Installer", job2_desc:"Assembly of thermal, plumbing, fire suppression installations",
+        job3_title:"Assistant Installer", job3_desc:"Assembly assistance, material preparation, equipment transport",
+        job4_title:"Unskilled Worker", job4_desc:"Auxiliary site activities, qualification opportunity",
+        careers_offer:"What We Offer",
+        offer1:"Motivating salary based on experience",
+        offer2:"Professional and safe work environment",
+        offer3:"Opportunity for advancement and qualification",
+        offer4:"Diverse and challenging projects",
+        offer5:"State-of-the-art tools and equipment",
+        careers_apply:"Apply Now", form_position:"Apply for *",
+        form_name:"Name *", form_company:"Company", form_phone:"Phone *",
+        form_exp:"Professional experience", form_edu:"Education", form_lang:"Foreign languages",
+        form_cv:"Attach CV", form_apply_submit:"Send Application",
+        form_service:"Service needed", form_select:"Select...",
+        form_message:"Message *", form_files:"Attachments (PDF, DWG, images)",
+        form_submit:"Send Request", form_note:"You will receive a response within 24 business hours.",
         contact_title:"Contact", contact_subtitle:"Get in Touch",
         contact_address_label:"Address", contact_phone_label:"Phone",
         contact_hours_label:"Working Hours", contact_hours:"Monday - Friday: 08:00 - 17:00",
         offer_title:"Request a Quote",
-        form_name:"Name *", form_company:"Company", form_phone:"Phone *",
-        form_service:"Service needed", form_select:"Select...",
-        form_message:"Message *", form_files:"Attachments (PDF, DWG, images)",
-        form_submit:"Send Request", form_note:"You will receive a response within 24 business hours.",
-        footer_rights:"All rights reserved.",
-        nav_collab:"Partners", collab_title:"Partners",
-        collab_lansapp:"Software development & digital solutions",
-        collab_andos:"Development & IT consulting"
+        footer_rights:"All rights reserved."
     },
     de: {
         nav_home:"Startseite", nav_about:"\u00dcber uns", nav_services:"Leistungen", nav_workflow:"Arbeitsablauf",
-        nav_auth:"Zertifizierungen", nav_projects:"Projekte", nav_contact:"Kontakt", nav_cta:"Angebot anfordern",
+        nav_auth:"Zertifizierungen", nav_projects:"Projekte", nav_contact:"Kontakt", nav_cta:"Angebot",
+        nav_partners:"Partner", nav_careers:"Karriere",
         hero_text:"Komplettl\u00f6sungen f\u00fcr thermische Anlagen, HLK, Brandl\u00f6schung und Brandschutz. Von der Planung bis zur Inbetriebnahme.",
-        hero_btn1:"Unsere Leistungen", hero_btn2:"Kontakt",
         about_title:"\u00dcber uns",
-        about_p1:'<strong>SC BMS Consulting SRL</strong> ist ein Privatunternehmen, das seit 2023 erfolgreich auf dem rum\u00e4nischen Baumarkt t\u00e4tig ist und Komplettl\u00f6sungen im Bereich thermische Anlagen, L\u00fcftung, Klimatisierung, Rauchableitung, Brandl\u00f6schanlagen und Brandschutz bietet.',
-        about_p2:'Das Unternehmen verf\u00fcgt \u00fcber erfahrenes Fachpersonal im Bereich der Installationen. BMS Consulting ist ein <strong>Generalunternehmer</strong>, der integrierte Installationen im zivilen und industriellen Bereich realisieren und verwalten kann \u2014 von der Planung \u00fcber die Lieferung und Montage bis zur Inbetriebnahme.',
-        about_p3:'Das Personal von BMS Consulting SRL ist <strong>AGFR-zertifiziert</strong> f\u00fcr die Installation, Wartung und Inbetriebnahme von W\u00e4rmepumpen und anderen Anlagen mit fluorierten organischen Verbindungen (FCKW).',
+        about_p1:'<strong>SC BMS Consulting SRL</strong> ist ein Privatunternehmen, das seit 2023 auf dem rum\u00e4nischen Baumarkt t\u00e4tig ist und Komplettl\u00f6sungen im Bereich thermische Anlagen, L\u00fcftung, Klimatisierung, Rauchableitung, Brandl\u00f6schanlagen und Brandschutz bietet.',
+        about_p2:'Das Unternehmen verf\u00fcgt \u00fcber erfahrenes Fachpersonal. BMS Consulting ist ein <strong>Generalunternehmer</strong> f\u00fcr integrierte Installationen im zivilen und industriellen Bereich.',
+        about_p3:'Das Personal ist <strong>AGFR-zertifiziert</strong> f\u00fcr W\u00e4rmepumpen und Anlagen mit fluorierten organischen Verbindungen.',
         about_badge:'IGSU-zertifiziert auf unbestimmte Zeit &bull; 6 aktive Zertifizierungen',
         services_title:"Leistungen",
-        svc1_title:"HLK-Anlagen", svc1_desc:"Heizung, L\u00fcftung, Klimaanlage f\u00fcr Wohn- und Industriegebäude",
-        svc2_title:"Brandl\u00f6schung", svc2_desc:"Sprinkler, Hydranten, Innen- und Au\u00dfenl\u00f6schringe",
-        svc3_title:"Rauchableitung", svc3_desc:"Rauch- und Hei\u00dfgasabf\u00fchrung, Axialventilatoren",
-        svc4_title:"Sanit\u00e4rinstallationen", svc4_desc:"Wasserversorgung, Kanalisation, Solarpaneele, Boiler",
-        svc5_title:"Branddetektion", svc5_desc:"Brandmelde-, Alarm- und Warnsysteme",
-        svc6_title:"Brandschutz", svc6_desc:"W\u00e4rmeschutz mit Spritzbeton und Intumeszenzfarben",
+        svc1_title:"HLK-Anlagen", svc1_desc:"Heizung, L\u00fcftung, Klima",
+        svc2_title:"Brandl\u00f6schung", svc2_desc:"Sprinkler, Hydranten",
+        svc3_title:"Rauchableitung", svc3_desc:"Rauch- und Hei\u00dfgasabf\u00fchrung",
+        svc4_title:"Sanit\u00e4r", svc4_desc:"Wasser, Kanalisation, Solar",
+        svc5_title:"Branddetektion", svc5_desc:"Brandmelde- und Alarmsysteme",
+        svc6_title:"Brandschutz", svc6_desc:"Spritzbeton und Intumeszenzfarben",
+        svc7_title:"Pr\u00e4ventive & Korrektive Wartung", svc7_desc:"L\u00f6sch-, Rauch-, Detektionssysteme",
+        svc8_title:"Fachplanung", svc8_desc:"HLK, L\u00f6schung, Rauch, Detektion",
+        svc9_title:"Ausf\u00fchrung & Montage", svc9_desc:"RLV-Projektumsetzung",
+        svc10_title:"Ger\u00e4teverkauf", svc10_desc:"H\u00f6chste Qualit\u00e4t",
+        svc11_title:"Materialzuschnitt", svc11_desc:"Gem\u00e4\u00df Projekt",
+        svc12_title:"Lieferung", svc12_desc:"Landesweiter Transport",
         workflow_title:"Arbeitsablauf",
-        wf1_title:"Planung", wf1_desc:"Ma\u00dfgeschneiderte technische L\u00f6sungen",
-        wf2_title:"Lieferung", wf2_desc:"Ger\u00e4te h\u00f6chster Qualit\u00e4t",
-        wf3_title:"Montage", wf3_desc:"Hochqualifiziertes Fachpersonal",
+        wf1_title:"Planung", wf1_desc:"Ma\u00dfgeschneiderte L\u00f6sungen",
+        wf2_title:"Lieferung", wf2_desc:"H\u00f6chste Qualit\u00e4t",
+        wf3_title:"Montage", wf3_desc:"Hochqualifiziertes Personal",
         wf4_title:"Wartung", wf4_desc:"Garantie und Nachgarantie",
         auth_title:"Zertifizierungen",
-        auth_intro:'SC BMS Consulting SRL ist von <strong>IGSU</strong> auf unbestimmte Zeit f\u00fcr folgende Bereiche zertifiziert:',
-        auth_item1:"Brandl\u00f6schung mit Sprinklern und Hydranten",
-        auth_item2:"Rauch- und Hei\u00dfgasabf\u00fchrung",
-        auth_item3:"Branddetektion und -meldung",
-        auth_item4:"W\u00e4rmeschutz mit Spritzbetonprodukten",
-        auth_item5:"W\u00e4rmeschutz mit Intumeszenzfarben",
-        auth_item6:"AGFR-Zertifizierung (W\u00e4rmepumpen, FCKW)",
-        projects_title:"Projekte",
-        proj1:"HLK \u2014 Industriehalle", proj2:"Sprinkler und L\u00fcftung",
-        proj3:"Brandl\u00f6schung", proj4:"Industrieinstallationen",
-        proj5:"Hydrantensysteme", proj6:"HLK und Sprinkler",
-        proj7:"Komplexe Installationen", proj8:"Rauchableitungssystem",
+        auth_intro:'SC BMS Consulting SRL ist von <strong>IGSU</strong> auf unbestimmte Zeit zertifiziert:',
+        auth_item1:"Brandl\u00f6schung mit Sprinklern und Hydranten", auth_item2:"Rauch- und Hei\u00dfgasabf\u00fchrung",
+        auth_item3:"Branddetektion und -meldung", auth_item4:"Spritzbeton-W\u00e4rmeschutz",
+        auth_item5:"Intumeszenzfarben-W\u00e4rmeschutz", auth_item6:"AGFR-Zertifizierung",
+        projects_title:"Projekte", proj_all:"Alle", proj_sprinklere:"Sprinkler",
+        proj_hidranti:"Hydranten", proj_desfumare:"Rauchableitung",
+        proj_clapeti:"Brandschutzklappen", proj_sanitare:"Sanit\u00e4r",
+        partners_title:"Partner",
+        p_awg:"Buchhaltungsdienstleistungen", p_foshan:"Industrieausr\u00fcstung", p_rollform:"Blechprofiliermaschinen",
+        p_lockform:"Blechbearbeitung", p_ag_name:"AG - Generalunternehmer", p_ag:"Zivil- & Industriebau",
+        p_selirom:"Bau & Gestaltung", p_retail:"Einzelhandelsl\u00f6sungen", p_lansapp:"Softwareentwicklung",
+        careers_title:"Karriere", careers_positions:"Offene Stellen",
+        job1_title:"Installationsingenieur", job1_desc:"Planung und Koordination von HLK-, Brandl\u00f6sch- und Rauchabzugsarbeiten",
+        job2_title:"Installateur", job2_desc:"Montage von Heizungs-, Sanit\u00e4r- und Brandl\u00f6schanlagen",
+        job3_title:"Installationshelfer", job3_desc:"Montageassistenz und Materialvorbereitung",
+        job4_title:"Hilfsarbeiter", job4_desc:"Hilfst\u00e4tigkeiten, Qualifizierungsm\u00f6glichkeit",
+        careers_offer:"Was wir bieten",
+        offer1:"Motivierendes Gehalt", offer2:"Professionelles Arbeitsumfeld", offer3:"Aufstiegsm\u00f6glichkeiten",
+        offer4:"Vielf\u00e4ltige Projekte", offer5:"Modernste Werkzeuge",
+        careers_apply:"Jetzt bewerben", form_position:"Bewerben f\u00fcr *",
+        form_name:"Name *", form_company:"Firma", form_phone:"Telefon *",
+        form_exp:"Berufserfahrung", form_edu:"Ausbildung", form_lang:"Fremdsprachen",
+        form_cv:"Lebenslauf anh\u00e4ngen", form_apply_submit:"Bewerbung senden",
+        form_service:"Gew\u00fcnschte Leistung", form_select:"Ausw\u00e4hlen...",
+        form_message:"Nachricht *", form_files:"Anh\u00e4nge",
+        form_submit:"Anfrage senden", form_note:"Antwort innerhalb von 24 Gesch\u00e4ftsstunden.",
         contact_title:"Kontakt", contact_subtitle:"Kontaktieren Sie uns",
         contact_address_label:"Adresse", contact_phone_label:"Telefon",
-        contact_hours_label:"\u00d6ffnungszeiten", contact_hours:"Montag - Freitag: 08:00 - 17:00",
-        offer_title:"Angebot anfordern",
-        form_name:"Name *", form_company:"Firma", form_phone:"Telefon *",
-        form_service:"Gew\u00fcnschte Leistung", form_select:"Ausw\u00e4hlen...",
-        form_message:"Nachricht *", form_files:"Anh\u00e4nge (PDF, DWG, Bilder)",
-        form_submit:"Anfrage senden", form_note:"Sie erhalten innerhalb von 24 Gesch\u00e4ftsstunden eine Antwort.",
-        footer_rights:"Alle Rechte vorbehalten.",
-        nav_collab:"Partner", collab_title:"Partner",
-        collab_lansapp:"Softwareentwicklung & digitale L\u00f6sungen",
-        collab_andos:"Entwicklung & IT-Beratung"
+        contact_hours_label:"\u00d6ffnungszeiten", contact_hours:"Mo-Fr: 08:00 - 17:00",
+        offer_title:"Angebot anfordern", footer_rights:"Alle Rechte vorbehalten."
     },
     fr: {
-        nav_home:"Accueil", nav_about:"\u00c0 propos", nav_services:"Services", nav_workflow:"Notre processus",
-        nav_auth:"Certifications", nav_projects:"Projets", nav_contact:"Contact", nav_cta:"Demander un devis",
-        hero_text:"Solutions compl\u00e8tes pour les installations thermiques, CVC, extinction d'incendie et protection contre le feu. De la conception \u00e0 la mise en service.",
-        hero_btn1:"Nos services", hero_btn2:"Contactez-nous",
-        about_title:"\u00c0 propos de nous",
-        about_p1:'<strong>SC BMS Consulting SRL</strong> est une soci\u00e9t\u00e9 priv\u00e9e, op\u00e9rant avec succ\u00e8s sur le march\u00e9 roumain de la construction depuis 2023, offrant des solutions compl\u00e8tes dans le domaine des installations thermiques, ventilation, climatisation, d\u00e9senfumage, syst\u00e8mes d\'extinction d\'incendie et de protection contre le feu.',
-        about_p2:'L\'entreprise dispose de personnel exp\u00e9riment\u00e9 dans le domaine des installations. BMS Consulting est un <strong>Entrepreneur G\u00e9n\u00e9ral</strong> capable de r\u00e9aliser et g\u00e9rer des installations int\u00e9gr\u00e9es dans les secteurs civil et industriel \u2014 de la conception \u00e0 la fourniture, au montage et \u00e0 la mise en service.',
-        about_p3:'Le personnel de BMS Consulting SRL est <strong>certifi\u00e9 AGFR</strong> pour l\'installation, la maintenance et la mise en service des pompes \u00e0 chaleur et autres syst\u00e8mes utilisant des compos\u00e9s organiques fluor\u00e9s (fr\u00e9on).',
-        about_badge:'Certifi\u00e9 IGSU pour une dur\u00e9e ind\u00e9termin\u00e9e &bull; 6 certifications actives',
+        nav_home:"Accueil", nav_about:"\u00c0 propos", nav_services:"Services", nav_workflow:"Processus",
+        nav_auth:"Certifications", nav_projects:"Projets", nav_contact:"Contact", nav_cta:"Devis",
+        nav_partners:"Partenaires", nav_careers:"Carri\u00e8res",
+        hero_text:"Solutions compl\u00e8tes pour installations thermiques, CVC, extinction d'incendie et protection contre le feu.",
+        about_title:"\u00c0 propos",
+        about_p1:'<strong>SC BMS Consulting SRL</strong> est une soci\u00e9t\u00e9 priv\u00e9e op\u00e9rant depuis 2023 sur le march\u00e9 roumain de la construction.',
+        about_p2:'BMS Consulting est un <strong>Entrepreneur G\u00e9n\u00e9ral</strong> capable de r\u00e9aliser des installations int\u00e9gr\u00e9es dans les secteurs civil et industriel.',
+        about_p3:'Personnel <strong>certifi\u00e9 AGFR</strong> pour pompes \u00e0 chaleur et syst\u00e8mes frigorig\u00e8nes.',
+        about_badge:'Certifi\u00e9 IGSU ind\u00e9finiment &bull; 6 certifications actives',
         services_title:"Services",
-        svc1_title:"Installations CVC", svc1_desc:"Chauffage, ventilation, climatisation pour espaces r\u00e9sidentiels et industriels",
-        svc2_title:"Extinction d'incendie", svc2_desc:"Sprinklers, bouches d'incendie, anneaux d'incendie int\u00e9rieurs et ext\u00e9rieurs",
-        svc3_title:"D\u00e9senfumage", svc3_desc:"\u00c9vacuation des fum\u00e9es et gaz chauds, ventilateurs axiaux",
-        svc4_title:"Installations sanitaires", svc4_desc:"Alimentation en eau, assainissement, panneaux solaires, chaudières",
-        svc5_title:"D\u00e9tection incendie", svc5_desc:"Syst\u00e8mes de signalisation, d'alarme et d'alerte incendie",
-        svc6_title:"Protection incendie", svc6_desc:"Protection thermique avec produits de projection et peintures intumescentes",
-        workflow_title:"Notre processus",
+        svc1_title:"Installations CVC", svc1_desc:"Chauffage, ventilation, climatisation",
+        svc2_title:"Extinction incendie", svc2_desc:"Sprinklers, bouches d'incendie",
+        svc3_title:"D\u00e9senfumage", svc3_desc:"\u00c9vacuation fum\u00e9es et gaz",
+        svc4_title:"Sanitaire", svc4_desc:"Eau, assainissement, solaire",
+        svc5_title:"D\u00e9tection incendie", svc5_desc:"Signalisation et alarme",
+        svc6_title:"Protection incendie", svc6_desc:"Projection et peintures intumescentes",
+        svc7_title:"Maintenance Pr\u00e9ventive & Corrective", svc7_desc:"Extinction, d\u00e9senfumage, d\u00e9tection",
+        svc8_title:"Conception Sp\u00e9cialis\u00e9e", svc8_desc:"CVC, extinction, d\u00e9senfumage",
+        svc9_title:"Ex\u00e9cution & Montage", svc9_desc:"R\u00e9alisation projets RLV",
+        svc10_title:"Vente \u00c9quipements", svc10_desc:"Meilleure qualit\u00e9",
+        svc11_title:"D\u00e9coupe Mat\u00e9riaux", svc11_desc:"Selon projet",
+        svc12_title:"Livraison", svc12_desc:"Transport national",
+        workflow_title:"Processus",
         wf1_title:"Conception", wf1_desc:"Solutions techniques personnalis\u00e9es",
-        wf2_title:"Fourniture", wf2_desc:"\u00c9quipements de la meilleure qualit\u00e9",
-        wf3_title:"Montage", wf3_desc:"Personnel hautement qualifi\u00e9",
+        wf2_title:"Fourniture", wf2_desc:"Meilleure qualit\u00e9",
+        wf3_title:"Montage", wf3_desc:"Personnel qualifi\u00e9",
         wf4_title:"Maintenance", wf4_desc:"Garantie et post-garantie",
         auth_title:"Certifications",
-        auth_intro:'SC BMS Consulting SRL est certifi\u00e9e par l\'<strong>IGSU</strong> pour une dur\u00e9e ind\u00e9termin\u00e9e dans les domaines suivants :',
-        auth_item1:"Extinction d'incendie avec sprinklers et bouches d'incendie",
-        auth_item2:"\u00c9vacuation des fum\u00e9es et gaz chauds",
-        auth_item3:"D\u00e9tection et signalisation d'incendie",
-        auth_item4:"Protection thermique avec produits de projection",
-        auth_item5:"Protection thermique avec peintures intumescentes",
-        auth_item6:"Certification AGFR (pompes \u00e0 chaleur, fr\u00e9on)",
-        projects_title:"Projets",
-        proj1:"CVC \u2014 Hall industriel", proj2:"Sprinklers et ventilation",
-        proj3:"Extinction d'incendie", proj4:"Installations industrielles",
-        proj5:"Syst\u00e8mes de bouches d'incendie", proj6:"CVC et sprinklers",
-        proj7:"Installations complexes", proj8:"Syst\u00e8me de d\u00e9senfumage",
+        auth_intro:'SC BMS Consulting SRL est certifi\u00e9e par l\'<strong>IGSU</strong> ind\u00e9finiment :',
+        auth_item1:"Extinction avec sprinklers et bouches d'incendie", auth_item2:"\u00c9vacuation fum\u00e9es",
+        auth_item3:"D\u00e9tection et signalisation", auth_item4:"Protection thermique projection",
+        auth_item5:"Peintures intumescentes", auth_item6:"Certification AGFR",
+        projects_title:"Projets", proj_all:"Tous", proj_sprinklere:"Sprinklers",
+        proj_hidranti:"Bouches d'incendie", proj_desfumare:"D\u00e9senfumage",
+        proj_clapeti:"Clapets coupe-feu", proj_sanitare:"Sanitaire",
+        partners_title:"Partenaires",
+        p_awg:"Services comptabilit\u00e9", p_foshan:"\u00c9quipements industriels", p_rollform:"Machines profilage",
+        p_lockform:"Traitement t\u00f4le", p_ag_name:"AG - Entrepreneur G\u00e9n\u00e9ral", p_ag:"Construction civile & industrielle",
+        p_selirom:"Construction & am\u00e9nagement", p_retail:"Solutions retail", p_lansapp:"D\u00e9veloppement logiciel",
+        careers_title:"Carri\u00e8res", careers_positions:"Postes ouverts",
+        job1_title:"Ing\u00e9nieur Installations", job1_desc:"Conception et coordination CVC, extinction, d\u00e9senfumage",
+        job2_title:"Installateur", job2_desc:"Montage installations thermiques et sanitaires",
+        job3_title:"Aide Installateur", job3_desc:"Assistance montage et pr\u00e9paration mat\u00e9riaux",
+        job4_title:"Non Qualifi\u00e9", job4_desc:"Activit\u00e9s auxiliaires, possibilit\u00e9 de qualification",
+        careers_offer:"Ce que nous offrons",
+        offer1:"Salaire motivant selon exp\u00e9rience", offer2:"Environnement professionnel",
+        offer3:"Possibilit\u00e9 d'avancement", offer4:"Projets divers", offer5:"Outils modernes",
+        careers_apply:"Postuler", form_position:"Postuler pour *",
+        form_name:"Nom *", form_company:"Soci\u00e9t\u00e9", form_phone:"T\u00e9l\u00e9phone *",
+        form_exp:"Exp\u00e9rience professionnelle", form_edu:"\u00c9tudes", form_lang:"Langues \u00e9trang\u00e8res",
+        form_cv:"Joindre CV", form_apply_submit:"Envoyer candidature",
+        form_service:"Service souhait\u00e9", form_select:"S\u00e9lectionner...",
+        form_message:"Message *", form_files:"Pi\u00e8ces jointes",
+        form_submit:"Envoyer", form_note:"R\u00e9ponse sous 24h ouvr\u00e9es.",
         contact_title:"Contact", contact_subtitle:"Contactez-nous",
         contact_address_label:"Adresse", contact_phone_label:"T\u00e9l\u00e9phone",
-        contact_hours_label:"Horaires", contact_hours:"Lundi - Vendredi : 08h00 - 17h00",
-        offer_title:"Demander un devis",
-        form_name:"Nom *", form_company:"Soci\u00e9t\u00e9", form_phone:"T\u00e9l\u00e9phone *",
-        form_service:"Service souhait\u00e9", form_select:"S\u00e9lectionner...",
-        form_message:"Message *", form_files:"Pi\u00e8ces jointes (PDF, DWG, images)",
-        form_submit:"Envoyer la demande", form_note:"Vous recevrez une r\u00e9ponse dans les 24 heures ouvr\u00e9es.",
-        footer_rights:"Tous droits r\u00e9serv\u00e9s.",
-        nav_collab:"Partenaires", collab_title:"Partenaires",
-        collab_lansapp:"D\u00e9veloppement logiciel & solutions num\u00e9riques",
-        collab_andos:"D\u00e9veloppement & conseil IT"
+        contact_hours_label:"Horaires", contact_hours:"Lun-Ven : 08h-17h",
+        offer_title:"Demander un devis", footer_rights:"Tous droits r\u00e9serv\u00e9s."
     },
     zh: {
-        nav_home:"\u9996\u9875", nav_about:"\u5173\u4e8e\u6211\u4eec", nav_services:"\u670d\u52a1", nav_workflow:"\u5de5\u4f5c\u6d41\u7a0b",
-        nav_auth:"\u8d44\u8d28\u8ba4\u8bc1", nav_projects:"\u9879\u76ee", nav_contact:"\u8054\u7cfb\u65b9\u5f0f", nav_cta:"\u83b7\u53d6\u62a5\u4ef7",
-        hero_text:"\u70ed\u529b\u5b89\u88c5\u3001\u6696\u901a\u7a7a\u8c03\u3001\u6d88\u9632\u706d\u706b\u53ca\u9632\u706b\u4fdd\u62a4\u7684\u5b8c\u6574\u89e3\u51b3\u65b9\u6848\u3002\u4ece\u8bbe\u8ba1\u5230\u8c03\u8bd5\u6295\u8fd0\u3002",
-        hero_btn1:"\u6211\u4eec\u7684\u670d\u52a1", hero_btn2:"\u8054\u7cfb\u6211\u4eec",
+        nav_home:"\u9996\u9875", nav_about:"\u5173\u4e8e\u6211\u4eec", nav_services:"\u670d\u52a1",
+        nav_workflow:"\u5de5\u4f5c\u6d41\u7a0b", nav_auth:"\u8d44\u8d28\u8ba4\u8bc1", nav_projects:"\u9879\u76ee",
+        nav_contact:"\u8054\u7cfb\u65b9\u5f0f", nav_cta:"\u83b7\u53d6\u62a5\u4ef7",
+        nav_partners:"\u5408\u4f5c\u4f19\u4f34", nav_careers:"\u62db\u8058",
+        hero_text:"\u70ed\u529b\u5b89\u88c5\u3001\u6696\u901a\u7a7a\u8c03\u3001\u6d88\u9632\u706d\u706b\u53ca\u9632\u706b\u4fdd\u62a4\u7684\u5b8c\u6574\u89e3\u51b3\u65b9\u6848\u3002",
         about_title:"\u5173\u4e8e\u6211\u4eec",
-        about_p1:'<strong>SC BMS Consulting SRL</strong> \u662f\u4e00\u5bb6\u79c1\u8425\u4f01\u4e1a\uff0c\u81ea2023\u5e74\u8d77\u6210\u529f\u8fd0\u8425\u4e8e\u7f57\u9a6c\u5c3c\u4e9a\u5efa\u7b51\u5e02\u573a\uff0c\u63d0\u4f9b\u70ed\u529b\u5b89\u88c5\u3001\u901a\u98ce\u3001\u7a7a\u8c03\u3001\u6392\u70df\u3001\u6d88\u9632\u706d\u706b\u7cfb\u7edf\u53ca\u9632\u706b\u4fdd\u62a4\u7684\u5b8c\u6574\u89e3\u51b3\u65b9\u6848\u3002',
-        about_p2:'\u516c\u53f8\u62e5\u6709\u4e30\u5bcc\u7684\u4eba\u529b\u8d44\u6e90\uff0c\u62e5\u6709\u5b89\u88c5\u9886\u57df\u7ecf\u9a8c\u4e30\u5bcc\u7684\u5458\u5de5\u3002BMS Consulting\u662f\u4e00\u5bb6<strong>\u603b\u627f\u5305\u5546</strong>\uff0c\u80fd\u591f\u5728\u6c11\u7528\u548c\u5de5\u4e1a\u9886\u57df\u5b9e\u73b0\u548c\u7ba1\u7406\u7efc\u5408\u5b89\u88c5\u2014\u2014\u4ece\u8bbe\u8ba1\u5230\u4f9b\u5e94\u3001\u5b89\u88c5\u548c\u8c03\u8bd5\u3002',
-        about_p3:'BMS Consulting SRL\u7684\u5458\u5de5\u6301\u6709<strong>AGFR\u8ba4\u8bc1</strong>\uff0c\u53ef\u8fdb\u884c\u70ed\u6cf5\u53ca\u5176\u4ed6\u4f7f\u7528\u6c1f\u5316\u6709\u673a\u5316\u5408\u7269\uff08\u6c1f\u5229\u6602\uff09\u8bbe\u5907\u7684\u5b89\u88c5\u3001\u7ef4\u4fee\u548c\u8c03\u8bd5\u3002',
-        about_badge:'IGSU\u65e0\u9650\u671f\u8ba4\u8bc1 &bull; 6\u9879\u6709\u6548\u8ba4\u8bc1',
+        about_p1:'<strong>SC BMS Consulting SRL</strong> \u662f\u4e00\u5bb6\u79c1\u8425\u4f01\u4e1a\uff0c\u81ea2023\u5e74\u8d77\u8fd0\u8425\u4e8e\u7f57\u9a6c\u5c3c\u4e9a\u5efa\u7b51\u5e02\u573a\u3002',
+        about_p2:'BMS Consulting\u662f\u4e00\u5bb6<strong>\u603b\u627f\u5305\u5546</strong>\uff0c\u80fd\u591f\u5728\u6c11\u7528\u548c\u5de5\u4e1a\u9886\u57df\u5b9e\u73b0\u7efc\u5408\u5b89\u88c5\u3002',
+        about_p3:'\u5458\u5de5\u6301\u6709<strong>AGFR\u8ba4\u8bc1</strong>\u3002',
+        about_badge:'IGSU\u65e0\u9650\u671f\u8ba4\u8bc1 &bull; 6\u9879\u8ba4\u8bc1',
         services_title:"\u670d\u52a1",
-        svc1_title:"\u6696\u901a\u7a7a\u8c03\u7cfb\u7edf", svc1_desc:"\u4f4f\u5b85\u548c\u5de5\u4e1a\u7a7a\u95f4\u4f9b\u6696\u3001\u901a\u98ce\u3001\u7a7a\u8c03",
-        svc2_title:"\u6d88\u9632\u706d\u706b", svc2_desc:"\u55b7\u6dcb\u7cfb\u7edf\u3001\u6d88\u9632\u6813\u3001\u5185\u5916\u6d88\u9632\u73af\u7ba1",
-        svc3_title:"\u6392\u70df\u7cfb\u7edf", svc3_desc:"\u70df\u6c14\u548c\u70ed\u6c14\u6392\u653e\u3001\u8f74\u6d41\u98ce\u673a",
-        svc4_title:"\u7ed9\u6392\u6c34\u5de5\u7a0b", svc4_desc:"\u4f9b\u6c34\u3001\u6392\u6c34\u3001\u592a\u9633\u80fd\u677f\u3001\u9505\u7089",
-        svc5_title:"\u706b\u707e\u63a2\u6d4b", svc5_desc:"\u706b\u707e\u4fe1\u53f7\u3001\u62a5\u8b66\u548c\u9884\u8b66\u7cfb\u7edf",
-        svc6_title:"\u9632\u706b\u4fdd\u62a4", svc6_desc:"\u55b7\u5c04\u6df7\u51dd\u571f\u548c\u81a8\u80c0\u6d82\u6599\u9632\u706b\u4fdd\u62a4",
+        svc1_title:"\u6696\u901a\u7a7a\u8c03", svc1_desc:"\u4f9b\u6696\u3001\u901a\u98ce\u3001\u7a7a\u8c03",
+        svc2_title:"\u6d88\u9632\u706d\u706b", svc2_desc:"\u55b7\u6dcb\u3001\u6d88\u9632\u6813",
+        svc3_title:"\u6392\u70df\u7cfb\u7edf", svc3_desc:"\u70df\u6c14\u6392\u653e",
+        svc4_title:"\u7ed9\u6392\u6c34", svc4_desc:"\u4f9b\u6c34\u3001\u6392\u6c34\u3001\u592a\u9633\u80fd",
+        svc5_title:"\u706b\u707e\u63a2\u6d4b", svc5_desc:"\u62a5\u8b66\u548c\u9884\u8b66\u7cfb\u7edf",
+        svc6_title:"\u9632\u706b\u4fdd\u62a4", svc6_desc:"\u55b7\u5c04\u6df7\u51dd\u571f\u548c\u6d82\u6599",
+        svc7_title:"\u9884\u9632\u6027\u548c\u7ea0\u6b63\u6027\u7ef4\u62a4", svc7_desc:"\u706d\u706b\u3001\u6392\u70df\u3001\u63a2\u6d4b",
+        svc8_title:"\u4e13\u4e1a\u8bbe\u8ba1", svc8_desc:"\u6696\u901a\u3001\u706d\u706b\u3001\u6392\u70df",
+        svc9_title:"\u6267\u884c\u4e0e\u5b89\u88c5", svc9_desc:"RLV\u9879\u76ee",
+        svc10_title:"\u8bbe\u5907\u9500\u552e", svc10_desc:"\u6700\u4f18\u8d28\u8bbe\u5907",
+        svc11_title:"\u6750\u6599\u5207\u5272", svc11_desc:"\u6309\u9879\u76ee\u89c4\u683c",
+        svc12_title:"\u4ea4\u4ed8", svc12_desc:"\u5168\u56fd\u8fd0\u8f93",
         workflow_title:"\u5de5\u4f5c\u6d41\u7a0b",
-        wf1_title:"\u8bbe\u8ba1", wf1_desc:"\u5b9a\u5236\u6280\u672f\u65b9\u6848",
-        wf2_title:"\u4f9b\u5e94", wf2_desc:"\u6700\u4f18\u8d28\u7684\u8bbe\u5907",
-        wf3_title:"\u5b89\u88c5", wf3_desc:"\u9ad8\u7d20\u8d28\u4e13\u4e1a\u4eba\u5458",
-        wf4_title:"\u7ef4\u4fdd", wf4_desc:"\u4fdd\u4fee\u671f\u53ca\u4fdd\u4fee\u540e\u670d\u52a1",
+        wf1_title:"\u8bbe\u8ba1", wf1_desc:"\u5b9a\u5236\u65b9\u6848",
+        wf2_title:"\u4f9b\u5e94", wf2_desc:"\u6700\u4f18\u8d28\u8bbe\u5907",
+        wf3_title:"\u5b89\u88c5", wf3_desc:"\u4e13\u4e1a\u4eba\u5458",
+        wf4_title:"\u7ef4\u4fdd", wf4_desc:"\u4fdd\u4fee\u670d\u52a1",
         auth_title:"\u8d44\u8d28\u8ba4\u8bc1",
-        auth_intro:'SC BMS Consulting SRL\u83b7\u5f97<strong>IGSU</strong>\u65e0\u9650\u671f\u6388\u6743\uff0c\u6db5\u76d6\u4ee5\u4e0b\u9886\u57df\uff1a',
-        auth_item1:"\u55b7\u6dcb\u548c\u6d88\u9632\u6813\u706d\u706b\u7cfb\u7edf",
-        auth_item2:"\u70df\u6c14\u548c\u70ed\u6c14\u6392\u653e",
-        auth_item3:"\u706b\u707e\u63a2\u6d4b\u548c\u4fe1\u53f7",
-        auth_item4:"\u55b7\u5c04\u6df7\u51dd\u571f\u9632\u706b\u4fdd\u62a4",
-        auth_item5:"\u81a8\u80c0\u6d82\u6599\u9632\u706b\u4fdd\u62a4",
-        auth_item6:"AGFR\u8ba4\u8bc1\uff08\u70ed\u6cf5\u3001\u6c1f\u5229\u6602\uff09",
-        projects_title:"\u9879\u76ee",
-        proj1:"\u6696\u901a\u2014\u2014\u5de5\u4e1a\u5382\u623f", proj2:"\u55b7\u6dcb\u548c\u901a\u98ce",
-        proj3:"\u6d88\u9632\u706d\u706b", proj4:"\u5de5\u4e1a\u5b89\u88c5",
-        proj5:"\u6d88\u9632\u6813\u7cfb\u7edf", proj6:"\u6696\u901a\u548c\u55b7\u6dcb",
-        proj7:"\u7efc\u5408\u5b89\u88c5", proj8:"\u6392\u70df\u7cfb\u7edf",
+        auth_intro:'<strong>IGSU</strong>\u65e0\u9650\u671f\u6388\u6743\uff1a',
+        auth_item1:"\u55b7\u6dcb\u548c\u6d88\u9632\u6813\u706d\u706b", auth_item2:"\u70df\u6c14\u6392\u653e",
+        auth_item3:"\u706b\u707e\u63a2\u6d4b", auth_item4:"\u55b7\u5c04\u6df7\u51dd\u571f\u9632\u62a4",
+        auth_item5:"\u81a8\u80c0\u6d82\u6599\u9632\u62a4", auth_item6:"AGFR\u8ba4\u8bc1",
+        projects_title:"\u9879\u76ee", proj_all:"\u5168\u90e8", proj_sprinklere:"\u55b7\u6dcb",
+        proj_hidranti:"\u6d88\u9632\u6813", proj_desfumare:"\u6392\u70df",
+        proj_clapeti:"\u9632\u706b\u9600", proj_sanitare:"\u7ed9\u6392\u6c34",
+        partners_title:"\u5408\u4f5c\u4f19\u4f34",
+        p_awg:"\u4f1a\u8ba1\u670d\u52a1", p_foshan:"\u5de5\u4e1a\u8bbe\u5907", p_rollform:"\u8f67\u538b\u673a",
+        p_lockform:"\u677f\u6750\u52a0\u5de5", p_ag_name:"AG - \u603b\u627f\u5305\u5546", p_ag:"\u5efa\u7b51\u65bd\u5de5",
+        p_selirom:"\u5efa\u7b51\u8bbe\u8ba1", p_retail:"\u96f6\u552e\u65b9\u6848", p_lansapp:"\u8f6f\u4ef6\u5f00\u53d1",
+        careers_title:"\u62db\u8058", careers_positions:"\u5f00\u653e\u804c\u4f4d",
+        job1_title:"\u5b89\u88c5\u5de5\u7a0b\u5e08", job1_desc:"\u6696\u901a\u3001\u6d88\u9632\u3001\u6392\u70df\u8bbe\u8ba1\u534f\u8c03",
+        job2_title:"\u5b89\u88c5\u5de5", job2_desc:"\u70ed\u529b\u3001\u7ed9\u6392\u6c34\u3001\u6d88\u9632\u5b89\u88c5",
+        job3_title:"\u52a9\u7406\u5b89\u88c5\u5de5", job3_desc:"\u5b89\u88c5\u534f\u52a9\u548c\u6750\u6599\u51c6\u5907",
+        job4_title:"\u666e\u5de5", job4_desc:"\u73b0\u573a\u8f85\u52a9\u5de5\u4f5c",
+        careers_offer:"\u6211\u4eec\u63d0\u4f9b",
+        offer1:"\u6839\u636e\u7ecf\u9a8c\u7684\u6fc0\u52b1\u6027\u85aa\u916c", offer2:"\u4e13\u4e1a\u5b89\u5168\u7684\u5de5\u4f5c\u73af\u5883",
+        offer3:"\u664b\u5347\u673a\u4f1a", offer4:"\u591a\u6837\u5316\u9879\u76ee", offer5:"\u5148\u8fdb\u5de5\u5177",
+        careers_apply:"\u7acb\u5373\u7533\u8bf7", form_position:"\u7533\u8bf7\u804c\u4f4d *",
+        form_name:"\u59d3\u540d *", form_company:"\u516c\u53f8", form_phone:"\u7535\u8bdd *",
+        form_exp:"\u5de5\u4f5c\u7ecf\u5386", form_edu:"\u5b66\u5386", form_lang:"\u5916\u8bed",
+        form_cv:"\u9644\u7b80\u5386", form_apply_submit:"\u63d0\u4ea4\u7533\u8bf7",
+        form_service:"\u6240\u9700\u670d\u52a1", form_select:"\u8bf7\u9009\u62e9...",
+        form_message:"\u7559\u8a00 *", form_files:"\u9644\u4ef6",
+        form_submit:"\u53d1\u9001", form_note:"24\u5c0f\u65f6\u5185\u56de\u590d\u3002",
         contact_title:"\u8054\u7cfb\u65b9\u5f0f", contact_subtitle:"\u8054\u7cfb\u6211\u4eec",
         contact_address_label:"\u5730\u5740", contact_phone_label:"\u7535\u8bdd",
-        contact_hours_label:"\u5de5\u4f5c\u65f6\u95f4", contact_hours:"\u5468\u4e00\u81f3\u5468\u4e94\uff1a08:00 - 17:00",
-        offer_title:"\u83b7\u53d6\u62a5\u4ef7",
-        form_name:"\u59d3\u540d *", form_company:"\u516c\u53f8", form_phone:"\u7535\u8bdd *",
-        form_service:"\u6240\u9700\u670d\u52a1", form_select:"\u8bf7\u9009\u62e9...",
-        form_message:"\u7559\u8a00 *", form_files:"\u9644\u4ef6\uff08PDF\u3001DWG\u3001\u56fe\u7247\uff09",
-        form_submit:"\u53d1\u9001\u8bf7\u6c42", form_note:"\u6211\u4eec\u5c06\u572824\u4e2a\u5de5\u4f5c\u5c0f\u65f6\u5185\u56de\u590d\u3002",
-        footer_rights:"\u7248\u6743\u6240\u6709\u3002",
-        nav_collab:"\u5408\u4f5c\u4f19\u4f34", collab_title:"\u5408\u4f5c\u4f19\u4f34",
-        collab_lansapp:"\u8f6f\u4ef6\u5f00\u53d1\u4e0e\u6570\u5b57\u89e3\u51b3\u65b9\u6848",
-        collab_andos:"\u5f00\u53d1\u4e0eIT\u54a8\u8be2"
+        contact_hours_label:"\u5de5\u4f5c\u65f6\u95f4", contact_hours:"\u5468\u4e00\u81f3\u5468\u4e94 08:00-17:00",
+        offer_title:"\u83b7\u53d6\u62a5\u4ef7", footer_rights:"\u7248\u6743\u6240\u6709\u3002"
     }
 };
 let currentLang = 'ro';
 function setLang(lang) {
-    // If clicking the already active language, revert to Romanian
-    if (currentLang === lang) lang = 'ro';
     currentLang = lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
     document.querySelectorAll('.lang-switcher button').forEach(b => {
