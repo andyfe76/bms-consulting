@@ -227,8 +227,8 @@
         /* ===== PROJECTS ===== */
         .proj-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 30px; }
         .proj-tab {
-            padding: 8px 18px; border: 2px solid var(--primary); border-radius: 25px;
-            font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+            padding: 10px 24px; border: 2px solid var(--primary); border-radius: 25px;
+            font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: var(--transition);
             background: transparent; color: var(--primary); font-family: 'Montserrat', sans-serif;
         }
         .proj-tab:hover, .proj-tab.active { background: var(--primary); color: white; }
@@ -576,8 +576,7 @@
             <div class="container">
                 <div class="section-title"><h2 data-i18n="projects_title">Proiecte</h2><div class="underline"></div></div>
                 <div class="proj-tabs">
-                    <button class="proj-tab active" onclick="filterProjects('all')" data-i18n="proj_all">Toate</button>
-                    <button class="proj-tab" onclick="filterProjects('hvac')">HVAC</button>
+                    <button class="proj-tab active" onclick="filterProjects('hvac')">HVAC</button>
                     <button class="proj-tab" onclick="filterProjects('sprinklere')" data-i18n="proj_sprinklere">Sprinklere</button>
                     <button class="proj-tab" onclick="filterProjects('hidranti')" data-i18n="proj_hidranti">Hidranti</button>
                     <button class="proj-tab" onclick="filterProjects('desfumare')" data-i18n="proj_desfumare">Desfumare</button>
@@ -585,35 +584,83 @@
                     <button class="proj-tab" onclick="filterProjects('sanitare')" data-i18n="proj_sanitare">Sanitare</button>
                 </div>
                 <div class="proj-gallery">
+                    <!-- HVAC -->
                     <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-hvac-1.jpeg" alt="HVAC"><div class="overlay"><span>HVAC — Hala industriala</span></div>
                     </div>
-                    <div class="project-card show" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
+                    <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-hvac-2.jpg" alt="HVAC"><div class="overlay"><span>Tubulaturi ventilatie</span></div>
+                    </div>
+                    <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-hvac-3.jpg" alt="HVAC"><div class="overlay"><span>Conducte aerisire industriala</span></div>
+                    </div>
+                    <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-hvac-4.jpg" alt="HVAC"><div class="overlay"><span>Unitati climatizare</span></div>
+                    </div>
+                    <!-- Sprinklere -->
+                    <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-sprinkler-1.jpeg" alt="Sprinklere"><div class="overlay"><span>Sistem sprinklere</span></div>
                     </div>
-                    <div class="project-card show" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
+                    <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-sprinkler-2.jpeg" alt="Sprinklere"><div class="overlay"><span>Retea sprinklere</span></div>
                     </div>
-                    <div class="project-card show" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
+                    <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sprinkler-3.jpg" alt="Sprinklere"><div class="overlay"><span>Echipamente stingere</span></div>
+                    </div>
+                    <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sprinkler-4.jpg" alt="Sprinklere"><div class="overlay"><span>Interventie sprinklere</span></div>
+                    </div>
+                    <!-- Hidranti -->
+                    <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-industrial-1.jpeg" alt="Hidranti"><div class="overlay"><span>Retea hidranti</span></div>
                     </div>
-                    <div class="project-card show" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
+                    <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-industrial-2.jpeg" alt="Hidranti"><div class="overlay"><span>Sistem hidranti interiori</span></div>
                     </div>
-                    <div class="project-card show" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
+                    <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-hydrant-1.jpg" alt="Hidranti"><div class="overlay"><span>Hidrant interior</span></div>
+                    </div>
+                    <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-hydrant-2.jpg" alt="Hidranti"><div class="overlay"><span>Hidrant exterior</span></div>
+                    </div>
+                    <!-- Desfumare -->
+                    <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-industrial-3.jpeg" alt="Desfumare"><div class="overlay"><span>Instalatie desfumare</span></div>
                     </div>
-                    <div class="project-card show" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
+                    <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-ventilation-1.jpeg" alt="Desfumare"><div class="overlay"><span>Ventilator desfumare</span></div>
                     </div>
-                    <div class="project-card show" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
+                    <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/gallery-industrial-4.jpeg" alt="Desfumare"><div class="overlay"><span>Tubulaturi desfumare</span></div>
                     </div>
-                    <div class="project-card show" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/stock-clapeti.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Clapeti antifoc</span></div>
+                    <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-desfumare-1.jpg" alt="Desfumare"><div class="overlay"><span>Sistem extractie fum</span></div>
                     </div>
-                    <div class="project-card show" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
+                    <!-- Clapeti Antifoc -->
+                    <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-clapeti-1.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Clapeta antifoc</span></div>
+                    </div>
+                    <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-clapeti-2.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Componente clapeti</span></div>
+                    </div>
+                    <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-clapeti-3.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Vana clapeta</span></div>
+                    </div>
+                    <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-clapeti-4.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Evacuare industriala</span></div>
+                    </div>
+                    <!-- Sanitare -->
+                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
                         <img src="assets/img/stock-sanitare.jpg" alt="Sanitare"><div class="overlay"><span>Instalatii sanitare</span></div>
+                    </div>
+                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sanitare-1.jpg" alt="Sanitare"><div class="overlay"><span>Conducte industriale</span></div>
+                    </div>
+                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sanitare-2.jpg" alt="Sanitare"><div class="overlay"><span>Tevi si robineti</span></div>
+                    </div>
+                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/gallery-sanitare-3.jpg" alt="Sanitare"><div class="overlay"><span>Montaj instalatii</span></div>
                     </div>
                 </div>
             </div>
@@ -879,7 +926,7 @@ function filterProjects(cat) {
     document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
     event.target.classList.add('active');
     document.querySelectorAll('.proj-gallery .project-card').forEach(c => {
-        c.classList.toggle('show', cat === 'all' || c.dataset.cat === cat);
+        c.classList.toggle('show', c.dataset.cat === cat);
     });
 }
 
@@ -951,7 +998,7 @@ const T = {
         auth_item4:"Thermal protection with shotcrete",
         auth_item5:"Thermal protection with intumescent paints",
         auth_item6:"AGFR certification (heat pumps, freon)",
-        projects_title:"Projects", proj_all:"All", proj_sprinklere:"Sprinklers",
+        projects_title:"Projects", proj_sprinklere:"Sprinklers",
         proj_hidranti:"Hydrants", proj_desfumare:"Smoke Evacuation",
         proj_clapeti:"Fire Dampers", proj_sanitare:"Plumbing",
         partners_title:"Partners",
@@ -1016,7 +1063,7 @@ const T = {
         auth_item1:"Brandl\u00f6schung mit Sprinklern und Hydranten", auth_item2:"Rauch- und Hei\u00dfgasabf\u00fchrung",
         auth_item3:"Branddetektion und -meldung", auth_item4:"Spritzbeton-W\u00e4rmeschutz",
         auth_item5:"Intumeszenzfarben-W\u00e4rmeschutz", auth_item6:"AGFR-Zertifizierung",
-        projects_title:"Projekte", proj_all:"Alle", proj_sprinklere:"Sprinkler",
+        projects_title:"Projekte", proj_sprinklere:"Sprinkler",
         proj_hidranti:"Hydranten", proj_desfumare:"Rauchableitung",
         proj_clapeti:"Brandschutzklappen", proj_sanitare:"Sanit\u00e4r",
         partners_title:"Partner",
@@ -1077,7 +1124,7 @@ const T = {
         auth_item1:"Extinction avec sprinklers et bouches d'incendie", auth_item2:"\u00c9vacuation fum\u00e9es",
         auth_item3:"D\u00e9tection et signalisation", auth_item4:"Protection thermique projection",
         auth_item5:"Peintures intumescentes", auth_item6:"Certification AGFR",
-        projects_title:"Projets", proj_all:"Tous", proj_sprinklere:"Sprinklers",
+        projects_title:"Projets", proj_sprinklere:"Sprinklers",
         proj_hidranti:"Bouches d'incendie", proj_desfumare:"D\u00e9senfumage",
         proj_clapeti:"Clapets coupe-feu", proj_sanitare:"Sanitaire",
         partners_title:"Partenaires",
@@ -1139,7 +1186,7 @@ const T = {
         auth_item1:"\u55b7\u6dcb\u548c\u6d88\u9632\u6813\u706d\u706b", auth_item2:"\u70df\u6c14\u6392\u653e",
         auth_item3:"\u706b\u707e\u63a2\u6d4b", auth_item4:"\u55b7\u5c04\u6df7\u51dd\u571f\u9632\u62a4",
         auth_item5:"\u81a8\u80c0\u6d82\u6599\u9632\u62a4", auth_item6:"AGFR\u8ba4\u8bc1",
-        projects_title:"\u9879\u76ee", proj_all:"\u5168\u90e8", proj_sprinklere:"\u55b7\u6dcb",
+        projects_title:"\u9879\u76ee", proj_sprinklere:"\u55b7\u6dcb",
         proj_hidranti:"\u6d88\u9632\u6813", proj_desfumare:"\u6392\u70df",
         proj_clapeti:"\u9632\u706b\u9600", proj_sanitare:"\u7ed9\u6392\u6c34",
         partners_title:"\u5408\u4f5c\u4f19\u4f34",
