@@ -32,7 +32,7 @@
             --sidebar-w: 230px;
         }
         html { scroll-behavior: auto; }
-        body { font-family: 'Open Sans', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; overflow-y: hidden; height: 100vh; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; overflow-y: hidden; height: 100vh; height: 100dvh; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
         img { max-width: 100%; height: auto; }
         a { text-decoration: none; color: inherit; }
@@ -102,7 +102,7 @@
         .hamburger span { display: block; width: 22px; height: 2px; background: white; transition: var(--transition); }
 
         /* ===== MAIN / PAGES ===== */
-        .main { margin-left: var(--sidebar-w); height: 100vh; position: relative; }
+        .main { margin-left: var(--sidebar-w); height: 100vh; height: 100dvh; position: relative; }
         .page {
             position: absolute; inset: 0;
             display: none; overflow-y: auto;
@@ -362,7 +362,7 @@
             .sidebar.open { transform: translateX(0); }
             .mobile-header { display: flex; }
             .hamburger { display: flex; }
-            .main { margin-left: 0; height: calc(100vh - 55px); margin-top: 55px; }
+            .main { margin-left: 0; height: calc(100dvh - 55px); margin-top: 55px; }
             .page.has-bg .page-bg { left: 50%; }
             .services-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .workflow-grid { grid-template-columns: repeat(2, 1fr); }
