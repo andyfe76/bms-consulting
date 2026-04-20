@@ -232,7 +232,7 @@
             background: transparent; color: var(--primary); font-family: 'Montserrat', sans-serif;
         }
         .proj-tab:hover, .proj-tab.active { background: var(--primary); color: white; }
-        .proj-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .proj-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .proj-gallery .project-card {
             position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; aspect-ratio: 4/3;
             display: none;
@@ -356,6 +356,31 @@
         .lightbox-prev { left: 15px; }
         .lightbox-next { right: 15px; }
 
+        /* ===== SERVICE DETAIL MODAL ===== */
+        .service-item { cursor: pointer; }
+        .service-detail-overlay {
+            display: none; position: fixed; inset: 0; z-index: 2000;
+            background: rgba(0,0,0,0.7); align-items: center; justify-content: center; padding: 20px;
+        }
+        .service-detail-overlay.active { display: flex; }
+        .service-detail-modal {
+            background: white; border-radius: 12px; padding: 30px 35px; max-width: 600px; width: 100%;
+            max-height: 80vh; overflow-y: auto; position: relative; box-shadow: var(--shadow-lg);
+        }
+        .service-detail-modal h3 {
+            font-family: 'Montserrat', sans-serif; font-size: 1.3rem; color: var(--primary);
+            margin-bottom: 15px; padding-right: 30px;
+        }
+        .service-detail-modal p, .service-detail-modal li {
+            font-size: 0.92rem; color: var(--text); line-height: 1.7; margin-bottom: 8px;
+        }
+        .service-detail-modal ul { padding-left: 18px; }
+        .service-detail-close {
+            position: absolute; top: 12px; right: 18px; background: none; border: none;
+            font-size: 1.8rem; color: var(--text-light); cursor: pointer; line-height: 1;
+        }
+        .service-detail-close:hover { color: var(--accent); }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             .sidebar { transform: translateX(-100%); }
@@ -457,7 +482,6 @@
                     <p data-i18n="about_p1"><strong>SC BMS Consulting SRL</strong> este o societate cu capital privat, care activeaza cu succes pe piata constructiilor din Romania, incepand cu anul 2023, oferind solutii complete in domeniul instalatiilor termice, ventilatii, climatizare, instalatii desfumare si instalatii stingere incendiu, precum si sisteme de protectie la foc.</p>
                     <p data-i18n="about_p2">Compania detine un bogat patrimoniu uman, avand personal cu experienta in domeniul instalatiilor. BMS Consulting este un <strong>Antreprenor General</strong> capabil sa realizeze si sa gestioneze instalatii integrate in domeniile civil si industrial — de la proiectare la furnizare, montaj si punere in functiune.</p>
                     <p data-i18n="about_p3">Personalul BMS Consulting SRL este autorizat <strong>AGFR</strong> pentru executarea lucrarilor de montaj, service si punere in functiune pentru pompele de caldura si alte agregate care folosesc in functionarea lor compusi organici alifatici fluorurati (freon).</p>
-                    <div class="about-badge"><i class="fas fa-shield-halved"></i> <span data-i18n="about_badge">Autorizati IGSU pe perioada nedeterminata &bull; 6 autorizatii active</span></div>
                 </div>
             </div>
         </div>
@@ -470,65 +494,73 @@
             <div class="container">
                 <div class="section-title"><h2 data-i18n="services_title">Servicii</h2><div class="underline"></div></div>
                 <div class="services-grid">
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc1')">
                         <div class="service-icon blue"><i class="fas fa-fan"></i></div>
                         <h3 data-i18n="svc1_title">Instalatii HVAC</h3>
                         <p data-i18n="svc1_desc">Incalzire, ventilatie, climatizare</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc2')">
                         <div class="service-icon red"><i class="fas fa-fire-extinguisher"></i></div>
                         <h3 data-i18n="svc2_title">Stingere Incendiu</h3>
                         <p data-i18n="svc2_desc">Sprinklere, hidranti, inele incendiu</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc3')">
                         <div class="service-icon yellow"><i class="fas fa-wind"></i></div>
                         <h3 data-i18n="svc3_title">Instalatii Desfumare</h3>
                         <p data-i18n="svc3_desc">Evacuare fum si gaze fierbinti</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc4')">
                         <div class="service-icon cyan"><i class="fas fa-droplet"></i></div>
                         <h3 data-i18n="svc4_title">Instalatii Sanitare</h3>
                         <p data-i18n="svc4_desc">Apa, canalizare, panouri solare</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc5')">
                         <div class="service-icon green"><i class="fas fa-bell"></i></div>
                         <h3 data-i18n="svc5_title">Detectie Incendiu</h3>
                         <p data-i18n="svc5_desc">Semnalizare, alarmare, alertare</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc6')">
                         <div class="service-icon darkred"><i class="fas fa-shield-halved"></i></div>
-                        <h3 data-i18n="svc6_title">Protectie la Foc</h3>
+                        <h3 data-i18n="svc6_title">Protectii la Foc</h3>
                         <p data-i18n="svc6_desc">Torcretare si vopsele intumescente</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc7')">
                         <div class="service-icon teal"><i class="fas fa-wrench"></i></div>
-                        <h3 data-i18n="svc7_title">Mentenanta Preventiva & Corectiva</h3>
-                        <p data-i18n="svc7_desc">Stingere, desfumare, detectie</p>
+                        <h3 data-i18n="svc7_title">Mentenanta</h3>
+                        <p data-i18n="svc7_desc">Stingere, desfumare, HVAC</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc8')">
                         <div class="service-icon navy"><i class="fas fa-drafting-compass"></i></div>
                         <h3 data-i18n="svc8_title">Proiectare Specialitate</h3>
                         <p data-i18n="svc8_desc">HVAC, stingere, desfumare, detectie</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc9')">
                         <div class="service-icon steel"><i class="fas fa-helmet-safety"></i></div>
-                        <h3 data-i18n="svc9_title">Executie & Montaj</h3>
-                        <p data-i18n="svc9_desc">Realizare RLV proiecte</p>
+                        <h3 data-i18n="svc9_title">Realizare RLV la cerere</h3>
+                        <p data-i18n="svc9_desc">Masuratori si relevee</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc10')">
                         <div class="service-icon amber"><i class="fas fa-boxes-stacked"></i></div>
                         <h3 data-i18n="svc10_title">Vanzare Echipamente</h3>
                         <p data-i18n="svc10_desc">Echipamente de cea mai buna calitate</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc11')">
                         <div class="service-icon brown"><i class="fas fa-cut"></i></div>
                         <h3 data-i18n="svc11_title">Debitare Materiale</h3>
                         <p data-i18n="svc11_desc">Conform proiect</p>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" onclick="showServiceDetail('svc12')">
                         <div class="service-icon indigo"><i class="fas fa-truck"></i></div>
                         <h3 data-i18n="svc12_title">Livrare</h3>
                         <p data-i18n="svc12_desc">Transport la nivel national</p>
+                    </div>
+                </div>
+                <!-- Service Detail Modal -->
+                <div class="service-detail-overlay" id="serviceDetailOverlay" onclick="closeServiceDetail()">
+                    <div class="service-detail-modal" onclick="event.stopPropagation()">
+                        <button class="service-detail-close" onclick="closeServiceDetail()">&times;</button>
+                        <h3 id="serviceDetailTitle"></h3>
+                        <div id="serviceDetailContent"></div>
                     </div>
                 </div>
             </div>
@@ -581,86 +613,86 @@
                     <button class="proj-tab" onclick="filterProjects('hidranti')" data-i18n="proj_hidranti">Hidranti</button>
                     <button class="proj-tab" onclick="filterProjects('desfumare')" data-i18n="proj_desfumare">Desfumare</button>
                     <button class="proj-tab" onclick="filterProjects('clapeti')" data-i18n="proj_clapeti">Clapeti Antifoc</button>
-                    <button class="proj-tab" onclick="filterProjects('sanitare')" data-i18n="proj_sanitare">Sanitare</button>
+                    <button class="proj-tab" onclick="filterProjects('protectii')" data-i18n="proj_protectii">Protectii la foc</button>
                 </div>
                 <div class="proj-gallery">
                     <!-- HVAC -->
                     <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-hvac-1.jpeg" alt="HVAC"><div class="overlay"><span>HVAC — Hala industriala</span></div>
+                        <img src="assets/img/projects/hvac-1.jpeg" alt="HVAC"><div class="overlay"><span>Instalatii HVAC</span></div>
                     </div>
                     <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-hvac-2.jpg" alt="HVAC"><div class="overlay"><span>Tubulaturi ventilatie</span></div>
+                        <img src="assets/img/projects/hvac-2.jpeg" alt="HVAC"><div class="overlay"><span>Sisteme climatizare</span></div>
                     </div>
                     <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-hvac-3.jpg" alt="HVAC"><div class="overlay"><span>Conducte aerisire industriala</span></div>
+                        <img src="assets/img/projects/hvac-3.jpeg" alt="HVAC"><div class="overlay"><span>Tubulaturi ventilatie</span></div>
                     </div>
                     <div class="project-card show" data-cat="hvac" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-hvac-4.jpg" alt="HVAC"><div class="overlay"><span>Unitati climatizare</span></div>
+                        <img src="assets/img/projects/hvac-4.jpeg" alt="HVAC"><div class="overlay"><span>Unitati climatizare</span></div>
                     </div>
                     <!-- Sprinklere -->
                     <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sprinkler-1.jpeg" alt="Sprinklere"><div class="overlay"><span>Sistem sprinklere</span></div>
+                        <img src="assets/img/projects/sprinklere-1.jpeg" alt="Sprinklere"><div class="overlay"><span>Sistem sprinklere</span></div>
                     </div>
                     <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sprinkler-2.jpeg" alt="Sprinklere"><div class="overlay"><span>Retea sprinklere</span></div>
+                        <img src="assets/img/projects/sprinklere-2.jpeg" alt="Sprinklere"><div class="overlay"><span>Retea sprinklere</span></div>
                     </div>
                     <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sprinkler-3.jpg" alt="Sprinklere"><div class="overlay"><span>Echipamente stingere</span></div>
+                        <img src="assets/img/projects/sprinklere-3.jpeg" alt="Sprinklere"><div class="overlay"><span>Echipamente stingere</span></div>
                     </div>
                     <div class="project-card" data-cat="sprinklere" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sprinkler-4.jpg" alt="Sprinklere"><div class="overlay"><span>Interventie sprinklere</span></div>
+                        <img src="assets/img/projects/sprinklere-4.jpeg" alt="Sprinklere"><div class="overlay"><span>Instalatie sprinklere</span></div>
                     </div>
                     <!-- Hidranti -->
                     <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-1.jpeg" alt="Hidranti"><div class="overlay"><span>Retea hidranti</span></div>
+                        <img src="assets/img/projects/hidranti-1.jpeg" alt="Hidranti"><div class="overlay"><span>Retea hidranti</span></div>
                     </div>
                     <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-2.jpeg" alt="Hidranti"><div class="overlay"><span>Sistem hidranti interiori</span></div>
+                        <img src="assets/img/projects/hidranti-2.jpeg" alt="Hidranti"><div class="overlay"><span>Sistem hidranti</span></div>
                     </div>
                     <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-hydrant-1.jpg" alt="Hidranti"><div class="overlay"><span>Hidrant interior</span></div>
+                        <img src="assets/img/projects/hidranti-3.jpeg" alt="Hidranti"><div class="overlay"><span>Hidrant interior</span></div>
                     </div>
                     <div class="project-card" data-cat="hidranti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-hydrant-2.jpg" alt="Hidranti"><div class="overlay"><span>Hidrant exterior</span></div>
+                        <img src="assets/img/projects/hidranti-4.jpeg" alt="Hidranti"><div class="overlay"><span>Hidrant exterior</span></div>
                     </div>
                     <!-- Desfumare -->
                     <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-3.jpeg" alt="Desfumare"><div class="overlay"><span>Instalatie desfumare</span></div>
+                        <img src="assets/img/projects/desfumare-1.jpeg" alt="Desfumare"><div class="overlay"><span>Instalatie desfumare</span></div>
                     </div>
                     <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-ventilation-1.jpeg" alt="Desfumare"><div class="overlay"><span>Ventilator desfumare</span></div>
+                        <img src="assets/img/projects/desfumare-2.jpeg" alt="Desfumare"><div class="overlay"><span>Sistem desfumare</span></div>
                     </div>
                     <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-industrial-4.jpeg" alt="Desfumare"><div class="overlay"><span>Tubulaturi desfumare</span></div>
+                        <img src="assets/img/projects/desfumare-3.jpeg" alt="Desfumare"><div class="overlay"><span>Tubulaturi desfumare</span></div>
                     </div>
                     <div class="project-card" data-cat="desfumare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-desfumare-1.jpg" alt="Desfumare"><div class="overlay"><span>Sistem extractie fum</span></div>
+                        <img src="assets/img/projects/desfumare-4.jpeg" alt="Desfumare"><div class="overlay"><span>Evacuare fum</span></div>
                     </div>
                     <!-- Clapeti Antifoc -->
                     <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-clapeti-1.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Clapeta antifoc</span></div>
+                        <img src="assets/img/projects/clapeti-1.jpeg" alt="Clapeti antifoc"><div class="overlay"><span>Clapeta antifoc</span></div>
                     </div>
                     <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-clapeti-2.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Componente clapeti</span></div>
+                        <img src="assets/img/projects/clapeti-2.jpeg" alt="Clapeti antifoc"><div class="overlay"><span>Montaj clapeti</span></div>
                     </div>
                     <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-clapeti-3.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Vana clapeta</span></div>
+                        <img src="assets/img/projects/clapeti-3.jpeg" alt="Clapeti antifoc"><div class="overlay"><span>Clapeti ventilatie</span></div>
                     </div>
                     <div class="project-card" data-cat="clapeti" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-clapeti-4.jpg" alt="Clapeti antifoc"><div class="overlay"><span>Evacuare industriala</span></div>
+                        <img src="assets/img/projects/clapeti-4.jpeg" alt="Clapeti antifoc"><div class="overlay"><span>Sistem clapeti</span></div>
                     </div>
-                    <!-- Sanitare -->
-                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/stock-sanitare.jpg" alt="Sanitare"><div class="overlay"><span>Instalatii sanitare</span></div>
+                    <!-- Protectii la foc -->
+                    <div class="project-card" data-cat="protectii" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/projects/protectii-1.jpeg" alt="Protectii la foc"><div class="overlay"><span>Protectie pasiva foc</span></div>
                     </div>
-                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sanitare-1.jpg" alt="Sanitare"><div class="overlay"><span>Conducte industriale</span></div>
+                    <div class="project-card" data-cat="protectii" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/projects/protectii-2.jpeg" alt="Protectii la foc"><div class="overlay"><span>Vopsea intumescenta</span></div>
                     </div>
-                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sanitare-2.jpg" alt="Sanitare"><div class="overlay"><span>Tevi si robineti</span></div>
+                    <div class="project-card" data-cat="protectii" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/projects/protectii-3.jpeg" alt="Protectii la foc"><div class="overlay"><span>Torcretare structuri</span></div>
                     </div>
-                    <div class="project-card" data-cat="sanitare" onclick="openLightbox(this.querySelector('img'))">
-                        <img src="assets/img/gallery-sanitare-3.jpg" alt="Sanitare"><div class="overlay"><span>Montaj instalatii</span></div>
+                    <div class="project-card" data-cat="protectii" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="assets/img/projects/protectii-4.jpeg" alt="Protectii la foc"><div class="overlay"><span>Protectie metalica</span></div>
                     </div>
                 </div>
             </div>
@@ -979,9 +1011,9 @@ const T = {
         svc4_title:"Plumbing", svc4_desc:"Water, sewage, solar panels",
         svc5_title:"Fire Detection", svc5_desc:"Signaling, alarm, alert systems",
         svc6_title:"Fire Protection", svc6_desc:"Shotcrete and intumescent paints",
-        svc7_title:"Preventive & Corrective Maintenance", svc7_desc:"Fire, smoke, detection systems",
+        svc7_title:"Maintenance", svc7_desc:"Fire, smoke, HVAC systems",
         svc8_title:"Specialty Design", svc8_desc:"HVAC, fire, smoke, detection",
-        svc9_title:"Execution & Assembly", svc9_desc:"RLV project implementation",
+        svc9_title:"RLV Surveys on Demand", svc9_desc:"Measurements and surveys",
         svc10_title:"Equipment Sales", svc10_desc:"Highest quality equipment",
         svc11_title:"Material Cutting", svc11_desc:"According to project specs",
         svc12_title:"Delivery", svc12_desc:"Nationwide transport",
@@ -1000,7 +1032,7 @@ const T = {
         auth_item6:"AGFR certification (heat pumps, freon)",
         projects_title:"Projects", proj_sprinklere:"Sprinklers",
         proj_hidranti:"Hydrants", proj_desfumare:"Smoke Evacuation",
-        proj_clapeti:"Fire Dampers", proj_sanitare:"Plumbing",
+        proj_clapeti:"Fire Dampers", proj_protectii:"Fire Protection",
         partners_title:"Partners",
         p_awg:"Accounting services", p_foshan:"Industrial equipment", p_rollform:"Sheet metal machines",
         p_lockform:"Sheet metal processing", p_ag_name:"AG - General Contractor", p_ag:"Civil & industrial construction",
@@ -1047,9 +1079,9 @@ const T = {
         svc4_title:"Sanit\u00e4r", svc4_desc:"Wasser, Kanalisation, Solar",
         svc5_title:"Branddetektion", svc5_desc:"Brandmelde- und Alarmsysteme",
         svc6_title:"Brandschutz", svc6_desc:"Spritzbeton und Intumeszenzfarben",
-        svc7_title:"Pr\u00e4ventive & Korrektive Wartung", svc7_desc:"L\u00f6sch-, Rauch-, Detektionssysteme",
+        svc7_title:"Wartung", svc7_desc:"L\u00f6sch-, Rauch-, HLK-Systeme",
         svc8_title:"Fachplanung", svc8_desc:"HLK, L\u00f6schung, Rauch, Detektion",
-        svc9_title:"Ausf\u00fchrung & Montage", svc9_desc:"RLV-Projektumsetzung",
+        svc9_title:"RLV-Vermessung", svc9_desc:"Messungen und Aufnahmen",
         svc10_title:"Ger\u00e4teverkauf", svc10_desc:"H\u00f6chste Qualit\u00e4t",
         svc11_title:"Materialzuschnitt", svc11_desc:"Gem\u00e4\u00df Projekt",
         svc12_title:"Lieferung", svc12_desc:"Landesweiter Transport",
@@ -1065,7 +1097,7 @@ const T = {
         auth_item5:"Intumeszenzfarben-W\u00e4rmeschutz", auth_item6:"AGFR-Zertifizierung",
         projects_title:"Projekte", proj_sprinklere:"Sprinkler",
         proj_hidranti:"Hydranten", proj_desfumare:"Rauchableitung",
-        proj_clapeti:"Brandschutzklappen", proj_sanitare:"Sanit\u00e4r",
+        proj_clapeti:"Brandschutzklappen", proj_protectii:"Brandschutz",
         partners_title:"Partner",
         p_awg:"Buchhaltungsdienstleistungen", p_foshan:"Industrieausr\u00fcstung", p_rollform:"Blechprofiliermaschinen",
         p_lockform:"Blechbearbeitung", p_ag_name:"AG - Generalunternehmer", p_ag:"Zivil- & Industriebau",
@@ -1108,9 +1140,9 @@ const T = {
         svc4_title:"Sanitaire", svc4_desc:"Eau, assainissement, solaire",
         svc5_title:"D\u00e9tection incendie", svc5_desc:"Signalisation et alarme",
         svc6_title:"Protection incendie", svc6_desc:"Projection et peintures intumescentes",
-        svc7_title:"Maintenance Pr\u00e9ventive & Corrective", svc7_desc:"Extinction, d\u00e9senfumage, d\u00e9tection",
+        svc7_title:"Maintenance", svc7_desc:"Extinction, d\u00e9senfumage, CVC",
         svc8_title:"Conception Sp\u00e9cialis\u00e9e", svc8_desc:"CVC, extinction, d\u00e9senfumage",
-        svc9_title:"Ex\u00e9cution & Montage", svc9_desc:"R\u00e9alisation projets RLV",
+        svc9_title:"Relev\u00e9s RLV sur demande", svc9_desc:"Mesures et relev\u00e9s",
         svc10_title:"Vente \u00c9quipements", svc10_desc:"Meilleure qualit\u00e9",
         svc11_title:"D\u00e9coupe Mat\u00e9riaux", svc11_desc:"Selon projet",
         svc12_title:"Livraison", svc12_desc:"Transport national",
@@ -1126,7 +1158,7 @@ const T = {
         auth_item5:"Peintures intumescentes", auth_item6:"Certification AGFR",
         projects_title:"Projets", proj_sprinklere:"Sprinklers",
         proj_hidranti:"Bouches d'incendie", proj_desfumare:"D\u00e9senfumage",
-        proj_clapeti:"Clapets coupe-feu", proj_sanitare:"Sanitaire",
+        proj_clapeti:"Clapets coupe-feu", proj_protectii:"Protection incendie",
         partners_title:"Partenaires",
         p_awg:"Services comptabilit\u00e9", p_foshan:"\u00c9quipements industriels", p_rollform:"Machines profilage",
         p_lockform:"Traitement t\u00f4le", p_ag_name:"AG - Entrepreneur G\u00e9n\u00e9ral", p_ag:"Construction civile & industrielle",
@@ -1170,9 +1202,9 @@ const T = {
         svc4_title:"\u7ed9\u6392\u6c34", svc4_desc:"\u4f9b\u6c34\u3001\u6392\u6c34\u3001\u592a\u9633\u80fd",
         svc5_title:"\u706b\u707e\u63a2\u6d4b", svc5_desc:"\u62a5\u8b66\u548c\u9884\u8b66\u7cfb\u7edf",
         svc6_title:"\u9632\u706b\u4fdd\u62a4", svc6_desc:"\u55b7\u5c04\u6df7\u51dd\u571f\u548c\u6d82\u6599",
-        svc7_title:"\u9884\u9632\u6027\u548c\u7ea0\u6b63\u6027\u7ef4\u62a4", svc7_desc:"\u706d\u706b\u3001\u6392\u70df\u3001\u63a2\u6d4b",
+        svc7_title:"\u7ef4\u62a4", svc7_desc:"\u706d\u706b\u3001\u6392\u70df\u3001\u6696\u901a",
         svc8_title:"\u4e13\u4e1a\u8bbe\u8ba1", svc8_desc:"\u6696\u901a\u3001\u706d\u706b\u3001\u6392\u70df",
-        svc9_title:"\u6267\u884c\u4e0e\u5b89\u88c5", svc9_desc:"RLV\u9879\u76ee",
+        svc9_title:"RLV\u6d4b\u91cf", svc9_desc:"\u6d4b\u91cf\u548c\u52d8\u5bdf",
         svc10_title:"\u8bbe\u5907\u9500\u552e", svc10_desc:"\u6700\u4f18\u8d28\u8bbe\u5907",
         svc11_title:"\u6750\u6599\u5207\u5272", svc11_desc:"\u6309\u9879\u76ee\u89c4\u683c",
         svc12_title:"\u4ea4\u4ed8", svc12_desc:"\u5168\u56fd\u8fd0\u8f93",
@@ -1188,7 +1220,7 @@ const T = {
         auth_item5:"\u81a8\u80c0\u6d82\u6599\u9632\u62a4", auth_item6:"AGFR\u8ba4\u8bc1",
         projects_title:"\u9879\u76ee", proj_sprinklere:"\u55b7\u6dcb",
         proj_hidranti:"\u6d88\u9632\u6813", proj_desfumare:"\u6392\u70df",
-        proj_clapeti:"\u9632\u706b\u9600", proj_sanitare:"\u7ed9\u6392\u6c34",
+        proj_clapeti:"\u9632\u706b\u9600", proj_protectii:"\u9632\u706b\u4fdd\u62a4",
         partners_title:"\u5408\u4f5c\u4f19\u4f34",
         p_awg:"\u4f1a\u8ba1\u670d\u52a1", p_foshan:"\u5de5\u4e1a\u8bbe\u5907", p_rollform:"\u8f67\u538b\u673a",
         p_lockform:"\u677f\u6750\u52a0\u5de5", p_ag_name:"AG - \u603b\u627f\u5305\u5546", p_ag:"\u5efa\u7b51\u65bd\u5de5",
@@ -1215,6 +1247,73 @@ const T = {
         offer_title:"\u83b7\u53d6\u62a5\u4ef7", footer_rights:"\u7248\u6743\u6240\u6709\u3002"
     }
 };
+// === SERVICE DETAIL MODAL ===
+const serviceDetails = {
+    svc1: {
+        title: 'Instalatii HVAC',
+        content: '<p>Asigurăm un climat perfect în spațiile comerciale prin proiectarea și execuția la cheie a sistemelor avansate de încălzire și răcire. Specialiști în soluții HVAC pentru retail, optimizăm consumul de energie și maximizăm confortul clienților tăi, utilizând tehnologii de top: pompe de căldură, sisteme VRV/VRF, split și VCV-uri (ventiloconvectoare).</p>'
+    },
+    svc2: {
+        title: 'Stingere Incendiu',
+        content: '<p>Oferim soluții de protecție activă, esențiale pentru centre comerciale, magazine și depozite.</p><ul><li><strong>Proiectare și Instalare Sprinklere:</strong> Sisteme umede sau uscate, adaptate pentru spații încălzite (standard) sau zone cu risc de îngheț.</li><li><strong>Hidranți Interiori și Exteriori:</strong> Execuție rețele hidranți conform normativelor, inclusiv grupuri de pompare și rezervoare de apă.</li><li><strong>Autorizare ISU:</strong> Proiectele noastre respectă cele mai recente reglementări pentru siguranța la foc.</li></ul>'
+    },
+    svc3: {
+        title: 'Instalatii Desfumare',
+        content: '<p>Proiectăm și executăm sisteme de desfumare profesionale, esențiale pentru siguranța în retail (centre comerciale, magazine, supermarketuri). Oferim soluții complete, de la proiectare tehnică conform Normativ P118/2025 până la instalare și mentenanță, asigurând evacuarea rapidă a fumului/gazelor fierbinți, protejarea clienților și conformitatea cu cerințele ISU.</p>'
+    },
+    svc4: {
+        title: 'Instalatii Sanitare',
+        content: '<p>Proiectăm și executăm sisteme complete de instalații sanitare rezidențiale și industriale, oferind soluții integrate "la cheie" pentru alimentare cu apă, canalizare și obiecte sanitare. Asigurăm durabilitate, eficiență energetică și conformitate cu normele tehnice în vigoare, garantând lucrări sigure, de la planul CAD până la montajul final.</p>'
+    },
+    svc5: {
+        title: 'Detectie Incendiu',
+        content: '<ul><li><strong>Soluții Personalizate (Proiectare):</strong> Analizăm riscurile specifice fiecărei clădiri și proiectăm sisteme (adresabile sau convenționale) adaptate perfect spațiului tău, fie că este vorba de birouri, depozite sau unități de producție.</li><li><strong>Execuție Profesionistă:</strong> Echipa noastră autorizată instalează echipamente de înaltă calitate – detectoare de fum, temperatură sau flacără, sirene și centrale de alarmare – cu respectarea standardelor SR EN 54 și P118.</li><li><strong>Autorizare ISU:</strong> Ne asigurăm că documentația și instalația finală îndeplinesc toate cerințele pentru obținerea autorizațiilor necesare.</li><li><strong>Integrare Inteligentă:</strong> Sistemele noastre pot fi integrate cu sisteme de control acces, supraveghere video sau sisteme de stingere.</li></ul>'
+    },
+    svc6: {
+        title: 'Protectii la Foc',
+        content: '<p>Executăm lucrări profesionale de protecție pasivă la foc pentru structuri metalice și de beton, rigips utilizând vopsele termospumante (intumescente) și torcretare cu mortare ignifuge. Asigurăm o rezistență la foc de până la 240 de minute, garantând stabilitatea structurală, limitarea pagubelor și siguranța în caz de incendiu.</p>'
+    },
+    svc7: {
+        title: 'Mentenanta',
+        content: '<p><strong>Servicii Mentenanță Tehnică Integrată</strong><br>Obiectiv: Siguranța vieții și a bunurilor, continuitatea afacerii.</p><p><strong>1. Sisteme de Stingere Incendiu (Sprinklere, Hidranți, Stații Pompare)</strong></p><ul><li><strong>Preventivă:</strong> Verificarea presiunii, testarea pompelor, inspecția sprinklerelor și a hidranților, verificarea stației de pompare (conform P118/2-2013).</li><li><strong>Corectivă:</strong> Remedierea scurgerilor, înlocuirea componentelor defecte, reîncărcarea buteliilor de stingere, intervenții rapide în caz de alarmă falsă sau reală.</li></ul><p><strong>2. Sisteme de Desfumare (Evacuare Fum și Gaze Fierbinți)</strong></p><ul><li><strong>Preventivă:</strong> Testarea funcționării trapelor de fum, verificarea ventilatoarelor de desfumare, inspectarea clapelor antifoc, verificarea sistemelor de automatizare.</li><li><strong>Corectivă:</strong> Repararea/înlocuirea motoarelor de acționare, repararea tablourilor electrice de automatizare, curățarea căilor de evacuare a fumului.</li></ul><p><strong>3. Sisteme HVAC (Încălzire, Ventilație, Aer Condiționat)</strong></p><ul><li><strong>Preventivă:</strong> Curățarea/înlocuirea filtrelor, verificarea agentului frigorific, gresarea motoarelor, verificarea sistemelor de management al clădirii (BMS), optimizarea eficienței energetice.</li><li><strong>Corectivă:</strong> Repararea chillerelor, unităților VRV/VRF, CTA (Centralelor de Tratare Aer), depanare componente electrice și mecanice.</li></ul>'
+    },
+    svc8: {
+        title: 'Proiectare Specialitate',
+        content: '<p>Expertiza noastră acoperă pilonii esențiali ai oricărui proiect:</p><ul><li><strong>Securitate la Incendiu (Stingere):</strong> Proiectăm sisteme avansate de limitare și stingere a incendiilor (hidranți interiori/exteriori, sprinklere, drencere), adaptate specificului clădirii dumneavoastră pentru o protecție activă neîncetată.</li><li><strong>Desfumare și Ventilație de Evacuare:</strong> Dezvoltăm soluții critice pentru controlul fluxurilor de fum și gaze fierbinți, garantând căile de evacuare sigure și facilitând intervenția pompierilor în caz de urgență.</li><li><strong>HVAC (Climatizare, Încălzire și Ventilație):</strong> Creăm sisteme de management termic și al calității aerului care îmbină confortul utilizatorilor cu eficiența energetică, utilizând tehnologii de ultimă generație.</li><li><strong>Detecție și Semnalizare Incendiu:</strong> Implementăm sisteme inteligente de alarmare timpurie, esențiale pentru protecția vieților omenești și a bunurilor materiale.</li><li><strong>Instalații Electrice (Curenți Tari):</strong> Proiectăm rețele electrice robuste și sigure, de la posturi de transformare și tablouri generale, până la circuite de iluminat și prize, asigurând continuitatea în alimentare și performanța echipamentelor.</li></ul>'
+    },
+    svc9: {
+        title: 'Realizare RLV la cerere',
+        content: '<p>Oferim servicii profesionale de măsurători și întocmire a releveelor (RLV) pentru spații comerciale, birouri și hale industriale, asigurând acuratețe maximă pentru proiecte de reamenajare sau închiriere. Predăm documentația completă, rapid, în format printat și electronic (DWG/PDF), gata pentru utilizare imediată de către arhitecți și designeri.</p>'
+    },
+    svc10: {
+        title: 'Vanzare Echipamente',
+        content: '<ul><li><strong>Pompe de căldură pentru retail</strong> de la 3 kW la 19 kW - răcire</li><li><strong>Sisteme VRV/VRF:</strong> Soluții flexibile pentru clădiri comerciale și rezidențiale, permițând control individual al temperaturii în fiecare zonă.</li><li><strong>Ventiloconvectoare (VCV):</strong> Performanță rapidă la răcire și încălzire, ideale pentru integrarea cu sistemele de răcire/încălzire ale centrelor comerciale.</li><li><strong>Sprinklere:</strong> Dispozitive sensibile la căldură, automate, pentru stingerea rapidă a focarelor.</li><li><strong>Hidranți (interior/exterior):</strong> Echipamente robuste și cutii de hidrant complete pentru primă intervenție.</li><li><strong>Grupuri de pompare incendiu:</strong> Soluții de încredere, garantând presiunea necesară în caz de urgență.</li></ul>'
+    },
+    svc11: {
+        title: 'Debitare Materiale',
+        content: '<p>Optimizăm procesul de instalare prin servicii personalizate de debitare a materialelor în funcție de fiecare cerință a proiectului tău în parte, pentru climatizare (HVAC) și sisteme de stingere a incendiilor, adaptate exact pe cerințele proiectului tău. Debităm țevi, canale de ventilație și profile la dimensiuni exacte, asigurând livrare rapidă direct pe șantier, reducând astfel timpii de montaj și pierderile de material. Punem la dispoziția ta materiale de cea mai bună calitate însoțite de certificat de conformitate/calitate CE.</p>'
+    },
+    svc12: {
+        title: 'Livrare',
+        content: '<p>În funcție de echipamentele/cantitatea de materiale comandate, asigurăm lanțul complet de aprovizionare pentru materiale de climatizare (HVAC), ventilație și sisteme de stingere a incendiilor (PSI), adaptându-ne perfect ritmului și cerințelor specifice fiecărui proiect. Nu suntem doar furnizori, suntem partenerul logistic care aduce produsele necesare, exact când ai nevoie de ele, direct în șantierul tău.</p>'
+    }
+};
+function showServiceDetail(svcId) {
+    const detail = serviceDetails[svcId];
+    if (!detail) return;
+    document.getElementById('serviceDetailTitle').textContent = detail.title;
+    document.getElementById('serviceDetailContent').innerHTML = detail.content;
+    document.getElementById('serviceDetailOverlay').classList.add('active');
+}
+function closeServiceDetail() {
+    document.getElementById('serviceDetailOverlay').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('serviceDetailOverlay').classList.contains('active')) {
+        closeServiceDetail();
+    }
+});
+
 let currentLang = 'ro';
 function setLang(lang) {
     currentLang = lang;
